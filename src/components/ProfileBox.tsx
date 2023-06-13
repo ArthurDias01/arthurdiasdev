@@ -9,7 +9,7 @@ export const ProfileBox = () => {
         alt='Arthur Dias'
         width={240}
         height={240}
-        className="z-10 w-[240px] absolute left-[50%] transform -translate-x-[50%] -translate-y-[80%] h-[240px] drop-shadow-xl mx-auto rounded-[20px] -mt-[140px]"
+        className="aspect-square z-10 w-[240px] absolute left-[50%] transform -translate-x-[50%] -translate-y-[90%] h-[240px] drop-shadow-xl mx-auto rounded-[20px] -mt-[140px]"
       />
       <InfoBox />
     </div>

@@ -11,13 +11,14 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const PrimaryButton = ({ children, handleClick, text, className, ...rest }: Props) => {
 
   return (
-    <button className={cn(className, "bg-gradient-to-r from-primary-300 to-teal-600 z-20 text-white font-bold py-2 px-4 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out h-fit w-full")}
+    <button className={cn(className, "group bg-gradient-to-r from-primary-300 to-teal-600 z-20 text-white font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out h-fit w-full mx-auto")}
       onClick={handleClick}
       {...rest}
     >
       <>
         {text}
         {children}
+        <span className="relative left-[50%] -translate-x-[50%] block max-w-0 group-hover:max-w-[66%] transition-all duration-300 h-0.5 bg-white" />
       </>
     </button >
   )

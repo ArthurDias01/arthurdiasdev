@@ -2,6 +2,7 @@
 import { InstagramLogo, TwitterLogo, LinkedinLogo, GithubLogo, ReadCvLogo, Phone, Envelope, MapPin } from '@phosphor-icons/react'
 import { InfoSubSection } from './InfoSubSection'
 import { PrimaryButton } from './PrimaryButton'
+import { InfoBoxIconLink } from './InfoBoxIconLink'
 
 export const InfoBox = () => {
 
@@ -10,48 +11,53 @@ export const InfoBox = () => {
   }
 
   return (
-    <div className="w-full mb-6 lg:mb-0 mx-auto relative bg-white text-center dark:bg-neutral-900 px-6 rounded-[20px] mt-[120px] md:mt-[220px] lg:mt-0 pt-24 pb-12">
-      <div className="flex flex-col gap-2 w-full text-neutral-200 font-bold pt-8 justify-center ">
+    <div className="w-full mb-6 lg:mb-0 mx-auto relative text-center bg-neutral-300 dark:bg-neutral-950 px-6 rounded-[20px] mt-[120px] md:mt-[220px] lg:mt-0 pt-24 pb-12">
+      <div className="flex flex-col gap-2 w-full font-bold py-8 justify-center ">
         <div className="flex flex-col gap-2 max-w-[240px] mx-auto">
           <h1 className="text-2xl text-center">Arthur Dias</h1>
-          <h2 className="text-sm bg-neutral-800 p-2 px-4 font-normal text-center rounded-lg">Full Stack Software Engineer</h2>
+          <h2 className="text-sm bg-neutral-400 dark:bg-neutral-800 p-2 px-4 text-center rounded-lg">Full Stack Software Engineer</h2>
         </div>
 
         <section className="flex flex-row gap-2 justify-between w-full max-w-[240px] pt-2 mx-auto my-4">
-          <h3 className="text-sm">
-            <a href="https://linkedin.com/in/arthurdias" target="_blank" referrerPolicy='no-referrer'>
-              <LinkedinLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-500" />
-            </a>
-          </h3>
-          <h3 className="text-sm">
-            <a href="https://twitter.com/ArthurODS_" target="_blank" referrerPolicy='no-referrer'>
-              <TwitterLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-500" />
-            </a>
-          </h3>
-          <h3 className="text-sm">
-            <a href="https://www.instagram.com/arthurddias/">
-              <InstagramLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-500" />
-            </a>
-          </h3>
-          <h3 className="text-sm">
-            <a href="https://github.com/ArthurDias01">
-              <GithubLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-500" />
-            </a>
-          </h3>
+          <InfoBoxIconLink
+            icon={<LinkedinLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-400" />}
+            href="https://linkedin.com/in/arthurdias"
+            label='LinkedIn'
+          />
+
+          <InfoBoxIconLink
+            icon={<TwitterLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-400" />}
+            href="https://twitter.com/ArthurODS_"
+            label='Twitter'
+          />
+
+
+          <InfoBoxIconLink
+            icon={<InstagramLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-400" />}
+            href="https://www.instagram.com/arthurddias/"
+            label='Instagram'
+          />
+
+          <InfoBoxIconLink
+            icon={<GithubLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-400" />}
+            href="https://github.com/ArthurDias01"
+            label='Github'
+          />
+
           <h3 className="text-sm">
             <a href="/assets/cv/01Arthur-Dias-FullStack-F-Resume.pdf"
               target="_blank"
-              title="Baixar CV"
+              title="Download CV"
               download
             >
-              <ReadCvLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-500" />
+              <ReadCvLogo className="inline-block w-8 h-8 mr-2 hover:text-primary-400" />
             </a>
           </h3>
         </section>
 
-        <section className="bg-neutral-700 p-4 flex flex-col gap-4 mx-2 rounded-md">
+        <section className="bg-neutral-400 dark:bg-neutral-900 p-4 flex flex-col max-w-md gap-4 rounded-md mx-auto truncate">
           <InfoSubSection
-            icon={<Phone className="inline-block w-8 h-8 text-primary-500" />}
+            icon={<Phone className="inline-block w-8 h-8 text-primary-400" />}
             title="Telefone"
             info="+55 (11) 95279-5920"
             hasLink
@@ -60,7 +66,7 @@ export const InfoBox = () => {
           />
 
           <InfoSubSection
-            icon={<Envelope className="inline-block w-8 h-8 text-primary-500" />}
+            icon={<Envelope className="inline-block w-8 h-8 text-primary-400" />}
             title="Email"
             info="arthursantos01@gmail.com"
             hasLink
@@ -69,7 +75,7 @@ export const InfoBox = () => {
           />
 
           <InfoSubSection
-            icon={<MapPin className="inline-block w-8 h-8 text-primary-500" />}
+            icon={<MapPin className="inline-block w-8 h-8 text-primary-400" />}
             title="Location"
             info="São Paulo, SP - Brazil"
           />
