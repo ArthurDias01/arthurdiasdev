@@ -27,6 +27,7 @@ export const ThemeSwitcherButtons = () => {
         type="button"
         className="flex h-12 w-12 flex-row items-center justify-center overflow-hidden rounded-full bg-primary-400 drop-shadow-md hover:bg-primary-400"
         onClick={handleSwitchTheme}
+        aria-label="Switch theme"
       >
         {theme === 'light' ? (
           <Moon className="h-8 w-8 text-white" />
