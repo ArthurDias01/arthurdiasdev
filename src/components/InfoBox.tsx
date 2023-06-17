@@ -33,7 +33,7 @@ export const InfoBox = () => {
             icon={
               <LinkedinLogo className="mr-2 inline-block h-8 w-8 hover:text-primary-400" />
             }
-            href="https://linkedin.com/in/arthurdias"
+            href="https://linkedin.com/in/arthur-dias/"
             label="LinkedIn"
           />
 
