@@ -69,6 +69,8 @@ export default async function Project({ params }: Props) {
             alt={project.projectName}
             width={320}
             height={240}
+            quality={100}
+            priority
             className="aspect-video w-full rounded-[20px] object-cover"
           />
         </div>
