@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="hidden md:flex sticky top-48">
               <ProfileBox />
             </div>
-            <section className="w-full max-w-4xl md:pt-32 flex flex-col items-center justify-center scaleUp">
+            <section className="w-full max-w-4xl pt-12 md:pt-32 flex flex-col items-center justify-center scaleUp">
               <NavBar />
               {children}
             </section>

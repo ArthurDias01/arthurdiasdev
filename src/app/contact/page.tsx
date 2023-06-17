@@ -16,8 +16,8 @@ export default async function Contact() {
         <ContactCard type="phone" info="+55 (11) 9 5279-5920" />
         <ContactCard type="address" info="São Paulo, SP" />
         <GeneralContactCard
-          text="I'm always open to discussing product"
-          emphasized="design work or partnership opportunities."
+          text="I'm always open to discussing product design work or partnership opportunities."
+          emphasized="Feel free to schedule a meeting with me."
         />
         <ScheduleAmeet />
       </section>
