@@ -50,14 +50,16 @@ export const getProjects = async () => {
 }
 
 export const getProject = async (id: string) => {
-  const entries = await client.getEntry(id)
-
-  const formattedEntry = {
-    ...entries.fields,
-    id: entries.sys.id,
+  try {
+    const entries = await client.getEntry(id)
+    const formattedEntry = {
+      ...entries.fields,
+      id: entries.sys.id,
+    }
+    return formattedEntry as ICustomProject
+  } catch (error) {
+    return null
   }
-
-  return formattedEntry as ICustomProject
 }
 
 export const getEducation = async () => {

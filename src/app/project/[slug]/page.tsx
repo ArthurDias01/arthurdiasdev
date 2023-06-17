@@ -2,6 +2,7 @@ import { getProject } from '@/src/lib/contentapi'
 import { Metadata, ResolvingMetadata } from 'next'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
 
 type Props = {
   params: { slug: string }
@@ -17,6 +18,12 @@ export async function generateMetadata(
   // fetch data
   const project = await getProject(slug)
 
+  if (!project) {
+    return {
+      title: `Arthur Dias | Project | Not Found`,
+    }
+  }
+
   return {
     title: `Arthur Dias | Project | ${project.projectName}`,
     openGraph: {
@@ -28,6 +35,10 @@ export async function generateMetadata(
 export default async function Project({ params }: Props) {
   const { slug } = params
   const project = await getProject(slug)
+
+  if (!project) {
+    redirect('/404')
+  }
 
   return (
     <main className="flex min-h-screen flex-col gap-4 md:min-h-[85vh]">
