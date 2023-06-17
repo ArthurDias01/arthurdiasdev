@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <main lang="en" className="w-full mx-auto">
+    <main lang="en" className="mx-auto w-full">
       {children}
     </main>
   )

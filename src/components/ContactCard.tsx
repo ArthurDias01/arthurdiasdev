@@ -8,7 +8,7 @@ interface Props {
 
 export const ContactCard = ({ type, info }: Props) => {
   return (
-    <section className="text-white flex flex-row p-4 bg-neutral-500 dark:bg-neutral-900 rounded-[20px] min-w-1/3">
+    <section className="min-w-1/3 flex flex-row rounded-[20px] bg-neutral-500 p-4 text-white dark:bg-neutral-900">
       <div className="flex flex-row items-center p-4">
         {type === 'email' && <Envelope size={24} />}
         {type === 'phone' && <Phone size={24} />}

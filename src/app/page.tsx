@@ -6,13 +6,13 @@ import { ScheduleAmeetButton } from '../components/ScheduleAmeetButton'
 
 export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col md:flex-row pt-8">
+    <main className="flex min-h-screen flex-col pt-8 md:flex-row">
       <div className="flex flex-col md:hidden">
         <ProfileBox />
         <DescriptionMobile />
         <JobTypes />
       </div>
-      <div className="hidden md:flex w-full flex-col">
+      <div className="hidden w-full flex-col md:flex">
         <AboutMeBox />
       </div>
       <ScheduleAmeetButton />

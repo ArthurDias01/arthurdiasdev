@@ -20,7 +20,7 @@ export const PrimaryButton = ({
     <button
       className={cn(
         className,
-        'group bg-gradient-to-r from-primary-300 to-teal-600 z-20 text-white font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out h-fit w-full mx-auto',
+        'group z-20 mx-auto h-fit w-full rounded-full bg-gradient-to-r from-primary-300 to-teal-600 px-8 py-3 font-bold text-white shadow-md transition duration-300 ease-in-out hover:shadow-lg',
       )}
       onClick={handleClick}
       {...rest}
@@ -28,7 +28,7 @@ export const PrimaryButton = ({
       <>
         {text}
         {children}
-        <span className="relative left-[50%] -translate-x-[50%] block max-w-0 group-hover:max-w-[66%] transition-all duration-300 h-0.5 bg-white" />
+        <span className="relative left-[50%] block h-0.5 max-w-0 -translate-x-[50%] bg-white transition-all duration-300 group-hover:max-w-[66%]" />
       </>
     </button>
   )

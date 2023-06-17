@@ -17,15 +17,15 @@ export const ProjectCard = ({
   id,
 }: Props) => {
   return (
-    <div className="flex flex-col w-full h-full max-w-md  bg-neutral-500 dark:bg-neutral-900 rounded-[20px] gap-4 animate-scaleUp duration-300 overflow-hidden">
-      <div className="w-full h-full overflow-hidden">
+    <div className="flex h-full w-full max-w-md animate-scaleUp  flex-col gap-4 overflow-hidden rounded-[20px] bg-neutral-500 duration-300 dark:bg-neutral-900">
+      <div className="h-full w-full overflow-hidden">
         <Link href={`/project/${id}`}>
           <Image
             src={imageSrc}
             alt={imageAlt}
             width={340}
             height={240}
-            className="aspect-video w-full object-cover cursor-pointer transition duration-200 ease-in-out transform hover:scale-110 h-auto"
+            className="aspect-video h-auto w-full transform cursor-pointer object-cover transition duration-200 ease-in-out hover:scale-110"
           />
         </Link>
       </div>
@@ -33,7 +33,7 @@ export const ProjectCard = ({
         <h3 className="text-md text-neutral-200 dark:text-neutral-300">
           {category}
         </h3>
-        <h2 className="text-lg text-primary-400 font-semibold">{title}</h2>
+        <h2 className="text-lg font-semibold text-primary-400">{title}</h2>
       </div>
     </div>
   )

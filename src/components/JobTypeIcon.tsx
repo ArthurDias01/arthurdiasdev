@@ -15,17 +15,17 @@ export interface IJobTypeIconProps {
 
 export const JobTypeIcon = ({ jobType }: IJobTypeIconProps) => {
   return (
-    <div className="w-16 h-16 rounded-xl flex flex-row items-center justify-center p-2 bg-neutral-400 dark:bg-transparent">
+    <div className="flex h-16 w-16 flex-row items-center justify-center rounded-xl bg-neutral-400 p-2 dark:bg-transparent">
       {jobType === 'frontend' && (
-        <Desktop size={24} className="inline-block w-8 h-8 text-primary-400" />
+        <Desktop size={24} className="inline-block h-8 w-8 text-primary-400" />
       )}
       {jobType === 'backend' && (
-        <Cloud size={24} className="inline-block w-8 h-8 text-primary-400" />
+        <Cloud size={24} className="inline-block h-8 w-8 text-primary-400" />
       )}
       {jobType === 'mobile' && (
         <DeviceMobile
           size={24}
-          className="inline-block w-8 h-8 text-primary-400"
+          className="inline-block h-8 w-8 text-primary-400"
         />
       )}
       {jobType !== 'frontend' &&
@@ -33,7 +33,7 @@ export const JobTypeIcon = ({ jobType }: IJobTypeIconProps) => {
         jobType !== 'mobile' && (
           <DeviceMobile
             size={24}
-            className="inline-block w-8 h-8 text-primary-400"
+            className="inline-block h-8 w-8 text-primary-400"
           />
         )}
     </div>

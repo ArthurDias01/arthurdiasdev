@@ -6,12 +6,12 @@ export const AboutMeBox = async () => {
   const docDescription = await getResumeDescription()
 
   return (
-    <section className="w-full flex flex-col gap-4 bg-neutral-300 dark:bg-neutral-950 rounded-[20px] p-8 mx-auto">
-      <div className="w-full flex flex-row items-center gap-2">
-        <h2 className="text-2xl text-neutral-900 dark:text-primary-500 font-semibold">
+    <section className="mx-auto flex w-full flex-col gap-4 rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950">
+      <div className="flex w-full flex-row items-center gap-2">
+        <h2 className="text-2xl font-semibold text-neutral-900 dark:text-primary-500">
           {docDescription.title}
         </h2>
-        <span className="h-1 w-1/4 bg-gradient-to-r from-teal-600 to-primary-300 rounded-sm" />
+        <span className="h-1 w-1/4 rounded-sm bg-gradient-to-r from-teal-600 to-primary-300" />
       </div>
       <p className="flex flex-wrap">
         {documentToReactComponents(

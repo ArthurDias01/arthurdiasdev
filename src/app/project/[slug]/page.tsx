@@ -30,15 +30,15 @@ export default async function Project({ params }: Props) {
   const project = await getProject(slug)
 
   return (
-    <main className="flex flex-col gap-4 min-h-screen md:min-h-[85vh]">
-      <div className="w-full mt-[40px] flex flex-col items-center md:px-12">
-        <h1 className="text-2xl font-bold w-full">
+    <main className="flex min-h-screen flex-col gap-4 md:min-h-[85vh]">
+      <div className="mt-[40px] flex w-full flex-col items-center md:px-12">
+        <h1 className="w-full text-2xl font-bold">
           Project: {project.projectName}
         </h1>
-        <h2 className="text-lg font-semibold w-full">
+        <h2 className="w-full text-lg font-semibold">
           Category: {project.category}
         </h2>
-        <div className="flex w-full flex-row justify-start items-center gap-2 truncate">
+        <div className="flex w-full flex-row items-center justify-start gap-2 truncate">
           <h3 className="text-lg font-semibold">Link:</h3>
           <a
             className="text-lg text-primary-400 underline"
@@ -51,62 +51,62 @@ export default async function Project({ params }: Props) {
         </div>
       </div>
 
-      <div className="flex flex-col w-full gap-8">
-        <div className="flex flex-row w-full">
+      <div className="flex w-full flex-col gap-8">
+        <div className="flex w-full flex-row">
           <Image
             src={`https:${project.featuredMedia.fields.file?.url!}`}
             alt={project.projectName}
             width={320}
             height={240}
-            className="aspect-video rounded-[20px] object-cover w-full"
+            className="aspect-video w-full rounded-[20px] object-cover"
           />
         </div>
 
-        <section className="flex flex-col items-center mx-auto bg-neutral-300 dark:bg-neutral-950 p-8 rounded-[20px] text-ellipsis">
+        <section className="mx-auto flex flex-col items-center text-ellipsis rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950">
           {documentToReactComponents(project.projectDescription, {
             renderNode: {
               paragraph: (node, children) => (
-                <p className="w-full text-base text-neutral-900 dark:text-neutral-100 text-start">
+                <p className="w-full text-start text-base text-neutral-900 dark:text-neutral-100">
                   {children}
                 </p>
               ),
               'heading-1': (node, children) => (
-                <h1 className="w-full text-3xl text-start mt-4 text-neutral-900 dark:text-neutral-100">
+                <h1 className="mt-4 w-full text-start text-3xl text-neutral-900 dark:text-neutral-100">
                   {children}
                 </h1>
               ),
               'heading-2': (node, children) => (
-                <h2 className="w-full text-2xl text-start mt-4 text-neutral-900 dark:text-neutral-100">
+                <h2 className="mt-4 w-full text-start text-2xl text-neutral-900 dark:text-neutral-100">
                   {children}
                 </h2>
               ),
               'heading-3': (node, children) => (
-                <h3 className="w-full text-xl text-start mt-4 text-neutral-900 dark:text-neutral-100">
+                <h3 className="mt-4 w-full text-start text-xl text-neutral-900 dark:text-neutral-100">
                   {children}
                 </h3>
               ),
               'heading-4': (node, children) => (
-                <h4 className="w-full text-lg  text-start mt-4text-neutral-900 dark:text-neutral-100">
+                <h4 className="mt-4text-neutral-900 w-full  text-start text-lg dark:text-neutral-100">
                   {children}
                 </h4>
               ),
               'heading-5': (node, children) => (
-                <h5 className="w-full text-base text-start mt-4 text-neutral-900 dark:text-neutral-100">
+                <h5 className="mt-4 w-full text-start text-base text-neutral-900 dark:text-neutral-100">
                   {children}
                 </h5>
               ),
               'heading-6': (node, children) => (
-                <h6 className="w-full text-sm text-start mt-4 text-neutral-900 dark:text-neutral-100">
+                <h6 className="mt-4 w-full text-start text-sm text-neutral-900 dark:text-neutral-100">
                   {children}
                 </h6>
               ),
               'list-item': (node, children) => (
-                <li className="w-full text-lg text-start text-neutral-900 dark:text-neutral-100">
+                <li className="w-full text-start text-lg text-neutral-900 dark:text-neutral-100">
                   {children}
                 </li>
               ),
               'unordered-list': (node, children) => (
-                <ul className="my-4 list-outside w-[85%] list-disc text-base text-neutral-900 dark:text-neutral-100 text-start">
+                <ul className="my-4 w-[85%] list-outside list-disc text-start text-base text-neutral-900 dark:text-neutral-100">
                   {children}
                 </ul>
               ),

@@ -20,14 +20,14 @@ export const MobileMenuPopOver = ({ children }: Props) => {
       <Popover.Trigger asChild>{children}</Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
-          className="block md:hidden rounded-xl p-5 w-[260px] bg-neutral-500 dark:bg-neutral-950 will-change-[transform,opacity] data-[state=open]:data-[side=top]:animate-slideDownAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade transition-all duration-300 ease-in-out z-[9999] dark:shadow-sm dark:shadow-neutral-500"
+          className="z-[9999] block w-[260px] rounded-xl bg-neutral-500 p-5 transition-all duration-300 ease-in-out will-change-[transform,opacity] data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=top]:animate-slideDownAndFade dark:bg-neutral-950 dark:shadow-sm dark:shadow-neutral-500 md:hidden"
           sideOffset={8}
         >
           <div className="flex flex-col gap-4 text-neutral-700">
             <Link
               href="/"
               className={clsx(
-                'text-lg font-bold hover:bg-gradient-to-r from-teal-600 to-primary-300 p-2 rounded-md text-white transition-colors',
+                'rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r',
                 {
                   'bg-gradient-to-r from-teal-600 to-primary-300 underline':
                     pathname === '/',
@@ -39,7 +39,7 @@ export const MobileMenuPopOver = ({ children }: Props) => {
             <Link
               href="/about"
               className={clsx(
-                'text-lg font-bold hover:bg-gradient-to-r from-teal-600 to-primary-300 p-2 rounded-md text-white transition-colors',
+                'rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r',
                 {
                   'bg-gradient-to-r from-teal-600 to-primary-300 underline':
                     pathname === '/about',
@@ -51,7 +51,7 @@ export const MobileMenuPopOver = ({ children }: Props) => {
             <Link
               href="/projects"
               className={clsx(
-                'text-lg font-bold hover:bg-gradient-to-r from-teal-600 to-primary-300 p-2 rounded-md text-white transition-colors',
+                'rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r',
                 {
                   'bg-gradient-to-r from-teal-600 to-primary-300 underline':
                     pathname.includes('/projects'),
@@ -65,7 +65,7 @@ export const MobileMenuPopOver = ({ children }: Props) => {
             <Link
               href="/contact"
               className={clsx(
-                'text-lg font-bold hover:bg-gradient-to-r from-teal-600 to-primary-300 p-2 rounded-md text-white transition-colors',
+                'rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r',
                 {
                   'bg-gradient-to-r from-teal-600 to-primary-300 underline':
                     pathname === '/contact',

@@ -39,6 +39,7 @@
     "contentful-management": "^10.36.0",
     "contentful-typescript-codegen": "^3.4.0",
     "eslint": "8.42.0",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0"
   }
 }

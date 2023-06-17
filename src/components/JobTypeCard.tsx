@@ -40,8 +40,8 @@ export const JobTypeCard = ({ children }: Props) => {
   }, [isIntersecting])
 
   return (
-    <div ref={elementRef} className="flex flex-col w-full max-w-sm">
-      <div className="flex flex-row w-full min-h-[9rem] h-full border-2  border-neutral-400 dark:border-neutral-700 drop-shadow-md p-4 rounded-xl bg-neutral-300 dark:bg-neutral-950 gap-4 md:min-h-[10rem] transition-transform duration-300 opacity-0 min-w-fit justify-start items-center md:items-start">
+    <div ref={elementRef} className="flex w-full max-w-sm flex-col">
+      <div className="flex h-full min-h-[9rem] w-full min-w-fit flex-row  items-center justify-start gap-4 rounded-xl border-2 border-neutral-400 bg-neutral-300 p-4 opacity-0 drop-shadow-md transition-transform duration-300 dark:border-neutral-700 dark:bg-neutral-950 md:min-h-[10rem] md:items-start">
         {children}
       </div>
     </div>

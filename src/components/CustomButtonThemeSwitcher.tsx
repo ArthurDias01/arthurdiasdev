@@ -6,12 +6,12 @@ export const CustomButton = forwardRef((props, forwardedRef) => {
   return (
     <button
       type="button"
-      className="group w-12 h-12 bg-primary-400 drop-shadow-md hover:bg-primary-400 rounded-full flex flex-row justify-center items-center transition-all"
+      className="group flex h-12 w-12 flex-row items-center justify-center rounded-full bg-primary-400 drop-shadow-md transition-all hover:bg-primary-400"
       {...props}
       ref={forwardedRef as any}
     >
-      <List className="w-8 h-8 text-white dark:text-neutral-900 group-data-[state=open]:hidden" />
-      <X className="w-8 h-8 text-white dark:text-neutral-900 group-data-[state=closed]:hidden" />
+      <List className="h-8 w-8 text-white group-data-[state=open]:hidden dark:text-neutral-900" />
+      <X className="h-8 w-8 text-white group-data-[state=closed]:hidden dark:text-neutral-900" />
     </button>
   )
 })

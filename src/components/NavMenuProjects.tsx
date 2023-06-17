@@ -27,9 +27,9 @@ export function NavMenuProjects() {
           className={clsx(
             'relative rounded-full px-3 py-1.5 text-sm font-semibold outline-sky-400 transition focus-visible:outline-2',
             {
-              'text-white dark:text-primary-400 drop-shadow-md shadow-slate-500':
+              'text-white shadow-slate-500 drop-shadow-md dark:text-primary-400':
                 activeTab === tab.id,
-              'text-white hover:text-primary-400 hover:drop-shadow-sm hover:shadow-slate-500':
+              'text-white hover:text-primary-400 hover:shadow-slate-500 hover:drop-shadow-sm':
                 activeTab !== tab.id,
             },
           )}

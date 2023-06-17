@@ -36,11 +36,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <Providers>
           <ThemeSwitcher />
-          <div className="flex flex-row px-4 md:mx-auto w-full items-start justify-center gap-8">
-            <div className="hidden md:flex sticky top-48">
+          <div className="flex w-full flex-row items-start justify-center gap-8 px-4 md:mx-auto">
+            <div className="sticky top-48 hidden md:flex">
               <ProfileBox />
             </div>
-            <section className="w-full max-w-4xl pt-12 md:pt-32 flex flex-col items-center justify-center scaleUp">
+            <section className="scaleUp flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
               <NavBar />
               {children}
             </section>

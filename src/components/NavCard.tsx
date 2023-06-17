@@ -15,9 +15,9 @@ export const NavCard = ({ href, title }: Props) => {
     <Link
       href={href}
       className={clsx(
-        'p-5 flex flex-col items-center justify-center rounded-lg text-lg font-bold text-white hover:text-primary-400 transition-colors duration-300 hover:bg-neutral-500 dark:hover:bg-neutral-900',
+        'flex flex-col items-center justify-center rounded-lg p-5 text-lg font-bold text-white transition-colors duration-300 hover:bg-neutral-500 hover:text-primary-400 dark:hover:bg-neutral-900',
         {
-          'text-white bg-neutral-500 dark:text-primary-500 dark:bg-neutral-950/80':
+          'bg-neutral-500 text-white dark:bg-neutral-950/80 dark:text-primary-500':
             pathname === href,
         },
       )}
