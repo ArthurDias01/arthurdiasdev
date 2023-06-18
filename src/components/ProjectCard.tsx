@@ -17,7 +17,7 @@ export const ProjectCard = ({
   id,
 }: Props) => {
   return (
-    <div className="flex h-full w-full max-w-md animate-scaleUp  flex-col gap-4 overflow-hidden rounded-[20px] bg-neutral-500 duration-300 dark:bg-neutral-900">
+    <div className="flex h-full max-h-[16rem] w-full max-w-sm animate-scaleUp  flex-col gap-4 overflow-hidden rounded-[20px] bg-neutral-500 duration-300 dark:bg-neutral-900">
       <div className="h-full w-full overflow-hidden">
         <Link href={`/project/${id}`}>
           <Image
@@ -29,6 +29,7 @@ export const ProjectCard = ({
           />
         </Link>
       </div>
+
       <div className="flex h-fit flex-col justify-center px-4 pb-4">
         <h3 className="text-md text-neutral-200 dark:text-neutral-300">
           {category}
