@@ -29,7 +29,7 @@ export default async function Projects({ searchParams }: PageProps) {
         <span className="h-1 w-1/4 rounded-sm bg-gradient-to-r from-teal-600 to-primary-300" />
       </div>
       <NavMenuProjects />
-      <section className="mx-auto grid w-full grid-cols-1 items-start gap-4 transition-transform duration-300 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-3">
+      <section className="col-span-1 row-span-1 mx-auto grid w-full grid-cols-1 items-start gap-4 transition-transform duration-300 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project: ICustomProject) => (
           <ProjectCard
             key={project.id}
