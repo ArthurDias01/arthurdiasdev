@@ -5,7 +5,7 @@ export const DescriptionMobile = async () => {
   const docDescription = await getResumeDescription()
 
   return (
-    <section>
+    <section className="flex max-w-[100%] flex-col gap-4">
       <h2 className="text-2xl text-primary-500">{docDescription.title}</h2>
       <p className="flex flex-wrap">
         {documentToReactComponents(
