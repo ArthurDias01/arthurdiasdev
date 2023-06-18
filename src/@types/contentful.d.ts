@@ -154,6 +154,9 @@ export interface IProjectFields {
 
   /** link */
   link: string
+
+  /** date */
+  date: string
 }
 
 /** A project portifolio */

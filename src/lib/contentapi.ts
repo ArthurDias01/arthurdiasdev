@@ -35,6 +35,7 @@ export const getJobTypes = async () => {
 export const getProjects = async () => {
   const entries = await client.getEntries({
     content_type: 'project',
+    order: '-fields.date' as any,
   })
 
   const formattedEntries = entries.items.map((item) => {
@@ -44,7 +45,7 @@ export const getProjects = async () => {
     }
   }) as any
 
-  // console.log('fetched projects', JSON.stringify(formattedEntries, null, 2))
+  console.log('fetched projects', JSON.stringify(formattedEntries, null, 2))
 
   return formattedEntries as ICustomProject[]
 }
