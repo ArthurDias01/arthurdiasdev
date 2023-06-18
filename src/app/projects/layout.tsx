@@ -13,6 +13,19 @@ export const metadata = {
     android: '/android-chrome-192x192.png',
     androidLarge: '/android-chrome-512x512.png',
   },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Arthur Dias - Full Stack Software Engineer | Projects',
+    description: 'Arthur Dias public cv and portfolio website',
+    url: 'https://arthurdias.dev/projects',
+    images: [
+      {
+        url: '/myProfile.jpg',
+      },
+    ],
+    title: 'Arthur Dias - Full Stack Software Engineer | Projects',
+  },
 } as Metadata
 
 export default function Layout({ children }: { children: ReactNode }) {

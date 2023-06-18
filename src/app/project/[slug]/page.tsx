@@ -26,7 +26,20 @@ export async function generateMetadata(
 
   return {
     title: `Arthur Dias | Project | ${project.projectName}`,
+    description:
+      'Full Stack Software Engineer - Arthur Dias public cv and portfolio website',
+    manifest: '/site.webmanifest',
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon-16x16.png',
+      apple: '/apple-touch-icon.png',
+    },
     openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      siteName: `Arthur Dias | Project | ${project.projectName}}`,
+      description: `Arthur Dias - Full Stack Software Engineer | Project | ${project.projectName}}`,
+      url: 'https://arthurdias.dev/projects',
       images: [`https:${project.featuredMedia.fields.file?.url!}}`],
     },
   }
