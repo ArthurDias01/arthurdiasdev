@@ -1,24 +1,15 @@
 'use client'
+import * as React from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { useState, useEffect } from 'react'
 import { MobileMenuPopOver } from './MobileMenuPopOver'
 import { CustomButton } from './CustomButtonThemeSwitcher'
 
 export const ThemeSwitcherButtons = () => {
-  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
   const handleSwitchTheme = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
   }
 
   return (
@@ -34,6 +25,7 @@ export const ThemeSwitcherButtons = () => {
         ) : (
           <Sun className="h-8 w-8 text-neutral-950" />
         )}
+        <span className="sr-only">Toggle theme</span>
       </button>
       <div className="block md:hidden">
         <MobileMenuPopOver>
