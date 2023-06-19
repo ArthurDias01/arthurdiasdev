@@ -17,7 +17,7 @@ export const ProjectCard = ({
   id,
 }: Props) => {
   return (
-    <div className="flex aspect-square h-full max-h-[16rem] w-full max-w-sm animate-scaleUp flex-col gap-2 overflow-hidden rounded-[20px] bg-neutral-500 duration-300 dark:bg-neutral-900">
+    <div className="flex aspect-video h-64 w-full max-w-sm animate-scaleUp flex-col gap-2 overflow-hidden rounded-[20px] bg-neutral-500 duration-300 dark:bg-neutral-900">
       <Link
         href={`/project/${id}`}
         className="max-h-3/4 h-full w-full overflow-hidden"
