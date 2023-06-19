@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { cn } from '../utils/cn'
-import Providers from './Provider'
+import { ThemeProvider } from '@/src/components/theme-provider'
 import ThemeSwitcher from '@/src/components/ThemeSwitcher'
 import { Footer } from '../components/Footer'
 import { Metadata } from 'next'
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           'flex flex-col transition-all duration-300',
         )}
       >
-        <Providers>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ThemeSwitcher />
           <div className="flex w-full flex-row items-start justify-center gap-8 px-4 md:mx-auto">
             <div className="sticky top-48 hidden md:flex">
@@ -60,7 +60,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Analytics />
             </section>
           </div>
-        </Providers>
+        </ThemeProvider>
         <Footer />
       </body>
     </html>
