@@ -8,6 +8,7 @@ import { Metadata } from 'next'
 import { NavBar } from '../components/NavBar'
 import { ProfileBox } from '../components/ProfileBox'
 import { ReactNode } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <section className="scaleUp flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
               <NavBar />
               {children}
+              <Analytics />
             </section>
           </div>
         </Providers>
