@@ -38,9 +38,9 @@ export async function generateMetadata(
       type: 'website',
       locale: 'en_US',
       siteName: `Arthur Dias | Project | ${project.projectName}}`,
-      description: `Arthur Dias - Full Stack Software Engineer | Project | ${project.projectName}}`,
-      url: 'https://arthurdias.dev/projects',
-      images: [`https:${project.featuredMedia.fields.file?.url!}}`],
+      description: `Arthur Dias - Full Stack Software Engineer | Project | ${project.projectName}`,
+      url: `https://arthurdias.dev/project/${project.id}`,
+      images: [`https:${project.featuredMedia.fields.file?.url!}`],
     },
   }
 }
