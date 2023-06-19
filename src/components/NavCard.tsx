@@ -10,6 +10,12 @@ interface Props {
 
 export const NavCard = ({ href, title }: Props) => {
   const pathname = usePathname()
+  const pathNameSize = pathname.split('/').length
+  const pathNameArray =
+    pathname.split('/').reverse().length > 2
+      ? pathname.split('/').reverse().slice(0, 2)
+      : pathname.split('/').reverse()
+  console.log('pathNameSize', pathNameArray)
 
   return (
     <Link
@@ -18,7 +24,9 @@ export const NavCard = ({ href, title }: Props) => {
         'flex flex-col items-center justify-center rounded-lg p-5 text-lg font-bold text-white transition-colors duration-300 hover:bg-neutral-500 hover:text-primary-400 dark:hover:bg-neutral-900',
         {
           'bg-neutral-500 text-white dark:bg-neutral-950/80 dark:text-primary-500':
-            pathname === href,
+            pathNameSize > 2
+              ? href.includes(pathname.split('/')[1])
+              : href === pathname,
         },
       )}
     >

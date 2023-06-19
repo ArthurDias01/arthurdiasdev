@@ -19,7 +19,7 @@ export const JobTypeCard = ({ children }: Props) => {
         rootMargin: '-50px',
       },
     )
-    console.log(isIntersecting)
+    // console.log(isIntersecting)
     if (elementRef !== null) {
       observer.observe(elementRef.current!)
     }

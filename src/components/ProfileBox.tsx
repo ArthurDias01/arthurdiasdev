@@ -1,10 +1,10 @@
-import Image from 'next/image'
 import { InfoBox } from './InfoBox'
+import { NextImage } from './NextImage'
 
 export const ProfileBox = () => {
   return (
     <div className="-mt-[120px] flex w-full flex-col justify-center py-4 md:-mt-48 md:max-w-[332px] lg:mt-[28px]">
-      <Image
+      <NextImage
         src="/myProfile.jpg"
         alt="Arthur Dias"
         width={240}
