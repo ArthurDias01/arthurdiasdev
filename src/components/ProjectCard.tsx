@@ -1,5 +1,5 @@
-import { NextImage } from './NextImage'
 import Link from 'next/link'
+import { NextImage } from '@/src/components/NextImage'
 
 interface Props {
   imageSrc: string

@@ -11,11 +11,6 @@ interface Props {
 export const NavCard = ({ href, title }: Props) => {
   const pathname = usePathname()
   const pathNameSize = pathname.split('/').length
-  const pathNameArray =
-    pathname.split('/').reverse().length > 2
-      ? pathname.split('/').reverse().slice(0, 2)
-      : pathname.split('/').reverse()
-  console.log('pathNameSize', pathNameArray)
 
   return (
     <Link
