@@ -24,6 +24,11 @@ export async function generateMetadata(
     }
   }
 
+  const opengraphURL = `https:${project.featuredMedia.fields.file
+    ?.url!}?w=${600}&h=${600}&fit=fill`
+
+  // console.log('opengraphURL ============>', opengraphURL)
+
   return {
     title: `Arthur Dias | Project | ${project.projectName}`,
     description:
@@ -37,11 +42,14 @@ export async function generateMetadata(
     openGraph: {
       type: 'website',
       locale: 'en_US',
-      siteName: `Arthur Dias | Project | ${project.projectName}}`,
+      siteName: `Arthur Dias | Project | ${project.projectName}`,
       description: `Arthur Dias - Full Stack Software Engineer | Project | ${project.projectName}`,
-      url: `https://arthurdias.dev/project/${project.id}`,
+      url: `https://arthurdias.dev/projects/${project.id}`,
       images: [
-        `https:${project.featuredMedia.fields.file?.url!}`,
+        {
+          url: opengraphURL,
+          alt: project.projectName,
+        },
         ...(await parent).openGraph!.images!,
       ],
     },
