@@ -50,7 +50,6 @@ export async function generateMetadata(
           url: opengraphURL,
           alt: project.projectName,
         },
-        ...(await parent).openGraph!.images!,
       ],
     },
   }
