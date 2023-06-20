@@ -2,7 +2,7 @@ import { getProject } from '@/src/lib/contentapi'
 import { Metadata, ResolvingMetadata } from 'next'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { redirect } from 'next/navigation'
-import { NextImage } from '@/src/components/NextImage'
+import Image from 'next/image'
 
 type Props = {
   params: { slug: string }
@@ -80,12 +80,12 @@ export default async function Project({ params }: Props) {
 
       <div className="flex w-full flex-col gap-8">
         <div className="flex w-full flex-row">
-          <NextImage
+          <Image
             src={`https:${project.featuredMedia.fields.file?.url!}`}
             alt={project.projectName}
             width={800}
             height={600}
-            quality={100}
+            quality={75}
             priority
             className="aspect-video w-full rounded-[20px] object-cover"
           />

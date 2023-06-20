@@ -1,10 +1,9 @@
 import Image, { ImageProps } from 'next/image'
-import { getPlaiceholder } from 'plaiceholder'
 
-export async function NextImage({ src, alt, ...rest }: ImageProps) {
-  const imgBuffer = await fetch(src as any).then((res) => res.arrayBuffer())
-  const buffer = Buffer.from(new Uint8Array(imgBuffer))
-  const { base64 } = await getPlaiceholder(buffer)
+interface Props extends ImageProps {
+  base64: string
+}
+export function NextImage({ src, alt, base64, ...rest }: Props) {
   return (
     <Image
       src={src}

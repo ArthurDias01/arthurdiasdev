@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { NextImage } from '@/src/components/NextImage'
+import Image from 'next/image'
 
 interface Props {
   imageSrc: string
@@ -22,7 +22,7 @@ export const ProjectCard = ({
         href={`/projects/${id}`}
         className="max-h-3/4 h-full w-full overflow-hidden"
       >
-        <NextImage
+        <Image
           src={imageSrc}
           alt={imageAlt}
           width={340}

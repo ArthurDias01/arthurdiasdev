@@ -2,7 +2,6 @@ import { NavMenuProjects } from '@/src/components/NavMenuProjects'
 import { ProjectCard } from '@/src/components/ProjectCard'
 import { ICustomProject } from '@/src/interfaces'
 import { getProjects } from '@/src/lib/contentapi'
-
 interface PageProps {
   searchParams: { [key: string]: string | undefined }
 }
@@ -10,7 +9,7 @@ interface PageProps {
 export default async function Projects({ searchParams }: PageProps) {
   const projects = await getProjects()
 
-  const filteredProjects = projects.filter((project: ICustomProject) => {
+  const projectsFiltered = projects.filter((project: ICustomProject) => {
     if (searchParams.category) {
       if (searchParams.category === 'All') {
         return true
@@ -30,7 +29,7 @@ export default async function Projects({ searchParams }: PageProps) {
       </div>
       <NavMenuProjects />
       <section className="col-span-1 row-span-1 mx-auto grid w-full grid-cols-1 content-evenly gap-4 transition-transform duration-300  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        {filteredProjects.map((project: ICustomProject) => (
+        {projectsFiltered.map((project: ICustomProject) => (
           <ProjectCard
             key={project.id}
             category={project.category}

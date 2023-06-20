@@ -1,12 +1,7 @@
 import { InfoBox } from './InfoBox'
 import Image from 'next/image'
-import fs from 'node:fs'
-import { getPlaiceholder } from 'plaiceholder'
 
 export const ProfileBox = async () => {
-  const profilePicture = fs.readFileSync('./public/myProfile.jpg')
-  const { base64 } = await getPlaiceholder(profilePicture)
-
   return (
     <div className="-mt-[120px] flex w-full flex-col justify-center py-4 md:-mt-48 md:max-w-[332px] lg:mt-[28px]">
       <Image
@@ -14,8 +9,7 @@ export const ProfileBox = async () => {
         alt="Arthur Dias"
         width={240}
         height={240}
-        placeholder="blur"
-        blurDataURL={base64}
+        quality={50}
         priority
         className="relative top-[14rem] z-10 mx-auto -mt-[140px] aspect-square h-[240px] w-[240px] rounded-[20px] drop-shadow-xl md:top-[20rem] lg:top-[6rem]"
       />
