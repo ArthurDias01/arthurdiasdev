@@ -64,7 +64,7 @@ export default async function Project({ params }: Props) {
   }
 
   return (
-    <main className="flex min-h-screen flex-col gap-4 md:min-h-[85vh]">
+    <main className="-mt-12 flex min-h-screen flex-col gap-4 md:mt-0 md:min-h-[85vh]">
       <div className="mt-[40px] flex w-full flex-col items-center md:px-12">
         <h1 className="w-full text-2xl font-bold">
           Project: {project.projectName}
@@ -98,11 +98,11 @@ export default async function Project({ params }: Props) {
           />
         </div>
 
-        <section className="mx-auto flex flex-col items-center text-ellipsis rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950">
+        <section className="mx-auto flex max-w-[100%] flex-col items-center  text-ellipsis rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950 md:max-w-full">
           {documentToReactComponents(project.projectDescription, {
             renderNode: {
               paragraph: (node, children) => (
-                <p className="w-full text-start text-base text-neutral-900 dark:text-neutral-100">
+                <p className="w-full text-ellipsis text-start text-base text-neutral-900 dark:text-neutral-100">
                   {children}
                 </p>
               ),
