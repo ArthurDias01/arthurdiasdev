@@ -86,7 +86,7 @@ export default async function Project({ params }: Props) {
       </div>
 
       <div className="flex w-full flex-col gap-8">
-        <div className="flex w-full flex-row">
+        <div className="mx-auto flex w-full max-w-3xl flex-row items-center justify-center">
           <Image
             src={`https:${project.featuredMedia.fields.file?.url!}`}
             alt={project.projectName}
@@ -98,7 +98,7 @@ export default async function Project({ params }: Props) {
           />
         </div>
 
-        <section className="mx-auto flex max-w-[100%] flex-col items-center  text-ellipsis rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950 md:max-w-full">
+        <section className="mx-auto flex max-w-[100%] flex-col items-center  text-ellipsis rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950 md:max-w-3xl">
           {documentToReactComponents(project.projectDescription, {
             renderNode: {
               paragraph: (node, children) => (
