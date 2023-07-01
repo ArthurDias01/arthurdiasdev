@@ -98,5 +98,5 @@ module.exports = {
     },
   },
   darkMode: 'class', // or 'media' or 'class
-  plugins: [],
+  plugins: [require('tailwindcss-dotted-background')],
 }

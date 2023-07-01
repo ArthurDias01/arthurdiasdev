@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-400 dark:bg-neutral-700 dark:text-slate-100 text-neutral-950;
+  @apply bg-neutral-400 dark:bg-neutral-700 dark:text-slate-100 text-neutral-950 bg-dotted-spacing-x-6 bg-dotted-spacing-y-6 dark:bg-dotted-zinc-200/50 bg-dotted-neutral-200/50;
 }
 
 * {
