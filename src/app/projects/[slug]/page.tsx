@@ -52,6 +52,18 @@ export async function generateMetadata(
         },
       ],
     },
+    twitter: {
+      site: `https://arthurdias.dev/projects/${project.id}`,
+      creator: '@ArthurODS_',
+      description: `Arthur Dias - Full Stack Software Engineer | Project | ${project.projectName}`,
+      title: `Arthur Dias | Project | ${project.projectName}`,
+      images: [
+        {
+          url: opengraphURL,
+          alt: project.projectName,
+        },
+      ],
+    },
   }
 }
 

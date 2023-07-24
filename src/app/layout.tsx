@@ -2,7 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { cn } from '../utils/cn'
 import { ThemeProvider } from '@/src/components/theme-provider'
-import ThemeSwitcher from '@/src/components/ThemeSwitcher'
+import { Header } from '@/src/components/Header'
 import { Footer } from '../components/Footer'
 import { Metadata } from 'next'
 import { NavBar } from '../components/NavBar'
@@ -33,9 +33,22 @@ export const metadata = {
     images: [
       {
         url: '/myProfile.jpg',
+        alt: 'Arthur Dias Profile Picture',
       },
     ],
     title: 'Arthur Dias - Full Stack Software Engineer',
+  },
+  twitter: {
+    site: `https://arthurdias.dev/`,
+    creator: '@ArthurODS_',
+    description: `Arthur Dias - Full Stack Software Engineer`,
+    title: `Arthur Dias - Full Stack Software Engineer`,
+    images: [
+      {
+        url: '/myProfile.jpg',
+        alt: 'Arthur Dias Profile Picture',
+      },
+    ],
   },
 } as Metadata
 
@@ -49,9 +62,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ThemeSwitcher />
+          <Header />
           <div className="flex w-full flex-row items-start justify-center gap-8 px-4 md:mx-auto">
-            <div className="sticky top-48 hidden md:flex">
+            <div className="sticky top-[180px] hidden md:flex">
               <ProfileBox />
             </div>
             <section className="scaleUp flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">

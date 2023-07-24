@@ -1,7 +1,9 @@
 import { NavMenuProjects } from '@/src/components/NavMenuProjects'
 import { ProjectCard } from '@/src/components/ProjectCard'
+import { ProjectCardLoading } from '@/src/components/ProjectCard/Loading'
 import { ICustomProject } from '@/src/interfaces'
 import { getProjects } from '@/src/lib/contentapi'
+import { Suspense } from 'react'
 interface PageProps {
   searchParams: { [key: string]: string | undefined }
 }
@@ -30,14 +32,19 @@ export default async function Projects({ searchParams }: PageProps) {
       <NavMenuProjects />
       <section className="col-span-1 row-span-1 mx-auto grid w-full grid-cols-1 content-evenly gap-4 transition-transform duration-300  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {projectsFiltered.map((project: ICustomProject) => (
-          <ProjectCard
+          <Suspense
             key={project.id}
-            category={project.category}
-            imageAlt={project.projectName}
-            imageSrc={`https:${project.featuredMedia.fields.file?.url!}`}
-            title={project.projectName}
-            id={project.id}
-          />
+            fallback={<ProjectCardLoading key={project.id} />}
+          >
+            <ProjectCard
+              key={project.id}
+              category={project.category}
+              imageAlt={project.projectName}
+              imageSrc={`https:${project.featuredMedia.fields.file?.url!}`}
+              title={project.projectName}
+              id={project.id}
+            />
+          </Suspense>
         ))}
       </section>
     </article>

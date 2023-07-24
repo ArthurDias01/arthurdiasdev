@@ -95,6 +95,9 @@ module.exports = {
         fadeOut: 'fadeOut 300ms ease-in forwards',
         scaleUp: 'scaleUp 300ms ease-in-out forwards',
       },
+      letterSpacing: {
+        widest: '0.15em',
+      },
     },
   },
   darkMode: 'class', // or 'media' or 'class

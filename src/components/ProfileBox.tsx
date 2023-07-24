@@ -2,7 +2,7 @@ import { InfoBox } from './InfoBox'
 import Image from 'next/image'
 import myProfile from '@/public/myProfile.jpg'
 
-export const ProfileBox = async () => {
+export const ProfileBox = () => {
   return (
     <div className="-mt-[120px] flex w-full flex-col justify-center py-4 md:-mt-48 md:max-w-[332px] lg:mt-[28px]">
       <Image

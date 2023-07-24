@@ -19,7 +19,7 @@ export const InfoBox = () => {
   }
 
   return (
-    <div className="relative mx-auto mb-6 mt-[120px] w-full rounded-[20px] bg-neutral-300 px-6 pb-12 pt-24 text-center dark:bg-neutral-950 md:mt-[220px] lg:mb-0 lg:mt-0">
+    <article className="relative mx-auto mb-6 mt-[120px] w-full rounded-[20px] bg-neutral-300 px-6 pb-12 pt-24 text-center  ease-in-out dark:bg-neutral-950 md:mt-[220px] lg:mb-0 lg:mt-0">
       <div className="flex w-full flex-col justify-center gap-2 py-8 font-bold ">
         <div className="mx-auto flex max-w-[240px] flex-col gap-2">
           <h1 className="text-center text-2xl">Arthur Dias</h1>
@@ -31,7 +31,7 @@ export const InfoBox = () => {
         <section className="mx-auto my-4 flex w-full max-w-[240px] flex-row justify-between gap-2 pt-2">
           <InfoBoxIconLink
             icon={
-              <LinkedinLogo className="mr-2 inline-block h-8 w-8 hover:text-primary-400" />
+              <LinkedinLogo className="mr-2 inline-block h-8 w-8 transition-colors  hover:text-primary-400" />
             }
             href="https://linkedin.com/in/arthur-dias/"
             label="LinkedIn"
@@ -39,7 +39,7 @@ export const InfoBox = () => {
 
           <InfoBoxIconLink
             icon={
-              <TwitterLogo className="mr-2 inline-block h-8 w-8 hover:text-primary-400" />
+              <TwitterLogo className="mr-2 inline-block h-8 w-8 transition-colors  hover:text-primary-400" />
             }
             href="https://twitter.com/ArthurODS_"
             label="Twitter"
@@ -47,7 +47,7 @@ export const InfoBox = () => {
 
           <InfoBoxIconLink
             icon={
-              <InstagramLogo className="mr-2 inline-block h-8 w-8 hover:text-primary-400" />
+              <InstagramLogo className="mr-2 inline-block h-8 w-8 transition-colors  hover:text-primary-400" />
             }
             href="https://www.instagram.com/arthurddias/"
             label="Instagram"
@@ -55,7 +55,7 @@ export const InfoBox = () => {
 
           <InfoBoxIconLink
             icon={
-              <GithubLogo className="mr-2 inline-block h-8 w-8 hover:text-primary-400" />
+              <GithubLogo className="mr-2 inline-block h-8 w-8 transition-colors  hover:text-primary-400" />
             }
             href="https://github.com/ArthurDias01"
             label="Github"
@@ -68,7 +68,7 @@ export const InfoBox = () => {
               title="Download CV"
               download
             >
-              <ReadCvLogo className="mr-2 inline-block h-8 w-8 hover:text-primary-400" />
+              <ReadCvLogo className="mr-2 inline-block h-8 w-8 transition-colors  hover:text-primary-400" />
             </a>
           </h3>
         </section>
@@ -107,6 +107,6 @@ export const InfoBox = () => {
           handleClick={handleDownloadCV}
         />
       </div>
-    </div>
+    </article>
   )
 }
