@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { cn } from '../utils/cn'
-import { ThemeProvider } from '@/src/components/theme-provider'
+import { ThemeProvider } from '@/src/components/Providers/theme-provider'
 import { Header } from '@/src/components/Header'
 import { Footer } from '../components/Footer'
 import { Metadata } from 'next'
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="sticky top-[180px] hidden md:flex">
               <ProfileBox />
             </div>
-            <section className="scaleUp flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
+            <section className="flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
               <NavBar />
               {children}
               <Analytics />

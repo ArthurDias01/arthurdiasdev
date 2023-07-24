@@ -3,6 +3,7 @@ import { Metadata, ResolvingMetadata } from 'next'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { redirect } from 'next/navigation'
 import Image from 'next/image'
+import { PageWrapper } from '@/src/components/PageWrapper'
 
 type Props = {
   params: { slug: string }
@@ -85,7 +86,7 @@ export default async function Project({ params }: Props) {
   }
 
   return (
-    <main className="-mt-12 flex min-h-screen flex-col gap-4 md:mt-0 md:min-h-[85vh]">
+    <PageWrapper className="-mt-12 flex min-h-screen flex-col gap-4 md:mt-0 md:min-h-[85vh]">
       <div className="mt-[40px] flex w-full flex-col items-center md:px-12">
         <h1 className="w-full text-2xl font-bold">
           Project: {project.projectName}
@@ -171,6 +172,6 @@ export default async function Project({ params }: Props) {
           })}
         </section>
       </div>
-    </main>
+    </PageWrapper>
   )
 }

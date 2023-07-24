@@ -7,7 +7,10 @@ export const Logo = () => {
       href="/"
       aria-label="Home link"
     >
-      AD_
+      AD
+      <span className="text-se animate-pulseCaret text-teal-600 dark:text-primary-400">
+        _
+      </span>
     </Link>
   )
 }

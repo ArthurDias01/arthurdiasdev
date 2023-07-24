@@ -82,6 +82,9 @@ module.exports = {
           from: { opacity: 0, transform: 'scale(0.8)' },
           to: { opacity: 1, transform: 'scale(1)' },
         },
+        pulseCaret: {
+          '50%': { opacity: 0.25 },
+        },
       },
       animation: {
         slideUpAndFade: 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
@@ -94,6 +97,7 @@ module.exports = {
         fadeIn: 'fadeIn 300ms ease-in forwards',
         fadeOut: 'fadeOut 300ms ease-in forwards',
         scaleUp: 'scaleUp 300ms ease-in-out forwards',
+        pulseCaret: 'pulseCaret 1500ms cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       letterSpacing: {
         widest: '0.15em',
