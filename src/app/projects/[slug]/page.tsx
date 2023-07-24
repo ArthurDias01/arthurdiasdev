@@ -24,8 +24,14 @@ export async function generateMetadata(
     }
   }
 
+  const twitterSizeImg = 400
+  const opengraphSizeImg = 600
+
   const opengraphURL = `https:${project.featuredMedia.fields.file
-    ?.url!}?w=${600}&h=${600}&fit=fill`
+    ?.url!}?w=${opengraphSizeImg}&h=${opengraphSizeImg}&fit=fill`
+
+  const opengraphURLTwitter = `https:${project.featuredMedia.fields.file
+    ?.url!}?w=${twitterSizeImg}&h=${twitterSizeImg}&fit=fill`
 
   // console.log('opengraphURL ============>', opengraphURL)
 
@@ -59,10 +65,13 @@ export async function generateMetadata(
       title: `Arthur Dias | Project | ${project.projectName}`,
       images: [
         {
-          url: opengraphURL,
+          url: opengraphURLTwitter,
           alt: project.projectName,
+          width: opengraphURLTwitter,
+          height: opengraphURLTwitter,
         },
       ],
+      card: 'summary',
     },
   }
 }
