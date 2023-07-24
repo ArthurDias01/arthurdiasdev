@@ -9,6 +9,7 @@ import { NavBar } from '../components/NavBar'
 import { ProfileBox } from '../components/ProfileBox'
 import { ReactNode } from 'react'
 import { Analytics } from '@vercel/analytics/react'
+import ProfPic from '../../public/myProfile.jpg'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,7 +33,7 @@ export const metadata = {
     url: 'https://arthurdias.dev/',
     images: [
       {
-        url: '/myProfile.jpg',
+        url: ProfPic.src,
         alt: 'Arthur Dias Profile Picture',
       },
     ],
@@ -45,7 +46,7 @@ export const metadata = {
     title: `Arthur Dias - Full Stack Software Engineer`,
     images: [
       {
-        url: '/myProfile.jpg',
+        url: ProfPic.src,
         alt: 'Arthur Dias Profile Picture',
       },
     ],
