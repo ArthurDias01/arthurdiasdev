@@ -13,9 +13,9 @@ export const PageWrapper = ({ children, className }: Props) => {
     <>
       <AnimatePresence>
         <motion.main
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, x: 15 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 15 }}
           transition={{ ease: 'easeInOut', duration: 0.3, delay: 0.25 }}
           className={className}
         >
