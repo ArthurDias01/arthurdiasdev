@@ -3,10 +3,10 @@ import { Inter } from 'next/font/google'
 import { cn } from '../utils/cn'
 import { ThemeProvider } from '@/src/components/Providers/theme-provider'
 import { Header } from '@/src/components/Header'
-import { Footer } from '../components/Footer'
+import { Footer } from '@/src/components/Footer'
 import { Metadata } from 'next'
-import { NavBar } from '../components/NavBar'
-import { ProfileBox } from '../components/ProfileBox'
+import { NavBar } from '@/src/components/NavBar'
+import { ProfileBox } from '@/src/components/ProfileBox'
 import { ReactNode } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import ProfPic from '../../public/myProfile.jpg'
@@ -68,11 +68,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="sticky top-[180px] hidden md:flex">
               <ProfileBox />
             </div>
-            <section className="flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
+            <div className="flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
               <NavBar />
               {children}
               <Analytics />
-            </section>
+            </div>
           </div>
         </ThemeProvider>
         <Footer />
