@@ -1,4 +1,5 @@
 import './globals.css'
+import 'dotenv/config'
 import { Inter } from 'next/font/google'
 import { cn } from '../utils/cn'
 import { ThemeProvider } from '@/src/components/Providers/theme-provider'

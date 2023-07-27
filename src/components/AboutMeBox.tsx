@@ -1,12 +1,12 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { JobTypes } from './JobTypes'
 import { apiPath } from '../utils/apiPath'
+import { IAuthorFields } from '../@types/contentful'
 
 export const AboutMeBox = async () => {
-  const data = await fetch(`${apiPath}/api/get-resume-description`, {
+  const docDescription = (await fetch(`${apiPath}/api/get-resume-description`, {
     cache: 'force-cache',
-  })
-  const docDescription = await data.json()
+  }).then((res) => res.json())) as IAuthorFields
 
   return (
     <section className="mx-auto flex w-full flex-col gap-4 rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950">

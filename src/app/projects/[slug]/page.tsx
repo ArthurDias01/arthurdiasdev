@@ -22,7 +22,7 @@ export async function generateMetadata(
     cache: 'force-cache',
   })
 
-  const project: ICustomProject | null = (await data.json()) ?? null
+  const { data: project }: { data: ICustomProject } = await data.json()
 
   if (!project) {
     return {
@@ -89,7 +89,7 @@ export default async function Project({ params }: Props) {
     cache: 'force-cache',
   })
 
-  const project: ICustomProject | null = (await data.json()) ?? null
+  const { data: project }: { data: ICustomProject } = await data.json()
 
   if (!project) {
     redirect('/404')

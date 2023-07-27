@@ -1,13 +1,7 @@
-import { ICustomProject } from '../interfaces'
-import { apiPath } from '../utils/apiPath'
+import { getProjects } from '../lib/contentapi'
 
 export default async function sitemap() {
-  const data = await fetch(`${apiPath}/api/get-all-projects`, {
-    cache: 'force-cache',
-  })
-
-  const projects: ICustomProject[] = (await data.json()).data
-
+  const projects = await getProjects()
   const projectUrls = projects.map((project) => {
     return {
       url: `https://arthurdias.dev/projects/${project.id}`,

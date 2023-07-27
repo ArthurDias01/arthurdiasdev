@@ -9,11 +9,13 @@ interface PageProps {
 }
 
 export default async function Projects({ searchParams }: PageProps) {
-  const data = await fetch(`${apiPath}/api/get-all-projects`, {
+  const response = await fetch(`${apiPath}/api/get-all-projects`, {
     cache: 'force-cache',
-  })
+  }).then((res) => res.json())
 
-  const projects: ICustomProject[] = (await data.json()).data
+  const projects = response.data as ICustomProject[]
+
+  // const { data: projects }: { data: ICustomProject[] } = await data.json()
 
   const projectsFiltered = projects.filter((project: ICustomProject) => {
     if (searchParams.category) {
@@ -24,8 +26,6 @@ export default async function Projects({ searchParams }: PageProps) {
     }
     return true
   })
-
-  console.log('fetch projects', projects)
 
   return (
     <PageWrapper className="flex min-h-[90vh] w-full flex-col gap-4 rounded-[20px]  bg-neutral-300 px-8 pb-12 dark:bg-neutral-950 md:mt-8">

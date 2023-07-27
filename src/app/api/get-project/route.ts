@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.error()
   }
 
-  const project = await getProject(id)
+  const data = await getProject(id)
 
-  return NextResponse.json(project)
+  return NextResponse.json({ data })
 }

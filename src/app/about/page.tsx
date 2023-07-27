@@ -10,16 +10,13 @@ import {
 import { apiPath } from '@/src/utils/apiPath'
 
 export default async function About() {
-  const dataEducation = await fetch(`${apiPath}/api/get-education`, {
+  const educations = await fetch(`${apiPath}/api/get-education`, {
     cache: 'force-cache',
-  })
+  }).then((res) => res.json())
 
-  const dataExperiences = await fetch(`${apiPath}/api/get-experience`, {
+  const experiences = await fetch(`${apiPath}/api/get-experience`, {
     cache: 'force-cache',
-  })
-
-  const educations: ICustomEducationFields[] = await dataEducation.json()
-  const experiences: ICustomExperienceFields[] = await dataExperiences.json()
+  }).then((res) => res.json())
 
   return (
     <PageWrapper className="flex min-h-[90vh] w-full flex-col gap-4 rounded-[20px]  bg-neutral-300 px-8 pb-12 dark:bg-neutral-950 md:mt-8">

@@ -5,11 +5,9 @@ import { JobTypeCard } from './JobTypeCard'
 import { JobTypeIcon } from './JobTypeIcon'
 
 export const JobTypes = async () => {
-  const data = await fetch(`${apiPath}/api/get-jobtypes`, {
+  const jobTypes = (await fetch(`${apiPath}/api/get-jobtypes`, {
     cache: 'force-cache',
-  })
-
-  const jobTypes = (await data.json()) as IJobTypesFields[]
+  }).then((res) => res.json())) as IJobTypesFields[]
 
   return (
     <div className="mx-auto mt-12 flex flex-col gap-4 md:mt-8 md:grid md:grid-cols-1 2xl:grid-cols-2">
