@@ -10,6 +10,16 @@ type Props = {
   params: { slug: string }
 }
 
+async function getProject(id: string) {
+  const data = await fetch(`${apiPath}/api/get-project?id=${id}`, {
+    next: {
+      revalidate: 60,
+    },
+  }).then((res) => res.json())
+
+  return data
+}
+
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
@@ -18,11 +28,8 @@ export async function generateMetadata(
   const { slug } = params
 
   // fetch data
-  const data = await fetch(`${apiPath}/api/get-project?id=${slug}`, {
-    cache: 'force-cache',
-  })
-
-  const { data: project }: { data: ICustomProject } = await data.json()
+  const { data: project }: { data: ICustomProject | undefined } =
+    await getProject(slug)
 
   if (!project) {
     return {
@@ -38,8 +45,6 @@ export async function generateMetadata(
 
   const opengraphURLTwitter = `https:${project.featuredMedia.fields.file
     ?.url!}?w=${twitterSizeImg}&h=${twitterSizeImg}&fit=fill`
-
-  // console.log('opengraphURL ============>', opengraphURL)
 
   return {
     title: `Arthur Dias | Project | ${project.projectName}`,
@@ -85,11 +90,8 @@ export async function generateMetadata(
 export default async function Project({ params }: Props) {
   const { slug } = params
 
-  const data = await fetch(`${apiPath}/api/get-project?id=${slug}`, {
-    cache: 'force-cache',
-  })
-
-  const { data: project }: { data: ICustomProject } = await data.json()
+  const { data: project }: { data: ICustomProject | undefined } =
+    await getProject(slug)
 
   if (!project) {
     redirect('/404')

@@ -8,14 +8,20 @@ interface PageProps {
   searchParams: { [key: string]: string | undefined }
 }
 
-export default async function Projects({ searchParams }: PageProps) {
-  const response = await fetch(`${apiPath}/api/get-all-projects`, {
-    cache: 'force-cache',
+async function getProjects() {
+  const data = await fetch(`${apiPath}/api/get-all-projects`, {
+    next: {
+      revalidate: 60,
+    },
   }).then((res) => res.json())
 
-  const projects = response.data as ICustomProject[]
+  return data
+}
 
-  // const { data: projects }: { data: ICustomProject[] } = await data.json()
+export default async function Projects({ searchParams }: PageProps) {
+  const response = await getProjects()
+
+  const projects = response.data as ICustomProject[]
 
   const projectsFiltered = projects.filter((project: ICustomProject) => {
     if (searchParams.category) {
