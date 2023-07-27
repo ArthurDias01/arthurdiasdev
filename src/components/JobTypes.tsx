@@ -1,22 +1,10 @@
 import { IJobTypesFields } from '../@types/contentful'
-import { apiPath } from '../utils/apiPath'
-
+import { getJobTypes } from '../lib/contentapi'
 import { JobTypeCard } from './JobTypeCard'
 import { JobTypeIcon } from './JobTypeIcon'
 
-async function getJobTypes() {
-  const data = (await fetch(`${apiPath}/api/get-jobtypes`, {
-    next: {
-      revalidate: 60,
-    },
-  }).then((res) => res.json())) as { data: IJobTypesFields[] } | undefined
-
-  return data
-}
-
 export const JobTypes = async () => {
-  const response = await getJobTypes()
-  const jobTypes = response?.data
+  const jobTypes = (await getJobTypes()) as IJobTypesFields[]
 
   return (
     <div className="mx-auto mt-12 flex flex-col gap-4 md:mt-8 md:grid md:grid-cols-1 2xl:grid-cols-2">

@@ -1,17 +1,8 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { apiPath } from '../utils/apiPath'
-import { IAuthorFields } from '../@types/contentful'
-
-async function getResumeDescription() {
-  const docDescription = (await fetch(`${apiPath}/api/get-resume-description`, {
-    cache: 'force-cache',
-  }).then((res) => res.json())) as { data: IAuthorFields } | undefined
-  return docDescription
-}
+import { getResumeDescription } from '../lib/contentapi'
 
 export const DescriptionMobile = async () => {
-  const data = await getResumeDescription()
-  const docDescription = data?.data
+  const docDescription = await getResumeDescription()
 
   return (
     <section className="flex max-w-[100%] flex-col gap-4 rounded-[20px] bg-neutral-400 p-1 dark:bg-neutral-700">

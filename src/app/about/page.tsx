@@ -6,17 +6,11 @@ import {
   ICustomEducationFields,
   ICustomExperienceFields,
 } from '@/src/interfaces'
-
-import { apiPath } from '@/src/utils/apiPath'
+import { getEducation, getExperience } from '@/src/lib/contentapi'
 
 export default async function About() {
-  const educations = await fetch(`${apiPath}/api/get-education`, {
-    cache: 'force-cache',
-  }).then((res) => res.json())
-
-  const experiences = await fetch(`${apiPath}/api/get-experience`, {
-    cache: 'force-cache',
-  }).then((res) => res.json())
+  const educations = await getEducation()
+  const experiences = await getExperience()
 
   return (
     <PageWrapper className="flex min-h-[90vh] w-full flex-col gap-4 rounded-[20px]  bg-neutral-300 px-8 pb-12 dark:bg-neutral-950 md:mt-8">

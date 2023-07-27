@@ -5,6 +5,7 @@ import {
   ICustomExperienceFields,
   ICustomProject,
 } from '../interfaces'
+import { cache } from 'react'
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID as string,
@@ -17,22 +18,22 @@ const client = createClient({
   },
 })
 
-export const getResumeDescription = async () => {
+export const getResumeDescription = cache(async () => {
   const entries = await client.getEntries<IAuthor, string>({
     content_type: 'author',
     limit: 1,
   })
   return entries.items[0].fields as IAuthorFields
-}
+})
 
-export const getJobTypes = async () => {
+export const getJobTypes = cache(async () => {
   const entries = await client.getEntries({
     content_type: 'jobTypes',
   })
   return entries.items.map((item) => item.fields) as any
-}
+})
 
-export const getProjects = async () => {
+export const getProjects = cache(async () => {
   const entries = await client.getEntries({
     content_type: 'project',
     order: '-fields.date' as any,
@@ -48,9 +49,9 @@ export const getProjects = async () => {
   // console.log('fetched projects', JSON.stringify(formattedEntries, null, 2))
 
   return formattedEntries as ICustomProject[]
-}
+})
 
-export const getProject = async (id: string) => {
+export const getProject = cache(async (id: string) => {
   try {
     const entries = await client.getEntry(id)
     const formattedEntry = {
@@ -61,9 +62,9 @@ export const getProject = async (id: string) => {
   } catch (error) {
     return null
   }
-}
+})
 
-export const getEducation = async () => {
+export const getEducation = cache(async () => {
   const entries = await client.getEntries({
     content_type: 'education',
     order: '-fields.startYear' as any,
@@ -77,9 +78,9 @@ export const getEducation = async () => {
   }) as any
 
   return formattedEntries as ICustomEducationFields[]
-}
+})
 
-export const getExperience = async () => {
+export const getExperience = cache(async () => {
   const entries = await client.getEntries({
     content_type: 'experience',
     order: '-fields.startYear' as any,
@@ -93,4 +94,4 @@ export const getExperience = async () => {
   }) as any
 
   return formattedEntries as ICustomExperienceFields[]
-}
+})
