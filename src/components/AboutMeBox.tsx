@@ -1,9 +1,12 @@
-import { getResumeDescription } from '../lib/contentapi'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { JobTypes } from './JobTypes'
+import { apiPath } from '../utils/apiPath'
 
 export const AboutMeBox = async () => {
-  const docDescription = await getResumeDescription()
+  const data = await fetch(`${apiPath}/api/get-resume-description`, {
+    cache: 'force-cache',
+  })
+  const docDescription = await data.json()
 
   return (
     <section className="mx-auto flex w-full flex-col gap-4 rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950">

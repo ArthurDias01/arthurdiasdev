@@ -16,7 +16,7 @@ export const PageWrapper = ({ children, className }: Props) => {
           initial={{ opacity: 0, x: 15 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 15 }}
-          transition={{ ease: 'easeInOut', duration: 0.3, delay: 0.25 }}
+          transition={{ ease: 'easeInOut', duration: 0.2, delay: 0.2 }}
           className={className}
         >
           {children}

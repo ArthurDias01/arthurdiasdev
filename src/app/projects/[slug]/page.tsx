@@ -1,9 +1,10 @@
-import { getProject } from '@/src/lib/contentapi'
 import { Metadata, ResolvingMetadata } from 'next'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import { PageWrapper } from '@/src/components/PageWrapper'
+import { apiPath } from '@/src/utils/apiPath'
+import { ICustomProject } from '@/src/interfaces'
 
 type Props = {
   params: { slug: string }
@@ -17,7 +18,11 @@ export async function generateMetadata(
   const { slug } = params
 
   // fetch data
-  const project = await getProject(slug)
+  const data = await fetch(`${apiPath}/api/get-project?id=${slug}`, {
+    cache: 'force-cache',
+  })
+
+  const project: ICustomProject | null = (await data.json()) ?? null
 
   if (!project) {
     return {
@@ -79,7 +84,12 @@ export async function generateMetadata(
 
 export default async function Project({ params }: Props) {
   const { slug } = params
-  const project = await getProject(slug)
+
+  const data = await fetch(`${apiPath}/api/get-project?id=${slug}`, {
+    cache: 'force-cache',
+  })
+
+  const project: ICustomProject | null = (await data.json()) ?? null
 
   if (!project) {
     redirect('/404')
