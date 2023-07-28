@@ -5,7 +5,6 @@ import {
   ICustomExperienceFields,
   ICustomProject,
 } from '../interfaces'
-import { cache } from 'react'
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID as string,
@@ -14,26 +13,26 @@ const client = createClient({
   retryOnError: true,
   headers: {
     'X-Contentful-User-Agent': 'contentful.js/12.3.0',
-    'cache-control': 'only-cache',
+    'cache-control': 'force-cache',
   },
 })
 
-export const getResumeDescription = cache(async () => {
+export const getResumeDescription = async () => {
   const entries = await client.getEntries<IAuthor, string>({
     content_type: 'author',
     limit: 1,
   })
   return entries.items[0].fields as IAuthorFields
-})
+}
 
-export const getJobTypes = cache(async () => {
+export const getJobTypes = async () => {
   const entries = await client.getEntries({
     content_type: 'jobTypes',
   })
   return entries.items.map((item) => item.fields) as any
-})
+}
 
-export const getProjects = cache(async () => {
+export const getProjects = async () => {
   const entries = await client.getEntries({
     content_type: 'project',
     order: '-fields.date' as any,
@@ -49,9 +48,9 @@ export const getProjects = cache(async () => {
   // console.log('fetched projects', JSON.stringify(formattedEntries, null, 2))
 
   return formattedEntries as ICustomProject[]
-})
+}
 
-export const getProject = cache(async (id: string) => {
+export const getProject = async (id: string) => {
   try {
     const entries = await client.getEntry(id)
     const formattedEntry = {
@@ -62,9 +61,9 @@ export const getProject = cache(async (id: string) => {
   } catch (error) {
     return null
   }
-})
+}
 
-export const getEducation = cache(async () => {
+export const getEducation = async () => {
   const entries = await client.getEntries({
     content_type: 'education',
     order: '-fields.startYear' as any,
@@ -78,9 +77,9 @@ export const getEducation = cache(async () => {
   }) as any
 
   return formattedEntries as ICustomEducationFields[]
-})
+}
 
-export const getExperience = cache(async () => {
+export const getExperience = async () => {
   const entries = await client.getEntries({
     content_type: 'experience',
     order: '-fields.startYear' as any,
@@ -94,4 +93,4 @@ export const getExperience = cache(async () => {
   }) as any
 
   return formattedEntries as ICustomExperienceFields[]
-})
+}
