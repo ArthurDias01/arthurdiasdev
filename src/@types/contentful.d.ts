@@ -179,44 +179,14 @@ export interface IProject extends Entry<IProjectFields> {
   }
 }
 
-export interface IResumeFields {
-  /** Resume */
-  file: Asset
-}
-
-export interface IResume extends Entry<IResumeFields> {
-  contentTypeId: 'resume'
-  sys: {
-    id: string
-    type: string
-    createdAt: string
-    updatedAt: string
-    locale: string
-    contentType: {
-      sys: {
-        id: 'resume'
-        linkType: 'ContentType'
-        type: 'Link'
-      }
-    }
-  }
-}
-
 export type CONTENT_TYPE =
   | 'author'
   | 'education'
   | 'experience'
   | 'jobTypes'
   | 'project'
-  | 'resume'
 
-export type IEntry =
-  | IAuthor
-  | IEducation
-  | IExperience
-  | IJobTypes
-  | IProject
-  | IResume
+export type IEntry = IAuthor | IEducation | IExperience | IJobTypes | IProject
 
 export type LOCALE_CODE = 'en-US'
 

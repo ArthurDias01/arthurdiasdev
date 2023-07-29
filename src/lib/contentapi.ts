@@ -1,5 +1,5 @@
 import { createClient } from 'contentful'
-import { IAuthor, IAuthorFields, IResumeFields } from '../@types/contentful'
+import { IAuthor, IAuthorFields } from '../@types/contentful'
 import {
   ICustomEducationFields,
   ICustomExperienceFields,
@@ -93,20 +93,4 @@ export const getExperience = async () => {
   }) as any
 
   return formattedEntries as ICustomExperienceFields[]
-}
-
-export const getResume = async () => {
-  const entry = await client.getEntries({
-    content_type: 'resume',
-    limit: 1,
-    order: '-sys.createdAt' as any,
-  })
-
-  const formattedEntry = {
-    ...entry.items[0].fields,
-  } as any
-
-  // console.log('fetched resume', JSON.stringify(formattedEntry, null, 2))
-
-  return formattedEntry as IResumeFields
 }
