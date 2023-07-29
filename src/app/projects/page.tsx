@@ -2,15 +2,22 @@ import { NavMenuProjects } from '@/src/components/NavMenuProjects'
 import { PageWrapper } from '@/src/components/PageWrapper'
 import { ProjectCard } from '@/src/components/ProjectCard'
 import { ICustomProject } from '@/src/interfaces'
-import { getProjects } from '@/src/lib/contentapi'
+import { apihost } from '@/src/lib/apihost'
+// import { getProjects } from '@/src/lib/contentapi'
 
 interface PageProps {
   searchParams: { [key: string]: string | undefined }
 }
 
-export default async function Projects({ searchParams }: PageProps) {
-  const projects = await getProjects()
+async function getCustomProjects(): Promise<{ data: ICustomProject[] }> {
+  const response = await fetch(`${apihost}/api/get-all-projects`)
+  return response.json()
+}
 
+export default async function Projects({ searchParams }: PageProps) {
+  // const projects = await getProjects()
+  const { data: projects } = await getCustomProjects()
+  // console.log('get-all-projects', projects)
   const projectsFiltered = projects.filter((project: ICustomProject) => {
     if (searchParams.category) {
       if (searchParams.category === 'All') {

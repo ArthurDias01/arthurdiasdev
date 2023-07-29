@@ -9,8 +9,13 @@ import {
 import { getEducation, getExperience } from '@/src/lib/contentapi'
 
 export default async function About() {
-  const educations = await getEducation()
-  const experiences = await getExperience()
+  const educationsData = getEducation()
+  const experiencesdata = getExperience()
+
+  const [educations, experiences] = await Promise.all([
+    educationsData,
+    experiencesdata,
+  ])
 
   return (
     <PageWrapper className="flex min-h-[90vh] w-full flex-col gap-4 rounded-[20px]  bg-neutral-300 px-8 pb-12 dark:bg-neutral-950 md:mt-8">
