@@ -6,13 +6,37 @@ import {
   ICustomEducationFields,
   ICustomExperienceFields,
 } from '@/src/interfaces'
-import { getEducation, getExperience } from '@/src/lib/contentapi'
+import { apihost } from '@/src/lib/apihost'
+import { revalidate } from '@/src/utils/constants'
+// import { getEducation, getExperience } from '@/src/lib/contentapi'
+
+async function getCachedExperience(): Promise<{
+  data: ICustomExperienceFields[]
+}> {
+  const response = await fetch(`${apihost}/api/get-experience`, {
+    next: {
+      revalidate,
+    },
+  })
+  return response.json()
+}
+
+async function getCachedEducation(): Promise<{
+  data: ICustomEducationFields[]
+}> {
+  const response = await fetch(`${apihost}/api/get-education`, {
+    next: {
+      revalidate,
+    },
+  })
+  return response.json()
+}
 
 export default async function About() {
-  const educationsData = getEducation()
-  const experiencesdata = getExperience()
+  const educationsData = getCachedEducation()
+  const experiencesdata = getCachedExperience()
 
-  const [educations, experiences] = await Promise.all([
+  const [{ data: educations }, { data: experiences }] = await Promise.all([
     educationsData,
     experiencesdata,
   ])

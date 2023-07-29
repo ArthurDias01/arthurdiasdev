@@ -3,21 +3,25 @@ import { PageWrapper } from '@/src/components/PageWrapper'
 import { ProjectCard } from '@/src/components/ProjectCard'
 import { ICustomProject } from '@/src/interfaces'
 import { apihost } from '@/src/lib/apihost'
+import { revalidate } from '@/src/utils/constants'
 // import { getProjects } from '@/src/lib/contentapi'
 
 interface PageProps {
   searchParams: { [key: string]: string | undefined }
 }
 
-async function getCustomProjects(): Promise<{ data: ICustomProject[] }> {
-  const response = await fetch(`${apihost}/api/get-all-projects`)
+async function getCachedProjects(): Promise<{ data: ICustomProject[] }> {
+  const response = await fetch(`${apihost}/api/get-all-projects`, {
+    next: {
+      revalidate,
+    },
+  })
   return response.json()
 }
 
 export default async function Projects({ searchParams }: PageProps) {
-  // const projects = await getProjects()
-  const { data: projects } = await getCustomProjects()
-  // console.log('get-all-projects', projects)
+  const { data: projects } = await getCachedProjects()
+
   const projectsFiltered = projects.filter((project: ICustomProject) => {
     if (searchParams.category) {
       if (searchParams.category === 'All') {

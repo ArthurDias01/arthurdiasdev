@@ -13,9 +13,13 @@ import { InfoSubSection } from './InfoSubSection'
 import { PrimaryButton } from './PrimaryButton'
 import { InfoBoxIconLink } from './InfoBoxIconLink'
 
-export const InfoBox = () => {
+interface Props {
+  cvlink: string
+}
+
+export const InfoBox = ({ cvlink }: Props) => {
   const handleDownloadCV = () => {
-    window.open('/assets/cv/01Arthur-Dias-FullStack-F-Resume.pdf', '_blank')
+    window.open(cvlink, '_blank')
   }
 
   return (
@@ -63,10 +67,11 @@ export const InfoBox = () => {
 
           <h3 className="text-sm">
             <a
-              href="/assets/cv/01Arthur-Dias-FullStack-F-Resume.pdf"
+              href={cvlink}
               target="_blank"
               title="Download CV"
               download
+              rel="noreferrer"
             >
               <ReadCvLogo className="mr-2 inline-block h-8 w-8 transition-colors  hover:text-primary-400" />
             </a>

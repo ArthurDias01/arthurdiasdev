@@ -1,8 +1,20 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { getResumeDescription } from '../lib/contentapi'
+// import { getResumeDescription } from '@/src/lib/contentapi'
+import { IAuthorFields } from '@/src/@types/contentful'
+import { apihost } from '@/src/lib/apihost'
+import { revalidate } from '../utils/constants'
+
+async function getCachedResumeDescription(): Promise<{ data: IAuthorFields }> {
+  const response = await fetch(`${apihost}/api/get-resume-description`, {
+    next: {
+      revalidate,
+    },
+  })
+  return response.json()
+}
 
 export const DescriptionMobile = async () => {
-  const docDescription = await getResumeDescription()
+  const { data: docDescription } = await getCachedResumeDescription()
 
   return (
     <section className="flex max-w-[100%] flex-col gap-4 rounded-[20px] bg-neutral-400 p-1 dark:bg-neutral-700">

@@ -3,10 +3,22 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import { PageWrapper } from '@/src/components/PageWrapper'
-import { getProject } from '@/src/lib/contentapi'
+// import { getProject } from '@/src/lib/contentapi'
+import { apihost } from '@/src/lib/apihost'
+import { ICustomProject } from '@/src/interfaces'
+import { revalidate } from '@/src/utils/constants'
 
 type Props = {
   params: { slug: string }
+}
+
+async function getCachedProject(id: string): Promise<{ data: ICustomProject }> {
+  const response = await fetch(`${apihost}/api/get-project?id=${id}`, {
+    next: {
+      revalidate,
+    },
+  })
+  return response.json()
 }
 
 export async function generateMetadata(
@@ -17,7 +29,7 @@ export async function generateMetadata(
   const { slug } = params
 
   // fetch data
-  const project = await getProject(slug)
+  const { data: project } = await getCachedProject(slug)
 
   if (!project) {
     return {
@@ -76,7 +88,7 @@ export async function generateMetadata(
 }
 
 export default async function Project({ params }: Props) {
-  const project = await getProject(params.slug)
+  const { data: project } = await getCachedProject(params.slug)
 
   if (!project) {
     redirect('/404')
