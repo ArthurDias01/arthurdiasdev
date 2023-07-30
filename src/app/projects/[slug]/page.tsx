@@ -50,6 +50,7 @@ export async function generateMetadata(
       type: 'website',
       locale: 'en_US',
       siteName: title,
+      title,
       description,
       url: `https://arthurdias.dev/projects/${project.id}`,
       images: [
