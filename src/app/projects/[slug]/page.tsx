@@ -34,10 +34,12 @@ export async function generateMetadata(
   const opengraphURLTwitter = `https:${project.featuredMedia.fields.file
     ?.url!}?w=${twitterSizeImg}&h=${twitterSizeImg}&fit=fill`
 
+  const title = `Arthur Dias | Project: ${project.projectName} | Full Stack Developer`
+  const description = `Explore the project ${project.projectName} by Arthur Dias, an accomplished Full Stack Developer with expertise in React, Next.js, and Node.js. Dive into this captivating web application, crafted with attention to detail and an excellent user experience. Discover Arthur's proficiency in TypeScript, GraphQL, AWS, and Firebase, ensuring efficient and scalable solutions. Check out his MSc in Aerospace Engineering and certifications from RocketSeat, backed by years of experience in problem-solving and agile development. Elevate your search rankings with a showcase of Arthur's remarkable contributions to the tech world through this exciting project.`
+
   return {
-    title: `Arthur Dias | Project | ${project.projectName}`,
-    description:
-      'Full Stack Software Engineer - Arthur Dias public cv and portfolio website',
+    title,
+    description,
     manifest: '/site.webmanifest',
     icons: {
       icon: '/favicon.ico',
@@ -47,8 +49,8 @@ export async function generateMetadata(
     openGraph: {
       type: 'website',
       locale: 'en_US',
-      siteName: `Arthur Dias | Project | ${project.projectName}`,
-      description: `Arthur Dias - Full Stack Software Engineer | Project | ${project.projectName}`,
+      siteName: title,
+      description,
       url: `https://arthurdias.dev/projects/${project.id}`,
       images: [
         {
@@ -60,8 +62,8 @@ export async function generateMetadata(
     twitter: {
       site: `https://arthurdias.dev/projects/${project.id}`,
       creator: '@ArthurODS_',
-      description: `Arthur Dias - Full Stack Software Engineer | Project | ${project.projectName}`,
-      title: `Arthur Dias | Project | ${project.projectName}`,
+      description,
+      title,
       images: [
         {
           url: opengraphURLTwitter,

@@ -14,10 +14,14 @@ import ProfPic from '../../public/myProfile.jpg'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const title =
+  'Arthur Dias | Full Stack Developer | React, Next.js, Node.js | Portfolio'
+const description =
+  "Welcome to the portfolio of Arthur Dias, an experienced Full Stack Developer with expertise in React, Next.js, and Node.js. Explore impressive projects showcasing problem-solving abilities, user-friendly interfaces, and seamless integrations. Discover how Arthur's skills in TypeScript, GraphQL, AWS, and Firebase create efficient and scalable web applications. Check out his MSc in Aerospace Engineering background and certifications from RocketSeat."
+
 export const metadata = {
-  title: 'Arthur Dias - Full Stack Software Engineer',
-  description:
-    'Full Stack Software Engineer - Arthur Dias public cv and portfolio website',
+  title,
+  description,
   manifest: '/site.webmanifest',
   icons: {
     icon: '/favicon.ico',
@@ -29,8 +33,8 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'Arthur Dias - Full Stack Software Engineer',
-    description: 'Arthur Dias public cv and portfolio website',
+    siteName: title,
+    description,
     url: 'https://arthurdias.dev/',
     images: [
       {
@@ -38,13 +42,13 @@ export const metadata = {
         alt: 'Arthur Dias Profile Picture',
       },
     ],
-    title: 'Arthur Dias - Full Stack Software Engineer',
+    title,
   },
   twitter: {
     site: `https://arthurdias.dev/`,
     creator: '@ArthurODS_',
-    description: `Arthur Dias - Full Stack Software Engineer`,
-    title: `Arthur Dias - Full Stack Software Engineer`,
+    description,
+    title,
     images: [
       {
         url: ProfPic.src,

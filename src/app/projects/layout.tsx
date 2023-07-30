@@ -1,10 +1,14 @@
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
+const title =
+  'Arthur Dias | Full Stack Developer Projects | React, Next.js, Node.js'
+const description =
+  "Explore the impressive projects of Arthur Dias, a skilled Full Stack Developer with expertise in React, Next.js, and Node.js. Discover captivating web applications, e-commerce sites, and dynamic dashboards crafted with attention to detail and user experience. Delve into his proficiency in TypeScript, GraphQL, AWS, and Firebase, ensuring efficient and scalable solutions. Check out Arthur's MSc in Aerospace Engineering and certifications from RocketSeat, backed by years of experience in problem-solving and agile development. Elevate your search rankings with a showcase of Arthur's remarkable contributions to the tech world."
+
 export const metadata = {
-  title: 'Arthur Dias - Full Stack Software Engineer | Projects',
-  description:
-    'Full Stack Software Engineer - Arthur Dias public cv and portfolio website',
+  title,
+  description,
   manifest: '/site.webmanifest',
   icons: {
     icon: '/favicon.ico',
@@ -16,15 +20,15 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'Arthur Dias - Full Stack Software Engineer | Projects',
-    description: 'Arthur Dias public cv and portfolio website',
+    siteName: title,
+    description,
     url: 'https://arthurdias.dev/projects',
     images: [
       {
         url: '/myProfile.jpg',
       },
     ],
-    title: 'Arthur Dias - Full Stack Software Engineer | Projects',
+    title,
   },
 } as Metadata
 
