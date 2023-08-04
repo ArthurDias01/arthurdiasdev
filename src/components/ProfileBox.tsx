@@ -4,7 +4,7 @@ import myProfile from '@/public/myProfile.jpg'
 
 export const ProfileBox = () => {
   return (
-    <div className="-mt-[120px] flex w-full flex-col justify-center py-4 md:-mt-48 md:max-w-[332px] lg:mt-[28px]">
+    <section className="-mt-[120px] flex w-full flex-col justify-center py-4 md:-mt-48 md:max-w-[332px] lg:mt-[28px]">
       <Image
         src={myProfile}
         alt="Arthur Dias"
@@ -16,6 +16,6 @@ export const ProfileBox = () => {
         className="relative top-[14rem] z-10 mx-auto -mt-[140px] aspect-square h-[240px] w-[240px] rounded-[20px] drop-shadow-xl md:top-[20rem] lg:top-[6rem]"
       />
       <InfoBox />
-    </div>
+    </section>
   )
 }

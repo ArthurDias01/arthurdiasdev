@@ -20,13 +20,13 @@ export const InfoBox = () => {
 
   return (
     <article className="relative mx-auto mb-6 mt-[120px] w-full rounded-[20px] bg-neutral-300 px-6 pb-12 pt-24 text-center  ease-in-out dark:bg-neutral-950 md:mt-[220px] lg:mb-0 lg:mt-0">
-      <div className="flex w-full flex-col justify-center gap-2 py-8 font-bold ">
-        <div className="mx-auto flex max-w-[240px] flex-col gap-2">
+      <section className="flex w-full flex-col justify-center gap-2 py-8 font-bold ">
+        <section className="mx-auto flex max-w-[240px] flex-col gap-2">
           <h1 className="text-center text-2xl">Arthur Dias</h1>
           <h2 className="rounded-lg bg-neutral-400 p-2 px-4 text-center text-sm dark:bg-neutral-800">
             Full Stack Software Engineer
           </h2>
-        </div>
+        </section>
 
         <section className="mx-auto my-4 flex w-full max-w-[240px] flex-row justify-between gap-2 pt-2">
           <InfoBoxIconLink
@@ -106,7 +106,7 @@ export const InfoBox = () => {
           className="mx-auto mt-4 max-w-[240px] flex-1"
           handleClick={handleDownloadCV}
         />
-      </div>
+      </section>
     </article>
   )
 }

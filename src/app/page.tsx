@@ -8,11 +8,11 @@ import { PageWrapper } from '@/src/components/PageWrapper'
 export default async function Home() {
   return (
     <PageWrapper className="flex min-h-screen flex-col pt-8 md:flex-row">
-      <div className="flex flex-col md:hidden">
+      <aside className="flex flex-col md:hidden">
         <ProfileBox />
         <DescriptionMobile />
         <JobTypes />
-      </div>
+      </aside>
       <div className="hidden w-full flex-col md:flex">
         <AboutMeBox />
       </div>

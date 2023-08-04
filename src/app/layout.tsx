@@ -70,9 +70,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <div className="flex w-full flex-row items-start justify-center gap-8 px-4 md:mx-auto">
-            <div className="sticky top-[180px] hidden md:flex">
+            <aside className="sticky top-[180px] hidden md:flex">
               <ProfileBox />
-            </div>
+            </aside>
             <div className="flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
               <NavBar />
               {children}
