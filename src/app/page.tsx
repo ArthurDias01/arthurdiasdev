@@ -4,15 +4,8 @@ import { JobTypes } from '@/src/components/JobTypes'
 import { AboutMeBox } from '@/src/components/AboutMeBox'
 import { ScheduleAmeetButton } from '@/src/components/ScheduleAmeetButton'
 import { PageWrapper } from '@/src/components/PageWrapper'
-import { domain } from '@/src/utils/constants'
 
 export default async function Home() {
-  const response = await fetch(`${domain()}/api/get-education`, {
-    next: {
-      revalidate: 10,
-    },
-  })
-  console.log('RESPONSE', JSON.stringify(await response.json()))
   return (
     <PageWrapper className="flex min-h-screen flex-col pt-8 md:flex-row">
       <aside className="flex flex-col md:hidden">
