@@ -12,6 +12,7 @@ export const ProfileBox = () => {
         blurDataURL={myProfile.blurDataURL}
         width={240}
         height={240}
+        quality={75}
         priority
         className="relative top-[14rem] z-10 mx-auto -mt-[140px] aspect-square h-[240px] w-[240px] rounded-[20px] drop-shadow-xl md:top-[20rem] lg:top-[6rem]"
       />
