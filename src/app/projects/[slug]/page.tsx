@@ -1,9 +1,10 @@
-import { Metadata, ResolvingMetadata } from 'next'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { redirect } from 'next/navigation'
-import Image from 'next/image'
 import { PageWrapper } from '@/src/components/PageWrapper'
+import { ICustomProject } from '@/src/interfaces'
 import { getProject } from '@/src/lib/contentapi'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { Metadata, ResolvingMetadata } from 'next'
+import Image from 'next/image'
+import { redirect } from 'next/navigation'
 
 type Props = {
   params: { slug: string }
@@ -79,7 +80,7 @@ export async function generateMetadata(
 }
 
 export default async function Project({ params }: Props) {
-  const project = await getProject(params.slug)
+  const project = (await getProject(params.slug)) as ICustomProject | null
 
   if (!project) {
     redirect('/404')
@@ -167,6 +168,16 @@ export default async function Project({ params }: Props) {
                 <ul className="my-4 w-[85%] list-outside list-disc text-start text-base text-neutral-900 dark:text-neutral-100">
                   {children}
                 </ul>
+              ),
+              hyperlink: (node, children) => (
+                <a
+                  className="text-primary-400 underline"
+                  href={node.data.uri}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {children}
+                </a>
               ),
             },
           })}
