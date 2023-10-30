@@ -45,8 +45,6 @@ export const getProjects = async () => {
     }
   }) as any
 
-  // console.log('fetched projects', JSON.stringify(formattedEntries, null, 2))
-
   return formattedEntries as ICustomProject[]
 }
 
