@@ -27,26 +27,6 @@ export default async function About() {
       </div>
       <section className="mx-auto flex w-full flex-col gap-4 rounded-[20px] bg-neutral-300 pb-12 dark:bg-neutral-950">
         <div className="flex w-full flex-row items-center gap-2">
-          <EducationIcon />
-          <h2 className="text-xl font-semibold text-neutral-900 dark:text-primary-500">
-            Education
-          </h2>
-        </div>
-        <ol className="timeline-list">
-          {educations.map((education: ICustomEducationFields) => (
-            <AboutItem
-              key={education.id}
-              description={education.description}
-              title={education.title}
-              yearStart={education.startYear}
-              yearEnd={education.endDate!}
-              finished={education.finished}
-              mainFrameworks={education.mainFrameworks}
-              type="education"
-            />
-          ))}
-        </ol>
-        <div className="flex w-full flex-row items-center gap-2">
           <ExperienceIcon />
           <h2 className="text-xl font-semibold text-neutral-900 dark:text-primary-500">
             Work Experience
@@ -68,6 +48,26 @@ export default async function About() {
             ))}
           </ol>
         </section>
+        <div className="flex w-full flex-row items-center gap-2">
+          <EducationIcon />
+          <h2 className="text-xl font-semibold text-neutral-900 dark:text-primary-500">
+            Education
+          </h2>
+        </div>
+        <ol className="timeline-list">
+          {educations.map((education: ICustomEducationFields) => (
+            <AboutItem
+              key={education.id}
+              description={education.description}
+              title={education.title}
+              yearStart={education.startYear}
+              yearEnd={education.endDate!}
+              finished={education.finished}
+              mainFrameworks={education.mainFrameworks}
+              type="education"
+            />
+          ))}
+        </ol>
       </section>
     </PageWrapper>
   )
