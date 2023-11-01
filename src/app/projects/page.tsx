@@ -26,14 +26,15 @@ export default async function Projects({ searchParams }: PageProps) {
   const projectsFiltered = projects.filter((project: ICustomProject) => {
     if (searchParams.category) {
       if (
-        searchParams.category.includes('All') ||
-        searchParams.category === 'Web,Mobile'
+        searchParams.category.includes('Web') ||
+        searchParams.category.includes('Mobile')
       ) {
-        return true
+        return project.category.includes(searchParams.category)
       }
-      return project.category.includes(searchParams.category)
+      return true
+    } else {
+      return true
     }
-    return true
   })
 
   return (

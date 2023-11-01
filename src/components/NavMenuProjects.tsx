@@ -22,7 +22,11 @@ export function NavMenuProjects() {
           key={tab.id}
           onClick={() => {
             setActiveTab(tab.id)
-            router.push(`/projects?category=${tab.label}`)
+            if (tab.id === 'all') {
+              router.push('/projects')
+            } else {
+              router.push(`/projects?category=${tab.label}`)
+            }
           }}
           className={clsx(
             'relative rounded-full px-3 py-1.5 text-sm font-semibold outline-sky-400 transition focus-visible:outline-2',
