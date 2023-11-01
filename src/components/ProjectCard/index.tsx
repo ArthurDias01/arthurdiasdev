@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Props {
   imageSrc: string
@@ -7,6 +7,7 @@ interface Props {
   title: string
   category: string
   id: string
+  priority?: boolean
 }
 
 export const ProjectCard = ({
@@ -15,6 +16,7 @@ export const ProjectCard = ({
   imageSrc,
   title,
   id,
+  priority = undefined,
 }: Props) => {
   return (
     <div className="flex aspect-video h-64 w-full max-w-sm animate-scaleUp flex-col gap-2 overflow-hidden rounded-[20px] bg-neutral-500 duration-300 dark:bg-neutral-900">
@@ -28,6 +30,7 @@ export const ProjectCard = ({
           width={340}
           height={240}
           className="relative h-full w-full transform cursor-pointer object-cover transition duration-300 ease-in-out hover:scale-110"
+          priority={priority}
         />
       </Link>
 

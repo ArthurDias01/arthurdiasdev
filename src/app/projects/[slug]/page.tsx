@@ -2,6 +2,7 @@ import { PageWrapper } from '@/src/components/PageWrapper'
 import { ICustomProject } from '@/src/interfaces'
 import { apiHost } from '@/src/lib/apihost'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import clsx from 'clsx'
 import { Metadata, ResolvingMetadata } from 'next'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
@@ -129,7 +130,10 @@ export default async function Project({ params }: Props) {
             height={600}
             quality={75}
             priority
-            className="aspect-video w-full rounded-[20px] object-cover"
+            className={clsx('aspect-video w-full rounded-[20px]', {
+              'object-cover': !project.category.includes('Mobile'),
+              'object-contain': project.category.includes('Mobile'),
+            })}
           />
         </figure>
 

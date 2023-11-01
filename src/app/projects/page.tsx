@@ -8,11 +8,12 @@ import { apiHost } from '@/src/lib/apihost'
 interface PageProps {
   searchParams: { [key: string]: string | undefined }
 }
+export const revalidate = 60
 
 async function getCustomProjects(): Promise<{ data: ICustomProject[] }> {
   const response = await fetch(`${apiHost}/api/get-all-projects`, {
     next: {
-      revalidate: 60,
+      revalidate,
       tags: ['projects'],
     },
   })
@@ -24,10 +25,13 @@ export default async function Projects({ searchParams }: PageProps) {
   // console.log('get-all-projects', projects)
   const projectsFiltered = projects.filter((project: ICustomProject) => {
     if (searchParams.category) {
-      if (searchParams.category === 'All') {
+      if (
+        searchParams.category.includes('All') ||
+        searchParams.category === 'Web,Mobile'
+      ) {
         return true
       }
-      return project.category === searchParams.category
+      return project.category.includes(searchParams.category)
     }
     return true
   })
@@ -42,7 +46,7 @@ export default async function Projects({ searchParams }: PageProps) {
       </div>
       <NavMenuProjects />
       <section className="col-span-1 row-span-1 mx-auto grid w-full grid-cols-1 content-evenly gap-4 transition-transform duration-300  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        {projectsFiltered.map((project: ICustomProject) => (
+        {projectsFiltered.map((project: ICustomProject, index) => (
           <ProjectCard
             key={project.id}
             category={project.category}
@@ -50,6 +54,7 @@ export default async function Projects({ searchParams }: PageProps) {
             imageSrc={`https:${project.featuredMedia.fields.file?.url!}`}
             title={project.projectName}
             id={project.id}
+            priority={index <= 6}
           />
         ))}
       </section>
