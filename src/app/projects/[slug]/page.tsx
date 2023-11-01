@@ -2,7 +2,6 @@ import { PageWrapper } from '@/src/components/PageWrapper'
 import { ICustomProject } from '@/src/interfaces'
 import { apiHost } from '@/src/lib/apihost'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import clsx from 'clsx'
 import { Metadata, ResolvingMetadata } from 'next'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
@@ -99,6 +98,8 @@ export default async function Project({ params }: Props) {
     redirect('/404')
   }
 
+  console.log('project', project)
+
   return (
     <PageWrapper className="-mt-12 flex min-h-screen flex-col gap-4 md:mt-0 md:min-h-[85vh]">
       <section className="mt-[40px] flex w-full flex-col items-center md:px-12">
@@ -122,7 +123,8 @@ export default async function Project({ params }: Props) {
       </section>
 
       <section className="flex w-full flex-col gap-8">
-        <figure className="mx-auto flex w-full max-w-3xl flex-row items-center justify-center">
+        {/* Big screen pic */}
+        <figure className="mx-auto hidden w-full max-w-3xl flex-row items-center justify-center sm:flex">
           <Image
             src={`https:${project.featuredMedia.fields.file?.url!}`}
             alt={project.projectName}
@@ -130,10 +132,20 @@ export default async function Project({ params }: Props) {
             height={600}
             quality={75}
             priority
-            className={clsx('aspect-video w-full rounded-[20px]', {
-              'object-cover': !project.category.includes('Mobile'),
-              'object-contain': project.category.includes('Mobile'),
-            })}
+            className="aspect-video w-full rounded-[20px] object-cover"
+          />
+        </figure>
+
+        {/* Small screen pic */}
+        <figure className="mx-auto flex h-full w-full max-w-3xl flex-row items-center justify-center sm:hidden">
+          <Image
+            src={`https:${project.featuredMedia.fields.file?.url!}`}
+            alt={project.projectName}
+            width={360}
+            height={800}
+            quality={75}
+            priority
+            className="h-full w-full rounded-[20px] object-contain"
           />
         </figure>
 
