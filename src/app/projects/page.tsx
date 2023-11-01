@@ -11,7 +11,10 @@ interface PageProps {
 
 async function getCustomProjects(): Promise<{ data: ICustomProject[] }> {
   const response = await fetch(`${apiHost}/api/get-all-projects`, {
-    cache: 'no-cache',
+    next: {
+      revalidate: 60,
+      tags: ['projects'],
+    },
   })
   return response.json()
 }

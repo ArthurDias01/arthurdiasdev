@@ -1,6 +1,6 @@
 import { PageWrapper } from '@/src/components/PageWrapper'
 import { ICustomProject } from '@/src/interfaces'
-import { getProject } from '@/src/lib/contentapi'
+import { apiHost } from '@/src/lib/apihost'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Metadata, ResolvingMetadata } from 'next'
 import Image from 'next/image'
@@ -8,6 +8,18 @@ import { redirect } from 'next/navigation'
 
 type Props = {
   params: { slug: string }
+}
+
+async function getProjectFromApi(
+  slug: string,
+): Promise<{ data: ICustomProject }> {
+  const response = await fetch(`${apiHost}/api/get-project/${slug}`, {
+    next: {
+      revalidate: 60,
+      tags: [`project-${slug}`],
+    },
+  })
+  return response.json()
 }
 
 export async function generateMetadata(
@@ -18,7 +30,7 @@ export async function generateMetadata(
   const { slug } = params
 
   // fetch data
-  const project = await getProject(slug)
+  const { data: project } = await getProjectFromApi(slug)
 
   if (!project) {
     return {
@@ -80,7 +92,7 @@ export async function generateMetadata(
 }
 
 export default async function Project({ params }: Props) {
-  const project = (await getProject(params.slug)) as ICustomProject | null
+  const { data: project } = await getProjectFromApi(params.slug)
 
   if (!project) {
     redirect('/404')
