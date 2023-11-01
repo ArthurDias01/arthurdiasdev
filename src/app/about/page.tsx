@@ -6,16 +6,40 @@ import {
   ICustomEducationFields,
   ICustomExperienceFields,
 } from '@/src/interfaces'
-import { getEducation, getExperience } from '@/src/lib/contentapi'
+import { apiHost } from '@/src/lib/apihost'
+
+async function getCustomEducation() {
+  const educationsData = await fetch(`${apiHost}/api/get-education`, {
+    next: {
+      revalidate: 360,
+      tags: ['education'],
+    },
+  })
+
+  return educationsData.json() as unknown as { data: ICustomEducationFields[] }
+}
+
+async function getCustomExperience() {
+  const experiencesData = await fetch(`${apiHost}/api/get-experience`, {
+    next: {
+      revalidate: 360,
+      tags: ['experience'],
+    },
+  })
+
+  return experiencesData.json() as unknown as {
+    data: ICustomExperienceFields[]
+  }
+}
 
 export default async function About() {
-  const educationsData = getEducation()
-  const experiencesdata = getExperience()
-
-  const [educations, experiences] = await Promise.all([
-    educationsData,
-    experiencesdata,
+  const [educationsData, experiencesData] = await Promise.all([
+    getCustomEducation(),
+    getCustomExperience(),
   ])
+
+  const educations = educationsData.data
+  const experiences = experiencesData.data
 
   return (
     <PageWrapper className="flex min-h-[90vh] w-full flex-col gap-4 rounded-[20px]  bg-neutral-300 px-8 pb-12 dark:bg-neutral-950 md:mt-8">
