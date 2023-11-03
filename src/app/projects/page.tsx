@@ -8,12 +8,13 @@ import { apiHost } from '@/src/lib/apihost'
 interface PageProps {
   searchParams: { [key: string]: string | undefined }
 }
+
 export const revalidate = 60
 
 async function getCustomProjects(): Promise<{ data: ICustomProject[] }> {
   const response = await fetch(`${apiHost}/api/get-all-projects`, {
     next: {
-      revalidate,
+      revalidate: 60,
       tags: ['projects'],
     },
   })

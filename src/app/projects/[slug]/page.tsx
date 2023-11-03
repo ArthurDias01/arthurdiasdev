@@ -1,3 +1,4 @@
+import { Carousel } from '@/src/components/Carousel'
 import { PageWrapper } from '@/src/components/PageWrapper'
 import { ICustomProject } from '@/src/interfaces'
 import { apiHost } from '@/src/lib/apihost'
@@ -98,7 +99,23 @@ export default async function Project({ params }: Props) {
     redirect('/404')
   }
 
-  console.log('project', project)
+  const carouselMedia =
+    project.carouselMedia !== undefined && project.carouselMedia !== null
+      ? project.carouselMedia.map((media) => {
+          return {
+            url: media.fields.file?.url
+              ? `https:${media.fields.file?.url}`
+              : '',
+            alt: media.fields.title
+              ? `https:${media.fields.file?.fileName}`
+              : '',
+            // @ts-ignore
+            width: media.fields.file?.details?.image!.width ?? '',
+            // @ts-ignore
+            height: media.fields.file?.details?.image!.height ?? '',
+          }
+        })
+      : []
 
   return (
     <PageWrapper className="-mt-12 flex min-h-screen flex-col gap-4 md:mt-0 md:min-h-[85vh]">
@@ -123,31 +140,36 @@ export default async function Project({ params }: Props) {
       </section>
 
       <section className="flex w-full flex-col gap-8">
-        {/* Big screen pic */}
-        <figure className="mx-auto hidden w-full max-w-3xl flex-row items-center justify-center sm:flex">
-          <Image
-            src={`https:${project.featuredMedia.fields.file?.url!}`}
-            alt={project.projectName}
-            width={800}
-            height={600}
-            quality={75}
-            priority
-            className="aspect-video w-full rounded-[20px] object-cover"
-          />
-        </figure>
+        {carouselMedia.length ? (
+          <Carousel images={carouselMedia} />
+        ) : (
+          <>
+            <figure className="mx-auto hidden w-full max-w-3xl flex-row items-center justify-center sm:flex">
+              <Image
+                src={`https:${project.featuredMedia.fields.file?.url!}`}
+                alt={project.projectName}
+                width={800}
+                height={600}
+                quality={75}
+                priority
+                className="aspect-video w-full rounded-[20px] object-cover"
+              />
+            </figure>
 
-        {/* Small screen pic */}
-        <figure className="mx-auto flex h-full w-full max-w-3xl flex-row items-center justify-center sm:hidden">
-          <Image
-            src={`https:${project.featuredMedia.fields.file?.url!}`}
-            alt={project.projectName}
-            width={360}
-            height={800}
-            quality={75}
-            priority
-            className="h-full w-full rounded-[20px] object-contain"
-          />
-        </figure>
+            {/* Small screen pic */}
+            <figure className="mx-auto flex h-full w-full max-w-3xl flex-row items-center justify-center sm:hidden">
+              <Image
+                src={`https:${project.featuredMedia.fields.file?.url!}`}
+                alt={project.projectName}
+                width={360}
+                height={800}
+                quality={75}
+                priority
+                className="h-full w-full rounded-[20px] object-contain"
+              />
+            </figure>
+          </>
+        )}
 
         <section className="mx-auto flex max-w-[100%] flex-col items-center  text-ellipsis rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950 md:max-w-3xl">
           {documentToReactComponents(project.projectDescription, {

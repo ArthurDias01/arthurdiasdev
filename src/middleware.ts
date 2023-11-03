@@ -12,7 +12,7 @@ export function middleware(request: Request) {
     'Access-Control-Allow-Headers',
     'Content-Type, Authorization',
   )
-  response.headers.set('Access-Control-Max-Age', '86400')
+  response.headers.set('Access-Control-Max-Age', '600')
 
   return response
 }

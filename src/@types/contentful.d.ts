@@ -150,13 +150,16 @@ export interface IProjectFields {
   projectDescription: Document | undefined
 
   /** Category */
-  category: 'Web' | 'All' | 'Mobile'
+  category: 'Web' | 'All' | 'Mobile' | 'Web, Mobile'
 
   /** link */
   link: string
 
   /** date */
   date: string
+
+  /** Carousel Media */
+  carouselMedia: Asset[] | undefined
 }
 
 /** A project portifolio */
