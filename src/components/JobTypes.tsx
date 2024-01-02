@@ -5,7 +5,7 @@ import { JobTypeIcon } from './JobTypeIcon'
 
 export const JobTypes = async () => {
   const jobTypes = (await getJobTypes()) as IJobTypesFields[]
-
+  console.log(jobTypes, jobTypes)
   return (
     <section className="mx-auto mt-12 flex flex-col gap-4 md:mt-8 md:grid md:grid-cols-1 2xl:grid-cols-2">
       {jobTypes?.map((jobType, index) => {

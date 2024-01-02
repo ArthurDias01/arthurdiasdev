@@ -1,6 +1,11 @@
 'use client'
 
-import { Cloud, Desktop, DeviceMobile } from '@phosphor-icons/react'
+import {
+  Cloud,
+  Desktop,
+  DeviceMobile,
+  RocketLaunch,
+} from '@phosphor-icons/react'
 
 export interface IJobTypeIconProps {
   jobType:
@@ -9,7 +14,8 @@ export interface IJobTypeIconProps {
     | 'fullstack'
     | 'devops'
     | 'data science'
-    | 'mobile'
+    | 'mobile apps'
+    | 'ci/cd improvements'
     | 'other'
 }
 
@@ -22,16 +28,24 @@ export const JobTypeIcon = ({ jobType }: IJobTypeIconProps) => {
       {jobType === 'backend' && (
         <Cloud size={24} className="inline-block h-8 w-8 text-primary-400" />
       )}
-      {jobType === 'mobile' && (
+      {jobType === 'mobile apps' && (
         <DeviceMobile
           size={24}
           className="inline-block h-8 w-8 text-primary-400"
         />
       )}
+      {jobType === 'ci/cd improvements' && (
+        <RocketLaunch
+          size={24}
+          className="inline-block h-8 w-8 text-primary-400"
+        />
+      )}
+
       {jobType !== 'frontend' &&
         jobType !== 'backend' &&
-        jobType !== 'mobile' && (
-          <DeviceMobile
+        jobType !== 'mobile apps' &&
+        jobType !== 'ci/cd improvements' && (
+          <RocketLaunch
             size={24}
             className="inline-block h-8 w-8 text-primary-400"
           />
