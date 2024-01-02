@@ -26,7 +26,11 @@ export const AboutItem = ({
       <p>{`${new Date(yearStart).getFullYear()} - ${
         finished ? new Date(yearEnd).getFullYear() : 'present'
       }`}</p>
-      <span className="mt-2">{description}</span>
+      <span className="mt-2">
+        {description.split('\n').map((item, i) => (
+          <p key={i}>{item}</p>
+        ))}
+      </span>
 
       <p className="timeline-text mt-2">{mainFrameworks}</p>
     </li>

@@ -13,7 +13,7 @@ const client = createClient({
   retryOnError: true,
   headers: {
     'X-Contentful-User-Agent': 'contentful.js/12.3.0',
-    'cache-control': 'force-cache',
+    'cache-control': 'no-cache',
   },
 })
 
