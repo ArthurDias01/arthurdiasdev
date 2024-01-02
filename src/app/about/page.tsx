@@ -42,7 +42,7 @@ export default async function About() {
   const experiences = experiencesData.data
 
   return (
-    <PageWrapper className="flex min-h-[90vh] w-full flex-col gap-4 rounded-[20px]  bg-neutral-300 px-8 pb-12 dark:bg-neutral-950 md:mt-8">
+    <PageWrapper className="flex min-h-[90vh] w-full flex-col gap-4 rounded-[20px]  bg-neutral-300 px-8 pb-12 md:mt-8 dark:bg-neutral-950">
       <div className="mt-8 flex w-full flex-row items-center gap-2">
         <h1 className="text-2xl font-semibold text-neutral-900 dark:text-primary-500">
           Resumé

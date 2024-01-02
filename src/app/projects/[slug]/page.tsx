@@ -171,7 +171,7 @@ export default async function Project({ params }: Props) {
           </>
         )}
 
-        <section className="mx-auto flex max-w-[100%] flex-col items-center  text-ellipsis rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950 md:max-w-3xl">
+        <section className="mx-auto flex max-w-[100%] flex-col items-center  text-ellipsis rounded-[20px] bg-neutral-300 p-8 md:max-w-3xl dark:bg-neutral-950">
           {documentToReactComponents(project.projectDescription, {
             renderNode: {
               paragraph: (node, children) => (

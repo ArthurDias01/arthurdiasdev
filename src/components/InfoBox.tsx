@@ -1,17 +1,17 @@
 'use client'
 import {
-  InstagramLogo,
-  TwitterLogo,
-  LinkedinLogo,
-  GithubLogo,
-  ReadCvLogo,
-  Phone,
   Envelope,
+  GithubLogo,
+  InstagramLogo,
+  LinkedinLogo,
   MapPin,
+  Phone,
+  ReadCvLogo,
+  TwitterLogo,
 } from '@phosphor-icons/react'
+import { InfoBoxIconLink } from './InfoBoxIconLink'
 import { InfoSubSection } from './InfoSubSection'
 import { PrimaryButton } from './PrimaryButton'
-import { InfoBoxIconLink } from './InfoBoxIconLink'
 
 export const InfoBox = () => {
   const handleDownloadCV = () => {
@@ -19,7 +19,7 @@ export const InfoBox = () => {
   }
 
   return (
-    <article className="relative mx-auto mb-6 mt-[120px] w-full rounded-[20px] bg-neutral-300 px-6 pb-12 pt-24 text-center  ease-in-out dark:bg-neutral-950 md:mt-[220px] lg:mb-0 lg:mt-0">
+    <article className="relative mx-auto mb-6 mt-[120px] w-full rounded-[20px] bg-neutral-300 px-6 pb-12 pt-24 text-center  ease-in-out md:mt-[220px] lg:mb-0 lg:mt-0 dark:bg-neutral-950">
       <section className="flex w-full flex-col justify-center gap-2 py-8 font-bold ">
         <section className="mx-auto flex max-w-[240px] flex-col gap-2">
           <h1 className="text-center text-2xl">Arthur Dias</h1>
