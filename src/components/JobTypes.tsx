@@ -1,14 +1,25 @@
 import { IJobTypesFields } from '../@types/contentful'
-import { getJobTypes } from '../lib/contentapi'
+import { apiHost } from '../lib/apihost'
 import { JobTypeCard } from './JobTypeCard'
 import { JobTypeIcon } from './JobTypeIcon'
 
+export const revalidate = 60
+
+async function getCustomJobTypes(): Promise<{ data: IJobTypesFields[] }> {
+  const response = await fetch(`${apiHost}/api/get-jobtypes`, {
+    next: {
+      revalidate: 60,
+      tags: ['jobTypes'],
+    },
+  })
+  return response.json()
+}
+
 export const JobTypes = async () => {
-  const jobTypes = (await getJobTypes()) as IJobTypesFields[]
-  console.log(jobTypes, jobTypes)
+  const { data: jobTypes } = await getCustomJobTypes()
   return (
     <section className="mx-auto mt-12 flex flex-col gap-4 md:mt-8 md:grid md:grid-cols-1 2xl:grid-cols-2">
-      {jobTypes?.map((jobType, index) => {
+      {jobTypes.map((jobType, index) => {
         return (
           <JobTypeCard key={index}>
             <JobTypeIcon jobType={jobType.job.toLocaleLowerCase() as any} />

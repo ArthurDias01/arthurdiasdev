@@ -1,5 +1,5 @@
 import { createClient } from 'contentful'
-import { IAuthor, IAuthorFields } from '../@types/contentful'
+import { IAuthor, IAuthorFields, IJobTypesFields } from '../@types/contentful'
 import {
   ICustomEducationFields,
   ICustomExperienceFields,
@@ -29,7 +29,9 @@ export const getJobTypes = async () => {
   const entries = await client.getEntries({
     content_type: 'jobTypes',
   })
-  return entries.items.map((item) => item.fields) as any
+  return entries.items.map(
+    (item) => item.fields,
+  ) as unknown as IJobTypesFields[]
 }
 
 export const getProjects = async () => {
