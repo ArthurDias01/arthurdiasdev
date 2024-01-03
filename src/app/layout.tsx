@@ -15,9 +15,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 const title =
-  'Arthur Dias | Full Stack Developer | React, Next.js, Node.js | Portfolio'
+  'Arthur Dias | Full Stack Software Engineer | React, Next.js, Node.js | Portfolio'
 const description =
-  "Welcome to the portfolio of Arthur Dias, an experienced Full Stack Developer with expertise in React, Next.js, and Node.js. Explore impressive projects showcasing problem-solving abilities, user-friendly interfaces, and seamless integrations. Discover how Arthur's skills in TypeScript, GraphQL, AWS, and Firebase create efficient and scalable web applications. Check out his MSc in Aerospace Engineering background and certifications from RocketSeat."
+  "Welcome to the portfolio of Arthur Dias, an experienced Full Stack Software Engineer with expertise in React, Next.js, and Node.js. Explore impressive projects showcasing problem-solving abilities, user-friendly interfaces, and seamless integrations. Discover how Arthur's skills in TypeScript, GraphQL, AWS, and Firebase create efficient and scalable web applications. Check out his MSc in Aerospace Engineering background and certifications from RocketSeat."
 
 export const metadata = {
   title,
