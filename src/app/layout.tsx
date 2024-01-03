@@ -1,16 +1,16 @@
-import './globals.css'
-import 'dotenv/config'
-import { Inter } from 'next/font/google'
-import { cn } from '../utils/cn'
-import { ThemeProvider } from '@/src/components/Providers/theme-provider'
-import { Header } from '@/src/components/Header'
 import { Footer } from '@/src/components/Footer'
-import { Metadata } from 'next'
+import { Header } from '@/src/components/Header'
 import { NavBar } from '@/src/components/NavBar'
 import { ProfileBox } from '@/src/components/ProfileBox'
+import { ThemeProvider } from '@/src/components/Providers/theme-provider'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import 'dotenv/config'
+import { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
-import { Analytics } from '@vercel/analytics/react'
 import ProfPic from '../../public/myProfile.jpg'
+import { cn } from '../utils/cn'
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -76,7 +76,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
               <NavBar />
               {children}
-              <Analytics />
+              <SpeedInsights />
             </div>
           </div>
         </ThemeProvider>
