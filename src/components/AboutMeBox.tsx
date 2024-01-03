@@ -1,9 +1,20 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { IAuthorFields } from '../@types/contentful'
+import { apiHost } from '../lib/apihost'
 import { JobTypes } from './JobTypes'
-import { getResumeDescription } from '@/src/lib/contentapi'
+
+async function getCustomAboutMe(): Promise<{ data: IAuthorFields }> {
+  const response = await fetch(`${apiHost}/api/get-resume-description`, {
+    next: {
+      revalidate: 60,
+      tags: ['about-me'],
+    },
+  })
+  return response.json()
+}
 
 export const AboutMeBox = async () => {
-  const docDescription = await getResumeDescription()
+  const { data: docDescription } = await getCustomAboutMe()
   return (
     <section className="mx-auto flex w-full flex-col gap-4 rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950">
       <div className="flex w-full flex-row items-center gap-2">
