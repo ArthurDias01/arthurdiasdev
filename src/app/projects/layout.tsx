@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
 const title =
-  'Arthur Dias | Full Stack Software Engineer Projects | React, Next.js, Node.js'
+  'Arthur Dias | Full Stack Software Engineer - Projects | React, React Native, Next.js, Node.js'
 const description =
   "Explore the impressive projects of Arthur Dias, a skilled Full Stack Software Engineer with expertise in React, Next.js, and Node.js. Discover captivating web applications, e-commerce sites, and dynamic dashboards crafted with attention to detail and user experience. Delve into his proficiency in TypeScript, GraphQL, AWS, and Firebase, ensuring efficient and scalable solutions. Check out Arthur's MSc in Aerospace Engineering and certifications from RocketSeat, backed by years of experience in problem-solving and agile development. Elevate your search rankings with a showcase of Arthur's remarkable contributions to the tech world."
 
