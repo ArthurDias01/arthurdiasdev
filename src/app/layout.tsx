@@ -8,6 +8,7 @@ import 'dotenv/config'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
+import { ProfilePage, WithContext } from 'schema-dts'
 import ProfPic from '../../public/myProfile.jpg'
 import { cn } from '../utils/cn'
 import './globals.css'
@@ -71,9 +72,23 @@ export const metadata = {
   },
 } as Metadata
 
+const jsonLd: WithContext<ProfilePage> = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  name: title,
+  image: ProfPic.src,
+  description,
+}
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head key="1">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={cn(
           inter.className,

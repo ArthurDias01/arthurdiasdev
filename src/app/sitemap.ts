@@ -25,10 +25,6 @@ export default async function sitemap() {
       url: 'https://arthurdias.dev/contact',
       lastModified: new Date(),
     },
-    {
-      url: 'https://arthurdias.dev/contact',
-      lastModified: new Date(),
-    },
     ...projectUrls,
   ]
 }
