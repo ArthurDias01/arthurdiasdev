@@ -30,6 +30,9 @@ export const metadata = {
     ],
     title,
   },
+  alternates: {
+    canonical: 'https://arthurdias.dev/projects',
+  },
 } as Metadata
 
 export default function Layout({ children }: { children: ReactNode }) {

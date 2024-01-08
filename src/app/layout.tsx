@@ -20,6 +20,7 @@ const description =
   "Welcome to the portfolio of Arthur Dias, an experienced Full Stack Software Engineer with expertise in React, Next.js, and Node.js. Explore impressive projects showcasing problem-solving abilities, user-friendly interfaces, and seamless integrations. Discover how Arthur's skills in TypeScript, GraphQL, AWS, and Firebase create efficient and scalable web applications. Check out his MSc in Aerospace Engineering background and certifications from RocketSeat."
 
 export const metadata = {
+  metadataBase: new URL('https://arthurdias.dev/'),
   title,
   description,
   manifest: '/site.webmanifest',
@@ -55,6 +56,18 @@ export const metadata = {
         alt: 'Arthur Dias Profile Picture',
       },
     ],
+  },
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    'max-image-preview': 'large',
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 } as Metadata
 

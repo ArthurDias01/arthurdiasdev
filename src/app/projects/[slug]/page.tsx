@@ -55,6 +55,9 @@ export async function generateMetadata(
     title,
     description,
     manifest: '/site.webmanifest',
+    alternates: {
+      canonical: `https://arthurdias.dev/project/${project.id}`,
+    },
     icons: {
       icon: '/favicon.ico',
       shortcut: '/favicon-16x16.png',
