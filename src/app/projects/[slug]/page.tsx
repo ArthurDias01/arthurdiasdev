@@ -103,8 +103,15 @@ export default async function Project({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
     name: `Arthur Dias | Project: ${project.projectName} | Full Stack Software Engineer`,
+    mainEntity: {
+      '@type': 'Project',
+      name: project.projectName,
+      description: project.projectDescription,
+      url: `https://arthurdias.dev/projects/${project.id}`,
+      image: project.featuredMedia.fields.file?.url! as string,
+    },
     image: project.featuredMedia.fields.file?.url! as string,
-    description: `Explore the project ${project.projectName} by Arthur Dias, an accomplished Full Stack Software Engineer with expertise in React, Next.js, and Node.js. Dive into this captivating web application, crafted with attention to detail and an excellent user experience. Discover Arthur's proficiency in TypeScript, GraphQL, AWS, and Firebase, ensuring efficient and scalable solutions. Check out his MSc in Aerospace Engineering and certifications from RocketSeat, backed by years of experience in problem-solving and agile development. Elevate your search rankings with a showcase of Arthur's remarkable contributions to the tech world through this exciting project.`,
+    description: project.projectDescription,
   }
 
   if (!project) {

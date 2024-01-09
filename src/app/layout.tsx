@@ -78,6 +78,32 @@ const jsonLd: WithContext<ProfilePage> = {
   name: title,
   image: ProfPic.src,
   description,
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Arthur Dias',
+    alternateName: 'Arthur Octavio Dias dos Santos',
+    jobTitle: 'Full Stack Software Engineer',
+    url: 'https://arthurdias.dev/',
+    alumniOf: [
+      {
+        '@type': 'CollegeOrUniversity',
+        name: 'Federal University of Uberlândia',
+        url: 'https://ufu.br/',
+      },
+      {
+        '@type': 'CollegeOrUniversity',
+        name: 'Aeronautics Institute of Technology',
+        url: 'https://www.pgfis.ita.br/en',
+      },
+      {
+        '@type': 'CollegeOrUniversity',
+        name: 'Embry-Riddle Aeronautical University',
+        url: 'https://erau.edu/',
+      },
+    ],
+    sameAs: ['https://www.linkedin.com/in/arthur-dias/'],
+    award: ["Dean's List (Spring - 2014) Embry-Riddle Aeronautical University"],
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
