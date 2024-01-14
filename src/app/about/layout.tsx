@@ -31,7 +31,7 @@ export const metadata = {
     title,
   },
   alternates: {
-    canonical: 'https://arthurdias.dev/about',
+    canonical: 'https://www.arthurdias.dev/about',
   },
 } as Metadata
 
