@@ -3,6 +3,7 @@ import { Header } from '@/src/components/Header'
 import { NavBar } from '@/src/components/NavBar'
 import { ProfileBox } from '@/src/components/ProfileBox'
 import { ThemeProvider } from '@/src/components/Providers/theme-provider'
+import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import 'dotenv/config'
 import { Metadata } from 'next'
@@ -135,6 +136,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
         </ThemeProvider>
         <Footer />
+        <Analytics />
       </body>
     </html>
   )
