@@ -11,7 +11,7 @@ import { apiHost } from '@/src/lib/apihost'
 async function getCustomEducation() {
   const educationsData = await fetch(`${apiHost}/api/get-education`, {
     next: {
-      revalidate: 360,
+      revalidate: 60,
       tags: ['education'],
     },
   })
@@ -22,7 +22,7 @@ async function getCustomEducation() {
 async function getCustomExperience() {
   const experiencesData = await fetch(`${apiHost}/api/get-experience`, {
     next: {
-      revalidate: 360,
+      revalidate: 60,
       tags: ['experience'],
     },
   })

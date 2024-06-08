@@ -3,8 +3,14 @@
  */
 const config = {
   images: {
+    remotePatterns: [
+      {
+        hostname: 'images.ctfassets.net',
+        pathname: '**',
+        protocol: 'https',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
-    domains: ['images.ctfassets.net'],
   },
 }
 

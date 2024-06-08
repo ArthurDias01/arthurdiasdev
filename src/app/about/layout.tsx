@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 const title =
   'Arthur Dias | Full Stack Software Engineer - About | React, React Native, Next.js, Node.js'
 const description =
-  'Wanna check out my resumé? Here you find my education and work experience.'
+  'Wanna check out my resume? Here you find my education and work experience.'
 
 export const metadata = {
   title,
