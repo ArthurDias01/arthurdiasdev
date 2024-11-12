@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prod": "next build && next start",
     "start": "next start",
     "lint": "next lint",
     "generate:types": "contentful-typescript-codegen --output src/@types/contentful.d.ts"

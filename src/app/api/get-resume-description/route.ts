@@ -4,5 +4,12 @@ import { getResumeDescription } from '../../../lib/contentapi'
 export async function GET() {
   const data = await getResumeDescription()
 
-  return NextResponse.json({ data })
+  return NextResponse.json(
+    { data },
+    {
+      headers: {
+        'Cache-Control': 'no-store',
+      },
+    },
+  )
 }

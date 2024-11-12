@@ -15,7 +15,7 @@ export default async function Contact() {
       <section className="mx-auto flex w-full flex-col gap-4 rounded-[20px] bg-neutral-300 pb-12 md:flex-row md:flex-wrap dark:bg-neutral-950">
         <div className="flex flex-1 flex-wrap gap-4">
           <ContactCard type="email" info="arthursantos01@gmail.com" />
-          <ContactCard type="phone" info="+55 (11) 9 5279-5920" />
+          <ContactCard type="phone" info="+1 (980) 269-9602" />
           <ContactCard type="address" info="São Paulo, SP" />
         </div>
 

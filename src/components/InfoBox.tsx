@@ -77,10 +77,10 @@ export const InfoBox = () => {
           <InfoSubSection
             icon={<Phone className="inline-block h-8 w-8 text-primary-400" />}
             title="Telefone"
-            info="+55 (11) 95279-5920"
+            info="+1 (980) 269-9602"
             hasLink
             linktype="tel"
-            href="+5511952795920"
+            href="+19802699602"
           />
 
           <InfoSubSection
