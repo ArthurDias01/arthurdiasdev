@@ -2,6 +2,7 @@ import { Carousel } from '@/src/components/Carousel'
 import { PageWrapper } from '@/src/components/PageWrapper'
 import { ICustomProject } from '@/src/interfaces'
 import { apiHost } from '@/src/lib/apihost'
+import { JobTitle } from '@/src/utils/client-constants'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Metadata, ResolvingMetadata } from 'next'
 import Image from 'next/image'
@@ -49,8 +50,8 @@ export async function generateMetadata(
   const opengraphURLTwitter = `https:${project.featuredMedia.fields.file
     ?.url!}?w=${twitterSizeImg}&h=${twitterSizeImg}&fit=fill`
 
-  const title = `Arthur Dias | Project: ${project.projectName} | Full Stack Software Engineer`
-  const description = `Explore the project ${project.projectName} by Arthur Dias, an accomplished Full Stack Software Engineer with expertise in React, Next.js, and Node.js. Dive into this captivating web application, crafted with attention to detail and an excellent user experience. Discover Arthur's proficiency in TypeScript, GraphQL, AWS, and Firebase, ensuring efficient and scalable solutions. Check out his MSc in Aerospace Engineering and certifications from RocketSeat, backed by years of experience in problem-solving and agile development. Elevate your search rankings with a showcase of Arthur's remarkable contributions to the tech world through this exciting project.`
+  const title = `Arthur Dias | Project: ${project.projectName} | ${JobTitle}`
+  const description = `Explore the project ${project.projectName} by Arthur Dias, an accomplished ${JobTitle} with expertise in React, Next.js, and Node.js. Dive into this captivating web application, crafted with attention to detail and an excellent user experience. Discover Arthur's proficiency in TypeScript, GraphQL, AWS, and Firebase, ensuring efficient and scalable solutions. Check out his MSc in Aerospace Engineering and certifications from RocketSeat, backed by years of experience in problem-solving and agile development. Elevate your search rankings with a showcase of Arthur's remarkable contributions to the tech world through this exciting project.`
 
   return {
     title,
@@ -102,7 +103,7 @@ export default async function Project({ params }: Props) {
   const jsonLd: WithContext<ProfilePage> = {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
-    name: `Arthur Dias | Project: ${project.projectName} | Full Stack Software Engineer`,
+    name: `Arthur Dias | Project: ${project.projectName} | ${JobTitle}`,
     mainEntity: {
       '@type': 'Project',
       name: project.projectName,

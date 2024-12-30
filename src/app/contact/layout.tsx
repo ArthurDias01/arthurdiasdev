@@ -1,10 +1,9 @@
+import { JobTitle } from '@/src/utils/client-constants'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
-const title =
-  'Arthur Dias | Full Stack Software Engineer - Contact | React, React Native, Next.js, Node.js'
-const description =
-  "Are you interested in hiring a skilled Full Stack Software Engineer with expertise in React, Next.js, and Node.js? Let's talk! Here you find my available contact methods and if you prefer, you can schedule a meeting for your convenience."
+const title = `Arthur Dias | ${JobTitle} - Contact | React, React Native, Next.js, Node.js`
+const description = `Are you interested in hiring a skilled ${JobTitle} with expertise in React, Next.js, and Node.js? Let's talk! Here you find my available contact methods and if you prefer, you can schedule a meeting for your convenience.`
 
 export const metadata = {
   title,

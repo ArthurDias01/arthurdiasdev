@@ -9,6 +9,7 @@ import {
   ReadCvLogo,
   TwitterLogo,
 } from '@phosphor-icons/react'
+import { JobTitle } from '../utils/client-constants'
 import { InfoBoxIconLink } from './InfoBoxIconLink'
 import { InfoSubSection } from './InfoSubSection'
 import { PrimaryButton } from './PrimaryButton'
@@ -24,7 +25,7 @@ export const InfoBox = () => {
         <section className="mx-auto flex max-w-[240px] flex-col gap-2">
           <h1 className="text-center text-2xl">Arthur Dias</h1>
           <h2 className="rounded-lg bg-neutral-400 p-2 px-4 text-center text-sm dark:bg-neutral-800">
-            Full Stack Software Engineer
+            {JobTitle}
           </h2>
         </section>
 
