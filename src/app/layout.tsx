@@ -1,35 +1,59 @@
 import { Footer } from '@/src/components/Footer'
 import { Header } from '@/src/components/Header'
-import { NavBar } from '@/src/components/NavBar'
 import { ProfileBox } from '@/src/components/ProfileBox'
 import { ThemeProvider } from '@/src/components/Providers/theme-provider'
 import { JobTitle } from '@/src/utils/client-constants'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import 'dotenv/config'
-import { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Metadata, Viewport } from 'next'
+import { DM_Sans, Syne } from 'next/font/google'
 import { ReactNode } from 'react'
 import { ProfilePage, WithContext } from 'schema-dts'
 import ProfPic from '../../public/myProfile.jpg'
 import { cn } from '../utils/cn'
 import './globals.css'
-const inter = Inter({ subsets: ['latin'] })
 
-const title = `Arthur Dias | ${JobTitle} | React, React Native, Next.js, Node.js | Portfolio`
-const description = `Welcome to the portfolio of Arthur Dias, an experienced ${JobTitle} with expertise in React, Next.js, and Node.js. Explore impressive projects showcasing problem-solving abilities, user-friendly interfaces, and seamless integrations. Discover how Arthur's skills in TypeScript, GraphQL, AWS, and Firebase create efficient and scalable web applications. Check out his MSc in Aerospace Engineering background and certifications from RocketSeat.`
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  display: 'swap',
+})
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
 
-export const metadata = {
+const siteName = 'Arthur Dias'
+const title = `${siteName} | ${JobTitle} | React, Next.js, Node.js | Portfolio`
+const description = `Portfolio of Arthur Dias, ${JobTitle} with 6+ years of experience. Full stack, mobile, and product engineering. React, Next.js, Node.js, TypeScript. MSc Aerospace Engineering. Based in São Paulo, Brazil.`
+
+export const metadata: Metadata = {
   metadataBase: new URL('https://arthurdias.dev/'),
-  title,
+  title: {
+    default: title,
+    template: `%s | ${siteName}`,
+  },
   description,
+  keywords: [
+    'Arthur Dias',
+    'Full Stack Engineer',
+    'Software Engineer',
+    'React',
+    'Next.js',
+    'Node.js',
+    'TypeScript',
+    'Portfolio',
+    'São Paulo',
+  ],
+  authors: [{ name: siteName, url: 'https://arthurdias.dev' }],
+  creator: siteName,
   manifest: '/site.webmanifest',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
-    android: '/android-chrome-192x192.png',
-    androidLarge: '/android-chrome-512x512.png',
   },
   openGraph: {
     type: 'website',
@@ -37,39 +61,33 @@ export const metadata = {
     siteName: title,
     description,
     url: 'https://arthurdias.dev/',
-    images: [
-      {
-        url: ProfPic.src,
-        alt: 'Arthur Dias Profile Picture',
-      },
-    ],
+    images: [{ url: ProfPic.src, alt: `${siteName} – ${JobTitle}` }],
     title,
   },
   twitter: {
-    site: `https://arthurdias.dev/`,
+    site: 'https://arthurdias.dev/',
     creator: '@ArthurODS_',
     description,
     title,
-    images: [
-      {
-        url: ProfPic.src,
-        alt: 'Arthur Dias Profile Picture',
-      },
-    ],
+    images: [{ url: ProfPic.src, alt: `${siteName} – ${JobTitle}` }],
+    card: 'summary_large_image',
   },
-  alternates: {
-    canonical: '/',
-  },
+  alternates: { canonical: '/' },
   robots: {
     'max-image-preview': 'large',
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
+    googleBot: { index: true, follow: true },
   },
-} as Metadata
+  category: 'portfolio',
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f6f7f9' },
+    { media: '(prefers-color-scheme: dark)', color: '#23272e' },
+  ],
+}
 
 const jsonLd: WithContext<ProfilePage> = {
   '@context': 'https://schema.org',
@@ -79,36 +97,32 @@ const jsonLd: WithContext<ProfilePage> = {
   description,
   mainEntity: {
     '@type': 'Person',
-    name: 'Arthur Dias',
+    name: siteName,
     alternateName: 'Arthur Octavio Dias dos Santos',
     jobTitle: JobTitle,
     url: 'https://arthurdias.dev/',
+    email: 'arthursantos01@gmail.com',
+    telephone: '+1-980-269-9602',
+    address: { '@type': 'PostalAddress', addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR' },
     alumniOf: [
-      {
-        '@type': 'CollegeOrUniversity',
-        name: 'Federal University of Uberlândia',
-        url: 'https://ufu.br/',
-      },
-      {
-        '@type': 'CollegeOrUniversity',
-        name: 'Aeronautics Institute of Technology',
-        url: 'https://www.pgfis.ita.br/en',
-      },
-      {
-        '@type': 'CollegeOrUniversity',
-        name: 'Embry-Riddle Aeronautical University',
-        url: 'https://erau.edu/',
-      },
+      { '@type': 'CollegeOrUniversity', name: 'Federal University of Uberlândia', url: 'https://ufu.br/' },
+      { '@type': 'CollegeOrUniversity', name: 'Aeronautics Institute of Technology', url: 'https://www.pgfis.ita.br/en' },
+      { '@type': 'CollegeOrUniversity', name: 'Embry-Riddle Aeronautical University', url: 'https://erau.edu/' },
     ],
-    sameAs: ['https://www.linkedin.com/in/arthur-dias/'],
+    sameAs: [
+      'https://www.linkedin.com/in/arthur-dias/',
+      'https://twitter.com/ArthurODS_',
+      'https://github.com/ArthurDias01',
+      'https://www.instagram.com/arthurddias/',
+    ],
     award: ["Dean's List (Spring - 2014) Embry-Riddle Aeronautical University"],
   },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head key="1">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -116,22 +130,33 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body
         className={cn(
-          inter.className,
-          'flex flex-col transition-all duration-300',
+          syne.variable,
+          dmSans.variable,
+          dmSans.className,
+          'grain min-h-screen antialiased transition-colors'
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[10000] focus:rounded-md focus:bg-primary-600 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-primary-400"
+          >
+            Skip to main content
+          </a>
           <Header />
-          <div className="flex w-full flex-row items-start justify-center gap-8 px-4 md:mx-auto">
-            <aside className="sticky top-[180px] hidden md:flex">
+          <div className="mx-auto flex w-full max-w-6xl flex-row items-start justify-center gap-10 px-4 py-10 md:py-14 lg:gap-14 pb-24">
+            <aside className="sticky top-24 hidden w-full shrink-0 md:block md:max-w-[332px]" aria-label="Profile and contact">
               <ProfileBox />
             </aside>
-            <div className="flex w-full max-w-4xl flex-col items-center justify-center pt-12 md:pt-32">
-              <NavBar />
+            <main
+              id="main-content"
+              className="relative w-full min-w-0 max-w-3xl flex-1 border-l-0 pl-0 lg:border-l lg:border-primary-500/20 lg:pl-10 dark:lg:border-primary-400/20"
+              role="main"
+            >
               {children}
-              <SpeedInsights />
-            </div>
+            </main>
           </div>
+          <SpeedInsights />
         </ThemeProvider>
         <Footer />
         <Analytics />

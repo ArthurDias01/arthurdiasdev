@@ -85,6 +85,10 @@ module.exports = {
         pulseCaret: {
           '50%': { opacity: 0.25 },
         },
+        staggerUp: {
+          from: { opacity: 0, transform: 'translateY(14px)' },
+          to: { opacity: 1, transform: 'translateY(0)' },
+        },
       },
       animation: {
         slideUpAndFade: 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
@@ -98,6 +102,13 @@ module.exports = {
         fadeOut: 'fadeOut 300ms ease-in forwards',
         scaleUp: 'scaleUp 300ms ease-in-out forwards',
         pulseCaret: 'pulseCaret 1500ms cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        staggerUp: 'staggerUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+      },
+      animationDelay: {
+        100: '100ms',
+        200: '200ms',
+        300: '300ms',
+        400: '400ms',
       },
       letterSpacing: {
         widest: '0.15em',

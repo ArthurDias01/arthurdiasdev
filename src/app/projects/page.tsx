@@ -1,61 +1,61 @@
 import { NavMenuProjects } from '@/src/components/NavMenuProjects'
+import { PageHeader } from '@/src/components/PageHeader'
 import { PageWrapper } from '@/src/components/PageWrapper'
 import { ProjectCard } from '@/src/components/ProjectCard'
-import { ICustomProject } from '@/src/interfaces'
-import { apiHost } from '@/src/lib/apihost'
-// import { getProjects } from '@/src/lib/contentapi'
+import { getProjects } from '@/src/lib/content'
+import type { ProjectEntry } from '@/src/types/content'
 
 interface PageProps {
-  searchParams: { [key: string]: string | undefined }
+  searchParams: Promise<{ [key: string]: string | undefined }>
 }
 
 export const revalidate = 60
 
-async function getCustomProjects(): Promise<{ data: ICustomProject[] }> {
-  const response = await fetch(`${apiHost}/api/get-all-projects`, {
-    next: {
-      revalidate: 60,
-      tags: ['projects'],
-    },
-  })
-  return response.json()
+export const metadata = {
+  title: 'Projects',
+  description:
+    'Portfolio projects by Arthur Dias: web apps, mobile apps, full stack solutions. React, Next.js, Node.js, TypeScript.',
+  openGraph: {
+    title: 'Projects | Arthur Dias',
+    url: 'https://arthurdias.dev/projects',
+  },
+  alternates: { canonical: 'https://arthurdias.dev/projects' },
 }
 
 export default async function Projects({ searchParams }: PageProps) {
-  const { data: projects } = await getCustomProjects()
-  // console.log('get-all-projects', projects)
-  const projectsFiltered = projects.filter((project: ICustomProject) => {
-    if (searchParams.category) {
-      if (
-        searchParams.category.includes('Web') ||
-        searchParams.category.includes('Mobile')
-      ) {
-        return project.category.includes(searchParams.category)
-      }
-      return true
-    } else {
-      return true
-    }
+  const resolvedParams = await searchParams
+  const projects = await getProjects()
+  const category = resolvedParams.category
+  const projectsFiltered = projects.filter((project: ProjectEntry) => {
+    if (!category) return true
+    if (category === 'Web' || category === 'Mobile') return project.category.includes(category)
+    return true
   })
 
   return (
-    <PageWrapper className="flex min-h-[90vh] w-full flex-col gap-4 rounded-[20px]  bg-neutral-300 px-8 pb-12 md:mt-8 dark:bg-neutral-950">
-      <div className="mt-8 flex w-full flex-row items-center gap-2">
-        <h1 className="text-2xl font-semibold text-neutral-900 dark:text-primary-500">
-          Projects
-        </h1>
-        <span className="h-1 w-1/4 rounded-sm bg-gradient-to-r from-teal-600 to-primary-300" />
-      </div>
-      <NavMenuProjects />
-      <section className="col-span-1 row-span-1 mx-auto grid w-full grid-cols-1 content-evenly gap-4 transition-transform duration-300  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        {projectsFiltered.map((project: ICustomProject, index) => (
+    <PageWrapper className="flex min-h-[calc(100vh-8rem)] w-full flex-col gap-10 pb-12 md:pb-16">
+      <PageHeader label="Work" title="Projects" />
+
+      <section className="mb-2" aria-labelledby="filter-heading">
+        <h2 id="filter-heading" className="sr-only">
+          Filter projects
+        </h2>
+        <NavMenuProjects />
+      </section>
+
+      <section
+        id="project-list"
+        className="grid grid-cols-1 gap-10 sm:grid-cols-2 mt-4"
+        aria-label="Project list"
+      >
+        {projectsFiltered.map((project: ProjectEntry, index: number) => (
           <ProjectCard
-            key={project.id}
+            key={project.slug}
             category={project.category}
             imageAlt={project.projectName}
-            imageSrc={`https:${project.featuredMedia.fields.file?.url!}`}
+            imageSrc={project.featuredImage}
             title={project.projectName}
-            id={project.id}
+            slug={project.slug}
             priority={index <= 6}
           />
         ))}

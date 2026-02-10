@@ -1,4 +1,4 @@
-import { getProjects } from '../lib/contentapi'
+import { getProjects } from '@/src/lib/content'
 
 type Sitemap = Array<{
   url: string
@@ -16,14 +16,13 @@ type Sitemap = Array<{
 
 export default async function sitemap(): Promise<Sitemap> {
   const projects = await getProjects()
-  const projectUrls = projects.map((project) => {
-    return {
-      url: `https://arthurdias.dev/projects/${project.id}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    }
-  }) as Sitemap
+  const projectUrls: Sitemap = projects.map((project) => ({
+    url: `https://arthurdias.dev/projects/${project.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
+  }))
+
   return [
     {
       url: 'https://arthurdias.dev',

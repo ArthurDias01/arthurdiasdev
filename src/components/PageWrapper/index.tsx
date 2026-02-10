@@ -10,18 +10,17 @@ interface Props {
 
 export const PageWrapper = ({ children, className }: Props) => {
   return (
-    <>
+    <div className={className}>
       <AnimatePresence>
         <motion.main
           initial={{ opacity: 0, x: 15 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 15 }}
           transition={{ ease: 'easeInOut', duration: 0.2, delay: 0.2 }}
-          className={className}
         >
           {children}
         </motion.main>
       </AnimatePresence>
-    </>
+    </div>
   )
 }

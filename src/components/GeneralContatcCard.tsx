@@ -5,12 +5,9 @@ interface Props {
 
 export const GeneralContactCard = ({ text, emphasized }: Props) => {
   return (
-    <section className="flex flex-row rounded-[20px] bg-neutral-500 p-4 text-white dark:bg-neutral-900">
-      <p className="text-2xl">
-        {text}
-        <br />
-        <span className="font-bold text-primary-400">{emphasized}</span>
-      </p>
-    </section>
+    <p className="text-lg text-neutral-700 dark:text-neutral-300">
+      {text}{' '}
+      <span className="font-semibold text-primary-600 dark:text-primary-400">{emphasized}</span>
+    </p>
   )
 }

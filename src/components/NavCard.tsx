@@ -11,18 +11,19 @@ interface Props {
 export const NavCard = ({ href, title }: Props) => {
   const pathname = usePathname()
   const pathNameSize = pathname.split('/').length
+  const isActive =
+    pathNameSize > 2
+      ? href.includes(pathname.split('/')[1])
+      : href === pathname
 
   return (
     <Link
       href={href}
       className={clsx(
-        'flex flex-col items-center justify-center rounded-lg p-5 text-lg font-bold text-white transition-colors duration-300 hover:bg-neutral-500 hover:text-primary-400 dark:hover:bg-neutral-900',
-        {
-          'bg-neutral-500 text-white dark:bg-neutral-950/80 dark:text-primary-500':
-            pathNameSize > 2
-              ? href.includes(pathname.split('/')[1])
-              : href === pathname,
-        },
+        'relative rounded-full px-4 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2',
+        isActive
+          ? 'bg-primary-600 text-white shadow-sm dark:bg-primary-500 dark:text-white'
+          : 'text-neutral-600 hover:bg-white hover:text-neutral-900 hover:shadow-sm dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
       )}
     >
       {title}

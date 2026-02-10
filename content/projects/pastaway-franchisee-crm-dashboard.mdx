@@ -1,0 +1,93 @@
+---
+title: PastaWay - Franchisee CRM Dashboard
+category: All
+link: "https://pastaway.com/franchisee"
+date: 2025-06-25
+featuredImage: "https://images.ctfassets.net/q6ow9fp85ho7/66AP74ydn1NjcRmxpyPnuK/b0d5a1d2707aea93db2617846baed355/Xnip2025-06-25_17-20-25.png"
+carouselImages: ["https://images.ctfassets.net/q6ow9fp85ho7/1ZbBEwjMCMLyHLaofG4Ijp/87b7c73f5ebfd6c52bb24af21308169d/Xnip2025-06-25_17-18-53.png","https://images.ctfassets.net/q6ow9fp85ho7/1DBfrMxU19YFu5XOOJvZnC/0ad95213beb830864eea61aa47b7ebb5/Xnip2025-06-25_17-19-17.png","https://images.ctfassets.net/q6ow9fp85ho7/rBNxRkQPr93AxMsY7pTUK/ea06aba793fa2116b30bf6433800c57b/Xnip2025-06-25_17-19-41.png","https://images.ctfassets.net/q6ow9fp85ho7/4s59mFJAxjwBesnQMkTsNR/e0f1e1936d28eef049e88ec7e696fc36/Xnip2025-06-25_17-19-55.png"]
+---
+
+![Pastaway Logo](https://images.ctfassets.net/q6ow9fp85ho7/1ab0IPHvsPi7nMDrxkwYsk/9ffdc39793f1051ebd89f2431287789e/pastaway-stroked-logo.png)
+
+Pastaway MVP
+
+Overview
+
+Pastaway is a modern, full-stack web application designed to streamline restaurant supply ordering and analytics for franchisees and admin managers. The platform enables franchisees to manage their orders, view product catalogs, and track spending, while admin users can oversee all franchisees, manage products, and access advanced analytics.
+
+The project leverages a robust, scalable architecture with a focus on automation, background processing, and seamless integrations with third-party services.
+
+Tech Stack
+
+Frontend
+
+- Framework: Next.js (App Router) – for server-side rendering, routing, and React-based UI.
+- UI & Styling: Tailwind CSS, Radix UI, and custom React components.
+- State Management: Zustand for lightweight, scalable state management.
+- Forms & Validation: React Hook Form with Zod for schema-based validation and type safety.
+- Authentication: Clerk for user authentication, session management, and organization support.
+
+Backend
+
+- API Layer: Next.js API routes, organized by domain (orders, products, users, stats, etc.), providing RESTful endpoints for all app features.
+- Database: PostgreSQL, managed via Prisma ORM. The schema supports users, products, orders, and third-party integrations (Uber Eats, DoorDash).
+- ORM: Prisma, with generated types and migrations for safe, type-checked database access.
+- Background Jobs & Automation: Trigger.dev is used for queuing, scheduling, and running heavy or long-running processes (e.g., product scraping, automated order placement, data syncs).
+- Browser Automation: Browserbase is used in conjunction with Trigger.dev to run headless browser tasks (e.g., scraping product data from supplier portals, automating order placement) in a scalable, cloud-based environment.
+- File Uploads & Parsing: CSV importers and file upload endpoints for bulk data operations.
+
+Integrations & Services
+
+- Trigger.dev: Handles all background processing, scheduled jobs (cron), and heavy/long-running tasks. Examples include:
+    - Automated scraping of supplier product data.
+    - Automated order placement on third-party supplier portals.
+    - Scheduled data synchronization (e.g., Uber Eats, DoorDash).
+- Browserbase: Used alongside Trigger.dev to run headless browser sessions in the cloud, enabling robust, scalable web automation without local infrastructure.
+- Clerk: Provides authentication, user management, and organization features out-of-the-box.
+- Cloudinary: (If enabled) for image hosting and CDN.
+
+User Roles
+
+Franchisee (Simple User)
+
+- Can browse and order products for their restaurant.
+- Views order history, spending analytics, and product details.
+- Manages their own account and restaurant information.
+- Can import orders from third-party platforms (Uber Eats, DoorDash).
+
+Admin (Franchise Manager)
+
+- Manages all franchisee accounts and restaurants.
+- Adds, edits, and removes products from the catalog.
+- Views advanced analytics: total revenue, order volume, top products, financial overviews, and more.
+- Can invite new users, upload bulk data, and oversee all platform activity.
+
+Automation & Heavy Processing
+
+- Trigger.dev powers all background and scheduled jobs, such as:
+    - Scraping product data from supplier portals every 6 hours.
+    - Placing orders automatically on behalf of users.
+    - Syncing order data from third-party platforms.
+- Browserbase is used for all browser automation tasks, ensuring reliability and scalability for scraping and automation without running browsers on your own servers.
+
+Example Features
+
+- Product Catalog: Browse, search, and filter products with real-time inventory and pricing.
+- Order Management: Place, track, and review orders. Admins can view all orders across restaurants.
+- Analytics & Dashboards: Visualize spending, order trends, and product popularity with interactive charts.
+- Bulk Operations: Import/export data via CSV, automate repetitive tasks, and schedule recurring jobs.
+- Role-Based Access: Franchisees and admins see different dashboards and have access to different features.
+
+Project Structure
+
+- app/ – Next.js pages and API routes, organized by domain and user role.
+- lib/ – Database, authentication, and utility libraries.
+- components/ – Reusable UI components.
+- trigger/ – Trigger.dev job definitions and browser automation scripts.
+- prisma/ – Database schema and migrations.
+
+Why This Stack?
+
+This architecture was chosen to maximize developer productivity, scalability, and maintainability. By combining Next.js, Prisma, and modern cloud services like Trigger.dev and Browserbase, the platform can handle both real-time user interactions and heavy, automated background processing with ease.
+
+Have questions or want to contribute? Open an issue or pull request!

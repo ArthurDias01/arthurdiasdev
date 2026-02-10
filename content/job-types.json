@@ -1,0 +1,18 @@
+[
+  {
+    "job": "CI/CD Pipelines",
+    "jobDescription": "Analysis and implementation of workflows, deployment and integrations pipelines "
+  },
+  {
+    "job": "FrontEnd",
+    "jobDescription": "Development of web applications using React and its ecosystem."
+  },
+  {
+    "job": "Mobile Apps",
+    "jobDescription": "Mobile App development using React Native and Expo framework to build hybrid (Android/iOS) mobile applications"
+  },
+  {
+    "job": "Backend",
+    "jobDescription": "Development of back-end for applications using Node.js, Express and Nest.js."
+  }
+]

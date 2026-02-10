@@ -1,35 +1,25 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { IAuthorFields } from '../@types/contentful'
-import { apiHost } from '../lib/apihost'
+import { getResume } from '@/src/lib/content'
+import { Card, CardContent, CardHeader, CardTitle } from '@/src/components/ui/card'
 import { JobTypes } from './JobTypes'
-
-async function getCustomAboutMe(): Promise<{ data: IAuthorFields }> {
-  const response = await fetch(`${apiHost}/api/get-resume-description`, {
-    next: { revalidate: 0 }, // Set to 0 for no cache, or your desired seconds
-  })
-  return response.json()
-}
-
-// Remove the standalone revalidate export
-// export const revalidate = 60
+import { MdxContent } from './MdxContent'
 
 export const AboutMeBox = async () => {
-  const { data: docDescription } = await getCustomAboutMe()
+  const resume = await getResume()
 
   return (
-    <section className="mx-auto flex w-full flex-col gap-4 rounded-[20px] bg-neutral-300 p-8 dark:bg-neutral-950">
-      <div className="flex w-full flex-row items-center gap-2">
-        <h2 className="text-2xl font-semibold text-neutral-900 dark:text-primary-500">
-          {docDescription?.title}
-        </h2>
-        <span className="h-1 w-1/4 rounded-sm bg-gradient-to-r from-teal-600 to-primary-300" />
-      </div>
-      <p className="flex h-fit flex-wrap">
-        {documentToReactComponents(
-          docDescription?.description.content[0].content[0],
-        )}
-      </p>
-      <JobTypes />
-    </section>
+    <Card className="w-full border-l-4 border-l-primary-500/60 dark:border-l-primary-400/60">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-2xl text-primary-700 dark:text-primary-400">
+          {resume.title}
+        </CardTitle>
+        <div className="mt-2 h-1 w-12 rounded-full bg-primary-500/80 dark:bg-primary-400/80" aria-hidden />
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="prose prose-neutral max-w-none dark:prose-invert prose-p:text-neutral-700 dark:prose-p:text-neutral-300">
+          <MdxContent source={resume.body} />
+        </div>
+        <JobTypes />
+      </CardContent>
+    </Card>
   )
 }

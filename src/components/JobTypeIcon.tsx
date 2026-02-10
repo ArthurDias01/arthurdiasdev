@@ -15,6 +15,7 @@ export interface IJobTypeIconProps {
     | 'devops'
     | 'data science'
     | 'mobile apps'
+    | 'ci/cd pipelines'
     | 'ci/cd improvements'
     | 'other'
 }
@@ -34,7 +35,7 @@ export const JobTypeIcon = ({ jobType }: IJobTypeIconProps) => {
           className="inline-block h-8 w-8 text-primary-400"
         />
       )}
-      {jobType === 'ci/cd improvements' && (
+      {(jobType === 'ci/cd pipelines' || jobType === 'ci/cd improvements') && (
         <RocketLaunch
           size={24}
           className="inline-block h-8 w-8 text-primary-400"
@@ -44,6 +45,7 @@ export const JobTypeIcon = ({ jobType }: IJobTypeIconProps) => {
       {jobType !== 'frontend' &&
         jobType !== 'backend' &&
         jobType !== 'mobile apps' &&
+        jobType !== 'ci/cd pipelines' &&
         jobType !== 'ci/cd improvements' && (
           <RocketLaunch
             size={24}

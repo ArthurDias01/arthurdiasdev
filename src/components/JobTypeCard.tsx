@@ -41,7 +41,7 @@ export const JobTypeCard = ({ children }: Props) => {
 
   return (
     <section ref={elementRef} className="flex w-full max-w-sm flex-col">
-      <div className="flex h-full min-h-[9rem] w-full min-w-fit flex-row  items-center justify-start gap-4 rounded-xl border-2 border-neutral-400 bg-neutral-300 p-4 opacity-0 drop-shadow-md transition-transform md:min-h-[10rem] md:items-start dark:border-neutral-700 dark:bg-neutral-950">
+      <div className="flex h-full min-h-[9rem] w-full min-w-fit flex-row items-center justify-start gap-4 rounded-2xl border border-neutral-200/80 bg-white p-4 opacity-0 shadow-sm transition-transform md:min-h-[10rem] md:items-start dark:border-neutral-800 dark:bg-neutral-900/80 dark:shadow-none">
         {children}
       </div>
     </section>

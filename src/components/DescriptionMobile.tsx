@@ -1,17 +1,21 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { getResumeDescription } from '../lib/contentapi'
+import { getResume } from '@/src/lib/content'
+import { Card, CardContent, CardHeader, CardTitle } from '@/src/components/ui/card'
+import { MdxContent } from './MdxContent'
 
 export const DescriptionMobile = async () => {
-  const docDescription = await getResumeDescription()
+  const resume = await getResume()
 
   return (
-    <section className="flex max-w-[100%] flex-col gap-4 rounded-[20px] bg-neutral-400 p-1 dark:bg-neutral-700">
-      <h2 className="text-2xl text-primary-400">{docDescription?.title}</h2>
-      <p className="flex flex-wrap">
-        {documentToReactComponents(
-          docDescription?.description.content[0].content[0],
-        )}
-      </p>
-    </section>
+    <Card className="w-full border-l-4 border-l-primary-500/60 dark:border-l-primary-400/60">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-xl text-primary-700 dark:text-primary-400">
+          {resume.title}
+        </CardTitle>
+        <div className="mt-2 h-1 w-12 rounded-full bg-primary-500/80 dark:bg-primary-400/80" aria-hidden />
+      </CardHeader>
+      <CardContent className="prose prose-neutral max-w-none dark:prose-invert prose-p:text-neutral-700 dark:prose-p:text-neutral-300">
+        <MdxContent source={resume.body} />
+      </CardContent>
+    </Card>
   )
 }
