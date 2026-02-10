@@ -1,22 +1,22 @@
-'use client'
-import * as React from 'react'
-import { List } from '@phosphor-icons/react'
-import { Moon, Sun } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import { MobileMenuPopOver } from './MobileMenuPopOver'
-import { CustomButton } from './CustomButtonThemeSwitcher'
+"use client";
+import * as React from "react";
+import { List } from "@phosphor-icons/react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { MobileMenuPopOver } from "./MobileMenuPopOver";
+import { CustomButton } from "./CustomButtonThemeSwitcher";
 
 export const ThemeSwitcherButtons = () => {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   const handleSwitchTheme = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
 
   return (
     <div id="ThemeSwitcher buttons" className="flex flex-row gap-4">
@@ -26,7 +26,7 @@ export const ThemeSwitcherButtons = () => {
         onClick={handleSwitchTheme}
         aria-label="Toggle dark or light theme"
       >
-        {theme === 'light' ? (
+        {theme === "light" ? (
           <Moon className="h-5 w-5" aria-hidden />
         ) : (
           <Sun className="h-5 w-5" aria-hidden />
@@ -47,5 +47,5 @@ export const ThemeSwitcherButtons = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};

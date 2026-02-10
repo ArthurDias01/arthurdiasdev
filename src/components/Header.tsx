@@ -1,6 +1,6 @@
-import { Logo } from './Logo'
-import { NavBar } from './NavBar'
-import { ThemeSwitcherButtons } from './ThemeSwitcherButtons'
+import { Logo } from "./Logo";
+import { NavBar } from "./NavBar";
+import { ThemeSwitcherButtons } from "./ThemeSwitcherButtons";
 
 export const Header = () => {
   return (
@@ -11,12 +11,15 @@ export const Header = () => {
       <div className="flex shrink-0 items-center">
         <Logo />
       </div>
-      <nav className="hidden flex-1 justify-center md:flex" aria-label="Main navigation">
+      <nav
+        className="hidden flex-1 justify-center md:flex"
+        aria-label="Main navigation"
+      >
         <NavBar />
       </nav>
       <div className="flex shrink-0 items-center">
         <ThemeSwitcherButtons />
       </div>
     </header>
-  )
-}
+  );
+};

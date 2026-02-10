@@ -1,11 +1,11 @@
-import { ReactNode } from 'react'
+import { ReactNode } from "react";
 interface Props {
-  icon: ReactNode
-  title: string
-  info: string
-  hasLink?: boolean
-  linktype?: 'tel' | 'mailto' | 'link'
-  href?: string
+  icon: ReactNode;
+  title: string;
+  info: string;
+  hasLink?: boolean;
+  linktype?: "tel" | "mailto" | "link";
+  href?: string;
 }
 
 export const InfoSubSection = ({
@@ -27,13 +27,13 @@ export const InfoSubSection = ({
           {hasLink ? (
             <a
               href={
-                linktype === 'link'
+                linktype === "link"
                   ? href
-                  : linktype === 'tel'
-                  ? `tel:${href}`
-                  : linktype === 'mailto'
-                  ? `mailto:${href}`
-                  : ''
+                  : linktype === "tel"
+                    ? `tel:${href}`
+                    : linktype === "mailto"
+                      ? `mailto:${href}`
+                      : ""
               }
               target="_blank"
               rel="noreferrer"
@@ -47,5 +47,5 @@ export const InfoSubSection = ({
         </h4>
       </div>
     </div>
-  )
-}
+  );
+};

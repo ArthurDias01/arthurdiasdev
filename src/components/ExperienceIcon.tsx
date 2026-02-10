@@ -1,5 +1,5 @@
-'use client'
-import { SuitcaseSimple } from '@phosphor-icons/react'
+"use client";
+import { SuitcaseSimple } from "@phosphor-icons/react";
 
 export const ExperienceIcon = () => {
   return (
@@ -9,5 +9,5 @@ export const ExperienceIcon = () => {
         className="inline-block h-8 w-8 text-primary-400"
       />
     </div>
-  )
-}
+  );
+};

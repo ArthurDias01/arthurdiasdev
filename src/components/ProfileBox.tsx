@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import myProfile from '@/public/myProfile.jpg'
-import { InfoBox } from './InfoBox'
+import Image from "next/image";
+import myProfile from "@/public/myProfile.jpg";
+import { InfoBox } from "./InfoBox";
 
 export const ProfileBox = () => {
   return (
@@ -25,5 +25,5 @@ export const ProfileBox = () => {
       </div>
       <InfoBox />
     </section>
-  )
-}
+  );
+};

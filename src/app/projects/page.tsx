@@ -1,36 +1,37 @@
-import { NavMenuProjects } from '@/src/components/NavMenuProjects'
-import { PageHeader } from '@/src/components/PageHeader'
-import { PageWrapper } from '@/src/components/PageWrapper'
-import { ProjectCard } from '@/src/components/ProjectCard'
-import { getProjects } from '@/src/lib/content'
-import type { ProjectEntry } from '@/src/types/content'
+import { NavMenuProjects } from "@/src/components/NavMenuProjects";
+import { PageHeader } from "@/src/components/PageHeader";
+import { PageWrapper } from "@/src/components/PageWrapper";
+import { ProjectCard } from "@/src/components/ProjectCard";
+import { getProjects } from "@/src/lib/content";
+import type { ProjectEntry } from "@/src/types/content";
 
 interface PageProps {
-  searchParams: Promise<{ [key: string]: string | undefined }>
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }
 
-export const revalidate = 60
+export const revalidate = 60;
 
 export const metadata = {
-  title: 'Projects',
+  title: "Projects",
   description:
-    'Portfolio projects by Arthur Dias: web apps, mobile apps, full stack solutions. React, Next.js, Node.js, TypeScript.',
+    "Portfolio projects by Arthur Dias: web apps, mobile apps, full stack solutions. React, Next.js, Node.js, TypeScript.",
   openGraph: {
-    title: 'Projects | Arthur Dias',
-    url: 'https://arthurdias.dev/projects',
+    title: "Projects | Arthur Dias",
+    url: "https://arthurdias.dev/projects",
   },
-  alternates: { canonical: 'https://arthurdias.dev/projects' },
-}
+  alternates: { canonical: "https://arthurdias.dev/projects" },
+};
 
 export default async function Projects({ searchParams }: PageProps) {
-  const resolvedParams = await searchParams
-  const projects = await getProjects()
-  const category = resolvedParams.category
+  const resolvedParams = await searchParams;
+  const projects = await getProjects();
+  const category = resolvedParams.category;
   const projectsFiltered = projects.filter((project: ProjectEntry) => {
-    if (!category) return true
-    if (category === 'Web' || category === 'Mobile') return project.category.includes(category)
-    return true
-  })
+    if (!category) return true;
+    if (category === "Web" || category === "Mobile")
+      return project.category.includes(category);
+    return true;
+  });
 
   return (
     <PageWrapper className="flex min-h-[calc(100vh-8rem)] w-full flex-col gap-10 pb-12 md:pb-16">
@@ -61,5 +62,5 @@ export default async function Projects({ searchParams }: PageProps) {
         ))}
       </section>
     </PageWrapper>
-  )
+  );
 }

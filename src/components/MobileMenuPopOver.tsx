@@ -1,17 +1,17 @@
-'use-client'
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+"use-client";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
-import clsx from 'clsx'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { ReactNode } from 'react'
+import clsx from "clsx";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ReactNode } from "react";
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export const MobileMenuPopOver = ({ children }: Props) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   // function to close the popover
 
@@ -31,10 +31,10 @@ export const MobileMenuPopOver = ({ children }: Props) => {
               <Link
                 href="/"
                 className={clsx(
-                  'w-full rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r',
+                  "w-full rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r",
                   {
-                    'bg-gradient-to-r from-teal-600 to-primary-300 underline':
-                      pathname === '/',
+                    "bg-gradient-to-r from-teal-600 to-primary-300 underline":
+                      pathname === "/",
                   },
                 )}
               >
@@ -45,10 +45,10 @@ export const MobileMenuPopOver = ({ children }: Props) => {
               <Link
                 href="/about"
                 className={clsx(
-                  'rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r',
+                  "rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r",
                   {
-                    'bg-gradient-to-r from-teal-600 to-primary-300 underline':
-                      pathname === '/about',
+                    "bg-gradient-to-r from-teal-600 to-primary-300 underline":
+                      pathname === "/about",
                   },
                 )}
               >
@@ -59,12 +59,12 @@ export const MobileMenuPopOver = ({ children }: Props) => {
               <Link
                 href="/projects"
                 className={clsx(
-                  'rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r',
+                  "rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r",
                   {
-                    'bg-gradient-to-r from-teal-600 to-primary-300 underline':
-                      pathname.includes('/projects'),
-                    'bg-gradient-to-r from-teal-600 to-primary-300 underline ':
-                      pathname === '/project',
+                    "bg-gradient-to-r from-teal-600 to-primary-300 underline":
+                      pathname.includes("/projects"),
+                    "bg-gradient-to-r from-teal-600 to-primary-300 underline ":
+                      pathname === "/project",
                   },
                 )}
               >
@@ -75,10 +75,10 @@ export const MobileMenuPopOver = ({ children }: Props) => {
               <Link
                 href="/contact"
                 className={clsx(
-                  'rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r',
+                  "rounded-md from-teal-600 to-primary-300 p-2 text-lg font-bold text-white transition-colors hover:bg-gradient-to-r",
                   {
-                    'bg-gradient-to-r from-teal-600 to-primary-300 underline':
-                      pathname === '/contact',
+                    "bg-gradient-to-r from-teal-600 to-primary-300 underline":
+                      pathname === "/contact",
                   },
                 )}
               >
@@ -89,5 +89,5 @@ export const MobileMenuPopOver = ({ children }: Props) => {
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
-  )
-}
+  );
+};

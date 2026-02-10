@@ -1,8 +1,8 @@
 interface PageHeaderProps {
-  label: string
-  title: string
+  label: string;
+  title: string;
   /** Optional: hide the label from visual (e.g. for sr-only) */
-  labelSrOnly?: boolean
+  labelSrOnly?: boolean;
 }
 
 export function PageHeader({ label, title, labelSrOnly }: PageHeaderProps) {
@@ -11,8 +11,8 @@ export function PageHeader({ label, title, labelSrOnly }: PageHeaderProps) {
       <p
         className={
           labelSrOnly
-            ? 'sr-only'
-            : 'text-xs font-semibold uppercase tracking-[0.25em] text-primary-600 dark:text-primary-400'
+            ? "sr-only"
+            : "text-xs font-semibold uppercase tracking-[0.25em] text-primary-600 dark:text-primary-400"
         }
         aria-hidden={labelSrOnly}
       >
@@ -26,5 +26,5 @@ export function PageHeader({ label, title, labelSrOnly }: PageHeaderProps) {
         aria-hidden
       />
     </header>
-  )
+  );
 }

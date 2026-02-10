@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export const Logo = () => {
   return (
@@ -12,5 +12,5 @@ export const Logo = () => {
         _
       </span>
     </Link>
-  )
-}
+  );
+};

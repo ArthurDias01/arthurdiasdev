@@ -1,8 +1,8 @@
 interface Props {
-  title: string
-  experienceYearStart: string
-  experienceYearEnd: string
-  experienceDescription: string
+  title: string;
+  experienceYearStart: string;
+  experienceYearEnd: string;
+  experienceDescription: string;
 }
 
 export const EducationItem = ({
@@ -18,5 +18,5 @@ export const EducationItem = ({
       <p>{`${experienceYearStart} - ${experienceYearEnd}`}</p>
       <span className="mt-2">{experienceDescription}</span>
     </li>
-  )
-}
+  );
+};

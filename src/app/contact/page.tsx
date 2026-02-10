@@ -1,20 +1,20 @@
-import { ContactCard } from '@/src/components/ContactCard'
-import { GeneralContactCard } from '@/src/components/GeneralContatcCard'
-import { PageHeader } from '@/src/components/PageHeader'
-import { PageWrapper } from '@/src/components/PageWrapper'
-import { ScheduleAmeet } from '@/src/components/ScheduleAmeet'
-import { Card, CardContent } from '@/src/components/ui/card'
+import { ContactCard } from "@/src/components/ContactCard";
+import { GeneralContactCard } from "@/src/components/GeneralContatcCard";
+import { PageHeader } from "@/src/components/PageHeader";
+import { PageWrapper } from "@/src/components/PageWrapper";
+import { ScheduleAmeet } from "@/src/components/ScheduleAmeet";
+import { Card, CardContent } from "@/src/components/ui/card";
 
 export const metadata = {
-  title: 'Contact',
+  title: "Contact",
   description:
-    'Get in touch with Arthur Dias. Email, phone, location. Open to product design work and partnership opportunities.',
+    "Get in touch with Arthur Dias. Email, phone, location. Open to product design work and partnership opportunities.",
   openGraph: {
-    title: 'Contact | Arthur Dias',
-    url: 'https://arthurdias.dev/contact',
+    title: "Contact | Arthur Dias",
+    url: "https://arthurdias.dev/contact",
   },
-  alternates: { canonical: 'https://arthurdias.dev/contact' },
-}
+  alternates: { canonical: "https://arthurdias.dev/contact" },
+};
 
 export default async function Contact() {
   return (
@@ -38,5 +38,5 @@ export default async function Contact() {
         </Card>
       </div>
     </PageWrapper>
-  )
+  );
 }

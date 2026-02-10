@@ -1,7 +1,7 @@
-import Image, { ImageProps } from 'next/image'
+import Image, { ImageProps } from "next/image";
 
 interface Props extends ImageProps {
-  base64: string
+  base64: string;
 }
 export function NextImage({ src, alt, base64, ...rest }: Props) {
   return (
@@ -12,5 +12,5 @@ export function NextImage({ src, alt, base64, ...rest }: Props) {
       {...rest}
       placeholder="blur"
     />
-  )
+  );
 }

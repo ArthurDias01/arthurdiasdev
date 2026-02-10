@@ -1,9 +1,9 @@
-'use client'
-import { ReactNode } from 'react'
+"use client";
+import { ReactNode } from "react";
 interface Props {
-  icon: ReactNode
-  href: string
-  label: string
+  icon: ReactNode;
+  href: string;
+  label: string;
 }
 
 export const InfoBoxIconLink = ({ icon, href, label }: Props) => {
@@ -19,5 +19,5 @@ export const InfoBoxIconLink = ({ icon, href, label }: Props) => {
         {icon}
       </a>
     </h3>
-  )
-}
+  );
+};

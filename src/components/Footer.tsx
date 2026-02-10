@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export const Footer = () => {
-  const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
   return (
     <footer
       className="mt-auto flex w-full flex-wrap items-center justify-center gap-2 border-t border-neutral-200/60 bg-neutral-100/80 px-4 py-8 pr-32 text-center text-sm text-neutral-600 backdrop-blur-sm dark:border-neutral-800/80 dark:bg-neutral-900/50 dark:text-neutral-400"
@@ -16,5 +16,5 @@ export const Footer = () => {
         Contact
       </Link>
     </footer>
-  )
-}
+  );
+};

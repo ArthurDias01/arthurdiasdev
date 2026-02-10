@@ -1,6 +1,6 @@
-'use client'
-import { List, X } from '@phosphor-icons/react'
-import { forwardRef } from 'react'
+"use client";
+import { List, X } from "@phosphor-icons/react";
+import { forwardRef } from "react";
 
 export const CustomButton = forwardRef((props, forwardedRef) => {
   return (
@@ -13,7 +13,7 @@ export const CustomButton = forwardRef((props, forwardedRef) => {
       <List className="h-8 w-8 text-white group-data-[state=open]:hidden dark:text-neutral-900" />
       <X className="h-8 w-8 text-white group-data-[state=closed]:hidden dark:text-neutral-900" />
     </button>
-  )
-})
+  );
+});
 
-CustomButton.displayName = 'CustomButtonThemeSwitcher'
+CustomButton.displayName = "CustomButtonThemeSwitcher";

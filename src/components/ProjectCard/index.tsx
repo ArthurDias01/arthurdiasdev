@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Card } from '@/src/components/ui/card'
-import { Badge } from '@/src/components/ui/badge'
+import Image from "next/image";
+import Link from "next/link";
+import { Card } from "@/src/components/ui/card";
+import { Badge } from "@/src/components/ui/badge";
 
 /** Inline arrow icon (avoids client-only Phosphor in Server Component). */
 function ArrowIcon({ className }: { className?: string }) {
@@ -20,16 +20,16 @@ function ArrowIcon({ className }: { className?: string }) {
     >
       <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
-  )
+  );
 }
 
 interface Props {
-  imageSrc: string
-  imageAlt: string
-  title: string
-  category: string
-  slug: string
-  priority?: boolean
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  category: string;
+  slug: string;
+  priority?: boolean;
 }
 
 export const ProjectCard = ({
@@ -41,9 +41,7 @@ export const ProjectCard = ({
   priority = false,
 }: Props) => {
   return (
-    <Card
-      className="group overflow-hidden border-l-4 border-l-primary-500/50 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary-500/80 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 motion-reduce:translate-y-0 motion-reduce:shadow-sm dark:border-l-primary-400/50 dark:hover:border-primary-400/80 dark:focus-within:ring-primary-400"
-    >
+    <Card className="group overflow-hidden border-l-4 border-l-primary-500/50 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary-500/80 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 motion-reduce:translate-y-0 motion-reduce:shadow-sm dark:border-l-primary-400/50 dark:hover:border-primary-400/80 dark:focus-within:ring-primary-400">
       <Link
         href={`/projects/${slug}`}
         className="flex flex-col overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-inset"
@@ -79,5 +77,5 @@ export const ProjectCard = ({
         </div>
       </Link>
     </Card>
-  )
-}
+  );
+};

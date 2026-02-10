@@ -25,12 +25,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .motion-reduce\:animate-none { animation: none !important; }
+  html {
+    scroll-behavior: auto;
+  }
+  .motion-reduce\:animate-none {
+    animation: none !important;
+  }
 }
 
 body {
-  font-feature-settings: 'ss01' 1, 'ss02' 1;
+  font-feature-settings:
+    "ss01" 1,
+    "ss02" 1;
   @apply text-neutral-900 antialiased dark:text-neutral-100;
   background-color: hsl(230 18% 98%);
   background-image: radial-gradient(
@@ -60,14 +66,16 @@ body {
   @apply selection:bg-primary-400 selection:text-neutral-950;
 }
 li {
-  @apply list-item ;
+  @apply list-item;
 }
 
 .cal-inline-container {
   @apply bg-inherit rounded-lg;
 }
 
-.timeline { margin-bottom: 30px; }
+.timeline {
+  margin-bottom: 30px;
+}
 
 .timeline .title-wrapper {
   display: flex;
@@ -80,14 +88,17 @@ li {
   margin-left: 45px;
 }
 
-.timeline-item { position: relative; }
+.timeline-item {
+  position: relative;
+}
 
-.timeline-item:not(:last-child) { margin-bottom: 20px; }
+.timeline-item:not(:last-child) {
+  margin-bottom: 20px;
+}
 
 .timeline-item-title {
   line-height: 1.3;
   margin-bottom: 7px;
-
 }
 
 h4.timeline-item-title {
@@ -95,7 +106,7 @@ h4.timeline-item-title {
 }
 
 .timeline-list span {
-  @apply leading-relaxed text-neutral-700 dark:text-primary-400
+  @apply leading-relaxed text-neutral-700 dark:text-primary-400;
 }
 
 .timeline-item:not(:last-child)::before {

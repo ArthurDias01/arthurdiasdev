@@ -1,43 +1,43 @@
-'use client'
+"use client";
 
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export const JobTypeCard = ({ children }: Props) => {
-  const [isIntersecting, setIsIntersecting] = useState(false)
-  const elementRef = useRef(null) as any
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const elementRef = useRef(null) as any;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsIntersecting(entry.isIntersecting)
+        setIsIntersecting(entry.isIntersecting);
       },
       {
-        rootMargin: '-50px',
+        rootMargin: "-50px",
       },
-    )
+    );
     // console.log(isIntersecting)
     if (elementRef !== null) {
-      observer.observe(elementRef.current!)
+      observer.observe(elementRef.current!);
     }
 
-    return () => observer.disconnect()
-  }, [isIntersecting])
+    return () => observer.disconnect();
+  }, [isIntersecting]);
 
   useEffect(() => {
     if (isIntersecting) {
-      elementRef.current!.querySelectorAll('div').forEach((el: HTMLElement) => {
-        el.classList.add('animate-fadeIn')
-      })
+      elementRef.current!.querySelectorAll("div").forEach((el: HTMLElement) => {
+        el.classList.add("animate-fadeIn");
+      });
     } else {
-      elementRef.current!.querySelectorAll('div').forEach((el: HTMLElement) => {
-        el.classList.remove('animate-fadeIn')
-      })
+      elementRef.current!.querySelectorAll("div").forEach((el: HTMLElement) => {
+        el.classList.remove("animate-fadeIn");
+      });
     }
-  }, [isIntersecting])
+  }, [isIntersecting]);
 
   return (
     <section ref={elementRef} className="flex w-full max-w-sm flex-col">
@@ -45,5 +45,5 @@ export const JobTypeCard = ({ children }: Props) => {
         {children}
       </div>
     </section>
-  )
-}
+  );
+};

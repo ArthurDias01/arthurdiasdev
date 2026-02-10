@@ -1,4 +1,4 @@
-import { NavCard } from './NavCard'
+import { NavCard } from "./NavCard";
 
 export const NavBar = () => {
   // console.log('pathname!!', pathname)
@@ -11,5 +11,5 @@ export const NavBar = () => {
         <NavCard href="/contact" title="Contact" />
       </div>
     </div>
-  )
-}
+  );
+};

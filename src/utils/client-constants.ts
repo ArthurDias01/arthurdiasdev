@@ -1,1 +1,1 @@
-export const JobTitle = 'Senior Full Stack Software Engineer'
+export const JobTitle = "Senior Full Stack Software Engineer";
