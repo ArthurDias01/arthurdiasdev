@@ -6,7 +6,7 @@
  */
 
 import { createClient } from 'contentful'
-import { documentToMarkdown } from 'contentful-rich-text-to-markdown'
+import { type Document, documentToMarkdown } from 'contentful-rich-text-to-markdown'
 import { config } from 'dotenv'
 import { mkdirSync, writeFileSync } from 'fs'
 import { join } from 'path'
@@ -82,7 +82,7 @@ async function main() {
     let body = ''
     if (description?.nodeType === 'document' && description.content) {
       try {
-        const result = documentToMarkdown(description)
+        const result = documentToMarkdown({ data: {}, ...description } as Document)
         body = result?.content ?? ''
       } catch (e) {
         console.warn('Could not convert author description to markdown:', e)
@@ -203,7 +203,7 @@ async function main() {
     let body = ''
     if (f.projectDescription?.nodeType === 'document' && f.projectDescription.content) {
       try {
-        const result = documentToMarkdown(f.projectDescription)
+        const result = documentToMarkdown({ data: {}, ...f.projectDescription } as Document)
         body = result?.content ?? ''
       } catch (e) {
         console.warn(`  Could not convert project "${name}" description to markdown:`, e)

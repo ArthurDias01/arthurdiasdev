@@ -31,7 +31,7 @@ const baseComponents = {
   ),
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
     const { src, alt = '', width, height, ...rest } = props
-    if (!src) return null
+    if (!src || typeof src !== 'string') return null
     const isExternal = src.startsWith('http') || src.startsWith('//')
     return (
       <span className="my-4 block overflow-hidden rounded-xl">
