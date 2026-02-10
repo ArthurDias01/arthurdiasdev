@@ -19,7 +19,7 @@ export const ThemeSwitcherButtons = () => {
   };
 
   return (
-    <div id="ThemeSwitcher buttons" className="flex flex-row gap-4">
+    <div id="theme-switcher-buttons" className="flex flex-row gap-4">
       <button
         type="button"
         className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-500 text-white shadow-md transition-colors hover:bg-primary-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 dark:bg-primary-600 dark:hover:bg-primary-500"
@@ -41,6 +41,7 @@ export const ThemeSwitcherButtons = () => {
           <span
             className="flex h-12 w-12 flex-row items-center justify-center rounded-full bg-primary-400 drop-shadow-md"
             aria-hidden
+            tabIndex={-1}
           >
             <List className="h-8 w-8 text-white dark:text-neutral-900" />
           </span>

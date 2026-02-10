@@ -59,7 +59,7 @@ export function ProjectMediaCarousel({
   if (items.length === 0) return null;
 
   const solidButtonClass =
-    "h-10 w-10 rounded-full border-0 bg-white shadow-md hover:bg-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 dark:shadow-neutral-900/50 dark:hover:bg-neutral-200 focus-visible:ring-2 focus-visible:ring-primary-500";
+    "h-11 w-11 min-h-[44px] min-w-[44px] rounded-full border-0 bg-white shadow-md hover:bg-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 dark:shadow-neutral-900/50 dark:hover:bg-neutral-200 focus-visible:ring-2 focus-visible:ring-primary-500";
 
   return (
     <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl">

@@ -27,11 +27,6 @@ export default async function Home() {
         >
           <AboutMeBox />
         </div>
-        <section className="mt-12" aria-labelledby="expertise-heading">
-          <h2 id="expertise-heading" className="sr-only">
-            Areas of expertise
-          </h2>
-        </section>
       </div>
       <ScheduleAmeetButton />
     </PageWrapper>

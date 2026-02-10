@@ -14,7 +14,6 @@ export function PageHeader({ label, title, labelSrOnly }: PageHeaderProps) {
             ? "sr-only"
             : "text-xs font-semibold uppercase tracking-[0.25em] text-primary-600 dark:text-primary-400"
         }
-        aria-hidden={labelSrOnly}
       >
         {label}
       </p>

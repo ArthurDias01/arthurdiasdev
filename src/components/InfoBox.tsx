@@ -40,9 +40,8 @@ export const InfoBox = () => {
         </p>
       </CardHeader>
       <CardContent className="space-y-5 pl-5 pr-6 pb-6 pt-1 md:pl-6">
-        <div
-          className="flex flex-wrap justify-center gap-2"
-          role="list"
+        <ul
+          className="flex flex-wrap justify-center gap-2 list-none"
           aria-label="Social links"
         >
           <InfoBoxIconLink
@@ -70,7 +69,7 @@ export const InfoBox = () => {
             href="/assets/cv/01Arthur-Dias-FullStack-F-Resume.pdf"
             label="Download CV (PDF)"
           />
-        </div>
+        </ul>
         <div className="rounded-lg border border-neutral-200/80 bg-neutral-50/80 p-4 dark:border-neutral-700 dark:bg-neutral-800/50 gap-4 flex flex-col">
           <InfoSubSection
             icon={

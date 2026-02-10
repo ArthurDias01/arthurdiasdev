@@ -128,7 +128,7 @@ const CarouselPrevious = React.forwardRef<
       variant="outline"
       size="icon"
       className={cn(
-        "absolute left-2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full border-neutral-200 dark:border-neutral-700",
+        "absolute left-2 top-1/2 h-11 w-11 min-h-[44px] min-w-[44px] -translate-y-1/2 rounded-full border-neutral-200 dark:border-neutral-700",
         className,
       )}
       aria-label="Previous slide"
@@ -154,7 +154,7 @@ const CarouselNext = React.forwardRef<
       variant="outline"
       size="icon"
       className={cn(
-        "absolute right-2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full border-neutral-200 dark:border-neutral-700",
+        "absolute right-2 top-1/2 h-11 w-11 min-h-[44px] min-w-[44px] -translate-y-1/2 rounded-full border-neutral-200 dark:border-neutral-700",
         className,
       )}
       aria-label="Next slide"
