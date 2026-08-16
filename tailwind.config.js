@@ -4,16 +4,58 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      maxWidth: {
+        editorial: "1400px",
+      },
+      fontFamily: {
+        display: ["var(--font-display)", "Georgia", "serif"],
+        body: [
+          "var(--font-geist-sans)",
+          "Geist",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+        sans: [
+          "var(--font-geist-sans)",
+          "Geist",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+        serif: ["var(--font-serif)", "Cormorant Garamond", "Georgia", "serif"],
       },
       colors: {
+        paper: "var(--paper)",
+        ink: "var(--ink)",
+        copper: {
+          DEFAULT: "var(--copper)",
+          soft: "var(--copper-soft)",
+        },
+        rule: "var(--rule)",
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        surface: "var(--surface)",
+        border: "var(--border)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        accent: {
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+        },
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
         primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
           50: "#fafee7",
           100: "#f3fccb",
           200: "#e5f99d",
@@ -27,6 +69,8 @@ module.exports = {
           950: "#1f2e05",
         },
         secondary: {
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
           50: "#f5f2ff",
           100: "#ede8ff",
           200: "#dcd4ff",
@@ -40,50 +84,33 @@ module.exports = {
           950: "#2e0b6a",
         },
         neutral: {
-          50: "#f6f7f9",
-          100: "#eceef2",
-          200: "#d6dae1",
-          300: "#b1bac8",
-          400: "#8795a9",
-          500: "#68788f",
-          600: "#536076",
-          700: "#4a5568",
-          800: "#3b4351",
-          900: "#343a46",
-          950: "#23272e",
+          50: "#f9f8f6",
+          100: "#f3f0ea",
+          200: "#e8e3db",
+          300: "#d0c9bd",
+          400: "#a39b90",
+          500: "#6b6560",
+          600: "#4a4540",
+          700: "#322e2a",
+          800: "#1c1915",
+          900: "#181818",
+          950: "#141210",
         },
+        ring: "var(--ring)",
+        destructive: "var(--destructive)",
+      },
+      letterSpacing: {
+        label: "0.14em",
+        widest: "0.15em",
       },
       keyframes: {
+        editorialFade: {
+          from: { opacity: 0, transform: "translateY(10px)" },
+          to: { opacity: 1, transform: "translateY(0)" },
+        },
         slideUpAndFade: {
           from: { opacity: 0, transform: "translateY(2px)" },
           to: { opacity: 1, transform: "translateY(0)" },
-        },
-        slideRightAndFade: {
-          from: { opacity: 0, transform: "translateX(-2px)" },
-          to: { opacity: 1, transform: "translateX(0)" },
-        },
-        slideDownAndFade: {
-          from: { opacity: 0, transform: "translateY(-2px)" },
-          to: { opacity: 1, transform: "translateY(0)" },
-        },
-        slideLeftAndFade: {
-          from: { opacity: 0, transform: "translateX(2px)" },
-          to: { opacity: 1, transform: "translateX(0)" },
-        },
-        fadeIn: {
-          from: { opacity: 0, transform: "translateY(-10px)" },
-          to: { opacity: 1, transform: "translateY(0px)" },
-        },
-        fadeOut: {
-          from: { opacity: 1, transform: "translateY(0px)" },
-          to: { opacity: 0, transform: "translateY(-10px)" },
-        },
-        scaleUp: {
-          from: { opacity: 0, transform: "scale(0.8)" },
-          to: { opacity: 1, transform: "scale(1)" },
-        },
-        pulseCaret: {
-          "50%": { opacity: 0.25 },
         },
         staggerUp: {
           from: { opacity: 0, transform: "translateY(14px)" },
@@ -91,30 +118,13 @@ module.exports = {
         },
       },
       animation: {
+        editorialFade:
+          "editorialFade 700ms cubic-bezier(0.22, 1, 0.36, 1) both",
         slideUpAndFade: "slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-        slideRightAndFade:
-          "slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-        slideDownAndFade:
-          "slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-        slideLeftAndFade:
-          "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-        fadeIn: "fadeIn 300ms ease-in forwards",
-        fadeOut: "fadeOut 300ms ease-in forwards",
-        scaleUp: "scaleUp 300ms ease-in-out forwards",
-        pulseCaret: "pulseCaret 1500ms cubic-bezier(0.4, 0, 0.6, 1) infinite",
         staggerUp: "staggerUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-      },
-      animationDelay: {
-        100: "100ms",
-        200: "200ms",
-        300: "300ms",
-        400: "400ms",
-      },
-      letterSpacing: {
-        widest: "0.15em",
       },
     },
   },
-  darkMode: "class", // or 'media' or 'class
-  plugins: [require("tailwindcss-dotted-background")],
+  darkMode: "class",
+  plugins: [],
 };

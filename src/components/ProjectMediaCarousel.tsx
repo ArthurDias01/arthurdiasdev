@@ -28,8 +28,8 @@ function buildMediaItem(url: string, alt: string): ProjectMediaItem {
   const normalized = url.startsWith("http")
     ? url
     : url.startsWith("/")
-      ? `https://arthurdias.dev${url}`
-      : `https://arthurdias.dev/${url}`;
+      ? url
+      : `/${url}`;
   if (isVideoUrl(normalized)) {
     return { type: "video", url: normalized, title: alt };
   }

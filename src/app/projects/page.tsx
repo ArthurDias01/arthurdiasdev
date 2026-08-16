@@ -1,6 +1,5 @@
+import { SectionLabel } from "@/src/components/editorial/SectionLabel";
 import { NavMenuProjects } from "@/src/components/NavMenuProjects";
-import { PageHeader } from "@/src/components/PageHeader";
-import { PageWrapper } from "@/src/components/PageWrapper";
 import { ProjectCard } from "@/src/components/ProjectCard";
 import { getProjects } from "@/src/lib/content";
 import type { ProjectEntry } from "@/src/types/content";
@@ -12,11 +11,11 @@ interface PageProps {
 export const revalidate = 60;
 
 export const metadata = {
-  title: "Projects",
+  title: "Work",
   description:
-    "Portfolio projects by Arthur Dias: web apps, mobile apps, full stack solutions. React, Next.js, Node.js, TypeScript.",
+    "Selected software projects by Arthur Dias — products, platforms, and systems.",
   openGraph: {
-    title: "Projects | Arthur Dias",
+    title: "Work | Arthur Dias",
     url: "https://arthurdias.dev/projects",
   },
   alternates: { canonical: "https://arthurdias.dev/projects" },
@@ -34,33 +33,38 @@ export default async function Projects({ searchParams }: PageProps) {
   });
 
   return (
-    <PageWrapper className="flex min-h-[calc(100vh-8rem)] w-full flex-col gap-10 pb-12 md:pb-16">
-      <PageHeader label="Work" title="Projects" />
+    <div className="py-16 md:py-24">
+      <header className="max-w-2xl">
+        <SectionLabel>Work</SectionLabel>
+        <h1 className="font-display text-4xl tracking-tight text-ink md:text-5xl">
+          Projects
+        </h1>
+        <p className="mt-5 text-base text-muted">
+          Editorial archive of software shipped — not a gallery of cards.
+        </p>
+      </header>
 
-      <section className="mb-2" aria-labelledby="filter-heading">
+      <section className="mt-10" aria-labelledby="filter-heading">
         <h2 id="filter-heading" className="sr-only">
           Filter projects
         </h2>
         <NavMenuProjects />
       </section>
 
-      <section
+      <ul
         id="project-list"
-        className="grid grid-cols-1 gap-10 sm:grid-cols-2 mt-4"
+        className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12"
         aria-label="Project list"
       >
         {projectsFiltered.map((project: ProjectEntry, index: number) => (
           <ProjectCard
             key={project.slug}
-            category={project.category}
-            imageAlt={project.projectName}
-            imageSrc={project.featuredImage}
-            title={project.projectName}
-            slug={project.slug}
-            priority={index <= 6}
+            project={project}
+            index={index}
+            priority={index < 6}
           />
         ))}
-      </section>
-    </PageWrapper>
+      </ul>
+    </div>
   );
 }

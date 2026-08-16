@@ -1,0 +1,24 @@
+---
+title: BoldVault
+category: "Web, Mobile"
+link: "https://boldvault.io"
+date: 2026-08-14
+featuredImage: "https://pub-6b4914f7508142298cc5cb051e1e84ae.r2.dev/boldvault.jpg"
+featured: true
+description: "Immigration case infrastructure — applicants self-track USCIS and EOIR matters, then consent-connect firms to a case that's already assembled."
+---
+
+## **Project Overview:**
+
+BoldVault is immigration case infrastructure I founded to remove the redundant case-assembly work that eats immigration firms' intake pipelines. Applicants track their own USCIS and EOIR matters in a Central Tracker app — receipt status, court dates, evidence, identity documents — and when they consent to connect with a firm, that firm inherits a fully assembled record instead of rebuilding it from scratch.
+
+The platform is applicant-first (iOS launching first, web portal for firms) and consent-gated end to end: firms discover applicants by ZIP proximity and matter type, but no applicant PII is visible until the applicant accepts. Identity documents (A-Numbers, EAD, passports, visas, SSN/ITIN) are encrypted at rest with AES-256-GCM.
+
+## **Tech Stack:**
+
+- **Consent-gated architecture:**
+  Firm-side discovery and pipeline tooling are built so no applicant data is exposed pre-acceptance — access control is a first-class product constraint, not an afterthought.
+- **Encryption at rest:**
+  Identity documents and sensitive case data are encrypted with AES-256-GCM.
+- **Multi-surface delivery:**
+  A native iOS app for applicants (Central Tracker) alongside a web portal for firm-side pipeline management, with English, Spanish, and Portuguese at launch.

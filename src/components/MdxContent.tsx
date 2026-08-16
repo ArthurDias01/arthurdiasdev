@@ -1,27 +1,24 @@
-import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Image from "next/image";
 
 const baseComponents = {
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="text-neutral-700 dark:text-neutral-300" {...props} />
+    <p className="text-muted" {...props} />
   ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <a
-      className="text-primary-600 underline underline-offset-2 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
+      className="link-underline text-copper focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-copper"
       target="_blank"
       rel="noopener noreferrer"
       {...props}
     />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul
-      className="my-4 list-outside list-disc pl-6 text-neutral-700 dark:text-neutral-300"
-      {...props}
-    />
+    <ul className="my-4 list-outside list-disc pl-6 text-muted" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
     <ol
-      className="my-4 list-outside list-decimal pl-6 text-neutral-700 dark:text-neutral-300"
+      className="my-4 list-outside list-decimal pl-6 text-muted"
       {...props}
     />
   ),
@@ -29,29 +26,23 @@ const baseComponents = {
     <li className="my-1" {...props} />
   ),
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1
-      className="mt-6 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
-      {...props}
-    />
+    <h1 className="mt-8 font-display text-3xl text-ink" {...props} />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2
-      className="mt-4 text-xl font-bold text-neutral-900 dark:text-neutral-100"
-      {...props}
-    />
+    <h2 className="mt-8 font-display text-2xl text-ink" {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3
-      className="mt-3 text-lg font-bold text-neutral-900 dark:text-neutral-100"
-      {...props}
-    />
+    <h3 className="mt-6 font-display text-xl text-ink" {...props} />
+  ),
+  strong: (props: React.HTMLAttributes<HTMLElement>) => (
+    <strong className="font-medium text-ink" {...props} />
   ),
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
     const { src, alt = "", width, height, ...rest } = props;
     if (!src || typeof src !== "string") return null;
     const isExternal = src.startsWith("http") || src.startsWith("//");
     return (
-      <span className="my-4 block overflow-hidden rounded-xl">
+      <span className="my-6 block overflow-hidden">
         <Image
           src={src}
           alt={alt}
@@ -65,8 +56,8 @@ const baseComponents = {
     );
   },
   video: (props: React.VideoHTMLAttributes<HTMLVideoElement>) => (
-    <span className="my-4 block overflow-hidden rounded-xl">
-      <video {...props} controls playsInline className="w-full rounded-xl" />
+    <span className="my-6 block overflow-hidden">
+      <video {...props} controls playsInline className="w-full" />
     </span>
   ),
 };

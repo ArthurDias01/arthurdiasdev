@@ -1,15 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card } from "@/src/components/ui/card";
-import { Badge } from "@/src/components/ui/badge";
+import { cn } from "@/src/utils/cn";
+import type { ProjectEntry } from "@/src/types/content";
 
 /** Inline arrow icon (avoids client-only Phosphor in Server Component). */
-function ArrowIcon({ className }: { className?: string }) {
+export function ArrowIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
-      width="16"
-      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -23,59 +21,81 @@ function ArrowIcon({ className }: { className?: string }) {
   );
 }
 
-interface Props {
-  imageSrc: string;
-  imageAlt: string;
-  title: string;
-  category: string;
-  slug: string;
+/** "View project →" CTA, shared by every project-card layout (grid tile, lead story, compact row). */
+export function ProjectViewLink({
+  size = "default",
+  className,
+}: {
+  size?: "default" | "compact";
+  className?: string;
+}) {
+  const compact = size === "compact";
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 uppercase tracking-label text-copper transition-colors group-hover:text-ink",
+        compact ? "text-[0.7rem]" : "text-[0.75rem]",
+        className,
+      )}
+    >
+      View project
+      <ArrowIcon
+        className={cn(
+          "shrink-0 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transform-none",
+          compact ? "h-2.5 w-2.5" : "h-3 w-3",
+        )}
+      />
+    </span>
+  );
+}
+
+interface ProjectCardProps {
+  project: ProjectEntry;
+  index: number;
   priority?: boolean;
 }
 
-export const ProjectCard = ({
-  category,
-  imageAlt,
-  imageSrc,
-  title,
-  slug,
-  priority = false,
-}: Props) => {
+export function ProjectCard({ project, index, priority = false }: ProjectCardProps) {
   return (
-    <Card className="group overflow-hidden border-l-4 border-l-primary-500/50 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary-500/80 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 motion-reduce:translate-y-0 motion-reduce:shadow-sm dark:border-l-primary-400/50 dark:hover:border-primary-400/80 dark:focus-within:ring-primary-400">
+    <li className="group border-t border-rule">
       <Link
-        href={`/projects/${slug}`}
-        className="flex flex-col overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-inset"
-        aria-label={`View project: ${title}`}
+        href={`/projects/${project.slug}`}
+        className="block pt-6 focus-visible:outline-none"
       >
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-200 dark:bg-neutral-800">
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            className="object-cover object-center transition-[transform] duration-500 group-hover:scale-105 motion-reduce:transform-none"
-            priority={priority}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 45vw"
-          />
-          {/* Decorative hover overlay with CTA */}
-          <div
-            className="absolute inset-0 flex items-center justify-center bg-neutral-900/0 transition-[background-color,opacity] duration-300 group-hover:bg-neutral-900/60"
+        <div className="flex items-center justify-between">
+          <span className="text-[0.7rem] tabular-nums text-muted">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="text-[0.65rem] uppercase tracking-label text-muted">
+            {project.category}
+          </span>
+        </div>
+
+        <div className="relative mt-4 aspect-[4/3] overflow-hidden bg-surface">
+          {project.featuredImage ? (
+            <Image
+              src={project.featuredImage}
+              alt=""
+              fill
+              priority={priority}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] motion-reduce:transform-none"
+            />
+          ) : null}
+          <span
             aria-hidden
-          >
-            <span className="flex items-center gap-2 rounded-full bg-white/95 px-4 py-2.5 text-sm font-semibold text-neutral-900 shadow-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:bg-neutral-100 dark:text-neutral-900">
-              View project
-              <ArrowIcon className="h-4 w-4 shrink-0 transition-[transform] duration-200 group-hover:translate-x-0.5" />
-            </span>
-          </div>
+            className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-copper transition-transform duration-500 ease-out group-hover:scale-x-100 motion-reduce:hidden"
+          />
         </div>
-        <div className="flex min-w-0 flex-col gap-3 p-5">
-          <Badge variant="secondary" className="w-fit text-xs font-medium">
-            {category}
-          </Badge>
-          <h2 className="font-[family-name:var(--font-display)] text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 text-balance">
-            {title}
-          </h2>
-        </div>
+
+        <h3 className="mt-5 font-display text-2xl leading-tight text-ink group-focus-visible:underline">
+          {project.projectName}
+        </h3>
+        <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
+          {project.description}
+        </p>
+        <ProjectViewLink className="mt-4" />
       </Link>
-    </Card>
+    </li>
   );
-};
+}

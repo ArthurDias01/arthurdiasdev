@@ -1,4 +1,4 @@
-/** Content types for MDX-driven portfolio (replaces Contentful). */
+/** Content types for MDX-driven portfolio. */
 
 export interface ResumeData {
   title: string;
@@ -41,6 +41,22 @@ export interface ProjectEntry {
   date: string;
   featuredImage: string;
   carouselImages?: string[];
+  /** One-line summary for editorial listings. */
+  description: string;
+  tags: string[];
+  featured: boolean;
+  readingTime: string;
   /** Raw MDX body for project description. */
+  body: string;
+}
+
+export interface WritingEntry {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+  draft: boolean;
   body: string;
 }

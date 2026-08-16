@@ -1,28 +1,10 @@
 import { MdxContent } from "@/src/components/MdxContent";
-import { PageWrapper } from "@/src/components/PageWrapper";
 import { ProjectMediaCarousel } from "@/src/components/ProjectMediaCarousel";
 import { getProject } from "@/src/lib/content";
-import { JobTitle } from "@/src/utils/client-constants";
-import { Metadata } from "next";
-import { redirect } from "next/navigation";
-import { ProfilePage, WithContext } from "schema-dts";
-
-/** Plain-text excerpt from MDX for meta/SEO (strip markdown, ~155 chars). */
-function excerptFromBody(
-  body: string,
-  fallback: string,
-  maxLength = 155,
-): string {
-  if (!body?.trim()) return fallback;
-  const plain = body
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-    .replace(/#{1,6}\s*/g, "")
-    .replace(/\*\*?|__?/g, "")
-    .replace(/\n+/g, " ")
-    .trim();
-  const text = plain.slice(0, maxLength);
-  return text.length < plain.length ? `${text}…` : text;
-}
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type { ProfilePage, WithContext } from "schema-dts";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -33,13 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = await getProject(slug);
 
   if (!project) {
-    return { title: `Arthur Dias | Project | Not Found` };
+    return { title: "Project not found" };
   }
 
-  const title = `${project.projectName} | Arthur Dias | ${JobTitle}`;
-  const fallbackDesc = `Project ${project.projectName} by Arthur Dias, ${JobTitle}. Full stack, web and mobile.`;
-  const description = excerptFromBody(project.body, fallbackDesc);
-
+  const title = project.projectName;
+  const description = project.description;
   const imageUrl =
     project.featuredImage.startsWith("http") ||
     project.featuredImage.startsWith("//")
@@ -52,15 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `https://arthurdias.dev/projects/${project.slug}`,
     },
-    icons: {
-      icon: "/favicon.ico",
-      shortcut: "/favicon-16x16.png",
-      apple: "/apple-touch-icon.png",
-    },
     openGraph: {
       type: "website",
       locale: "en_US",
-      siteName: title,
+      siteName: "Arthur Dias",
       title,
       description,
       url: `https://arthurdias.dev/projects/${project.slug}`,
@@ -72,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       title,
       images: [{ url: imageUrl, alt: project.projectName }],
-      card: "summary",
+      card: "summary_large_image",
     },
   };
 }
@@ -82,23 +57,18 @@ export default async function ProjectPage({ params }: Props) {
   const project = await getProject(slug);
 
   if (!project) {
-    redirect("/404");
+    notFound();
   }
 
-  const projectDescription = excerptFromBody(
-    project.body,
-    `Project ${project.projectName} by Arthur Dias, ${JobTitle}.`,
-    160,
-  );
   const jsonLd: WithContext<ProfilePage> = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     name: `${project.projectName} | Arthur Dias`,
-    description: projectDescription,
+    description: project.description,
     mainEntity: {
-      "@type": "Project",
+      "@type": "CreativeWork",
       name: project.projectName,
-      description: projectDescription,
+      description: project.description,
       url: `https://arthurdias.dev/projects/${project.slug}`,
       image: project.featuredImage.startsWith("http")
         ? project.featuredImage
@@ -115,47 +85,50 @@ export default async function ProjectPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <PageWrapper className="-mt-12 flex min-h-screen flex-col gap-4 md:mt-0 md:min-h-[85vh]">
-        <section className="mt-10 flex w-full flex-col items-start md:px-0">
-          <h1 className="font-[family-name:var(--font-display)] w-full text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+      <article className="py-16 md:py-24">
+        <Link
+          href="/projects"
+          className="link-underline text-[0.7rem] uppercase tracking-label text-muted"
+        >
+          ← Work
+        </Link>
+
+        <header className="mt-10 max-w-3xl border-b border-rule pb-10">
+          <p className="text-[0.7rem] uppercase tracking-label text-muted">
+            {project.category}
+            <span aria-hidden> · </span>
+            {project.readingTime}
+          </p>
+          <h1 className="mt-4 font-display text-4xl leading-tight text-ink md:text-5xl">
             {project.projectName}
           </h1>
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400">
-            {project.category}
+          <p className="mt-5 text-lg leading-relaxed text-muted">
+            {project.description}
           </p>
-          <div className="mt-2 flex w-full flex-row items-center justify-start gap-2 truncate">
-            <span className="text-neutral-600 dark:text-neutral-400">
-              Link:{" "}
-            </span>
-            <a
-              className="text-primary-600 underline underline-offset-2 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Open ${project.projectName} in new tab`}
-            >
-              {project.projectName}
-            </a>
-          </div>
-        </section>
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline mt-8 inline-block text-sm text-copper"
+          >
+            Open project →
+          </a>
+        </header>
 
-        <section className="mt-4 flex w-full flex-col gap-8">
+        <div className="mt-12">
           <ProjectMediaCarousel
             urls={project.carouselImages ?? []}
             projectName={project.projectName}
             fallbackImage={project.featuredImage}
           />
+        </div>
 
-          {project.body ? (
-            <section className="mx-auto w-full max-w-3xl rounded-2xl border border-neutral-200/80 bg-white p-8 shadow-sm dark:border-neutral-800 dark:bg-neutral-900/80 dark:shadow-none">
-              <MdxContent
-                source={project.body}
-                className="prose dark:prose-invert"
-              />
-            </section>
-          ) : null}
-        </section>
-      </PageWrapper>
+        {project.body ? (
+          <section className="prose-editorial mx-auto mt-14 max-w-3xl space-y-4 text-base leading-relaxed [&_a]:text-copper [&_h1]:font-display [&_h1]:text-3xl [&_h2]:font-display [&_h2]:text-2xl [&_h3]:font-display [&_li]:text-muted [&_p]:text-muted [&_strong]:text-ink">
+            <MdxContent source={project.body} />
+          </section>
+        ) : null}
+      </article>
     </>
   );
 }
