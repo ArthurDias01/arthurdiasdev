@@ -14,7 +14,7 @@ const social = [
 export function Hero() {
   return (
     <section
-      className="grid min-h-[calc(100svh-5rem)] items-center gap-12 border-b border-rule py-16 md:grid-cols-12 md:gap-10 md:py-20 lg:min-h-[calc(100svh-4.5rem)] lg:py-24"
+      className="grid items-center gap-10 border-b border-rule py-16 md:min-h-[calc(100svh-5rem)] md:grid-cols-12 md:gap-10 md:py-20 lg:min-h-[calc(100svh-4.5rem)] lg:py-24"
       aria-labelledby="hero-name"
     >
       <div className="flex flex-col justify-center md:col-span-6 lg:col-span-7">
@@ -60,7 +60,7 @@ export function Hero() {
       </div>
 
       <div className="animate-editorial animate-editorial-delay-2 md:col-span-6 lg:col-span-5">
-        <figure className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden bg-surface md:ml-auto md:max-w-none">
+        <figure className="relative mx-auto aspect-[4/3] max-h-[380px] w-full max-w-md overflow-hidden bg-surface sm:max-h-[440px] md:aspect-[4/5] md:max-h-none md:ml-auto md:max-w-none">
           <Image
             src={PROF_PIC_LIGHT}
             alt={`${SITE.name} — portrait`}

@@ -306,12 +306,26 @@ export function LifelineVertical({
   // scroller inside a scrolling stage, so that test would read every
   // full-page timeline as embedded and drop its intro.
   const isEmbed = mode === "embed"
-  const heights = useMemo(
+
+  // Bare years cost real scroll distance in a vertical list (unlike the
+  // horizontal rail, where empty ticks are just visual spacing) — mobile
+  // drops any year with nothing to show instead of forcing a scroll
+  // through decades of blank labels.
+  const visibleMarkers = useMemo(
     () =>
-      markers.map((marker, index) =>
-        getMarkerHeight(marker, markers[index + 1]?.year),
+      markers.filter(
+        (marker) =>
+          hasMarkerContent(marker) || (marker.photos?.length ?? 0) > 0,
       ),
     [markers],
+  )
+
+  const heights = useMemo(
+    () =>
+      visibleMarkers.map((marker, index) =>
+        getMarkerHeight(marker, visibleMarkers[index + 1]?.year),
+      ),
+    [visibleMarkers],
   )
 
   const intro = useLifelineIntro(heights)
@@ -322,7 +336,7 @@ export function LifelineVertical({
   // time reads as lag.
   useEffect(() => {
     const sources: string[] = []
-    for (const marker of markers) {
+    for (const marker of visibleMarkers) {
       for (const event of marker.events) {
         const image = getLifelineEventImage(event)
         if (image) sources.push(image.src)
@@ -343,10 +357,10 @@ export function LifelineVertical({
     }
     const timeout = window.setTimeout(warm, 2000)
     return () => window.clearTimeout(timeout)
-  }, [markers])
+  }, [visibleMarkers])
 
   const { sectionRef, setEntryRef, isLayoutReady } = useLifelineVerticalScroll(
-    markers.length,
+    visibleMarkers.length,
     {
       isEmbed,
       introLocked: isIntroAnimating,
@@ -362,7 +376,7 @@ export function LifelineVertical({
   )
 
   const showIntro = isIntroAnimating && isLayoutReady && !isEmbed
-  const revealOnScroll = markers.length > MAX_ARMED_ENTRIES
+  const revealOnScroll = visibleMarkers.length > MAX_ARMED_ENTRIES
   const animateEntries = showIntro && !revealOnScroll
 
   // Rail-synced fades for long timelines: entries render hidden and
@@ -457,7 +471,7 @@ export function LifelineVertical({
         </div>
 
         <ol className="relative">
-          {markers.map((marker, index) => (
+          {visibleMarkers.map((marker, index) => (
             <LifelineVerticalEntry
               key={marker.id}
               ref={(node) => setEntryRef(index, node)}

@@ -13,10 +13,6 @@ export function ScheduleAmeet() {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi();
-      cal("floatingButton", {
-        calLink: "arthurdias/30min",
-        hideButtonIcon: true,
-      });
       cal("ui", {
         theme: "dark",
         styles: {
