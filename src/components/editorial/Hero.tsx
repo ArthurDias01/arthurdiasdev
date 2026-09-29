@@ -40,7 +40,7 @@ export function Hero() {
 
         <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
           <p className="font-mono text-[0.7rem] uppercase text-muted">
-            23.55°S 46.63°W — {SITE.location}
+            {SITE.location}
           </p>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             {social.map((item) => (
@@ -61,37 +61,45 @@ export function Hero() {
       </div>
 
       <div className="animate-editorial animate-editorial-delay-2 md:col-span-6 lg:col-span-5">
-        <figure className="relative mx-auto aspect-[4/3] max-h-[380px] w-full max-w-md overflow-hidden bg-surface sm:max-h-[440px] md:aspect-[4/5] md:max-h-none md:ml-auto md:max-w-none">
-          <Image
-            src={PROF_PIC_LIGHT}
-            alt={`${SITE.name} — portrait`}
-            fill
-            priority
-            quality={90}
-            sizes="(max-width: 768px) 90vw, 40vw"
-            className="object-cover object-top grayscale transition duration-700 hover:grayscale-0 dark:hidden"
-          />
-          <Image
-            src={PROF_PIC_DARK}
-            alt={`${SITE.name} — portrait`}
-            fill
-            priority
-            quality={90}
-            sizes="(max-width: 768px) 90vw, 40vw"
-            className="hidden object-cover object-top grayscale transition duration-700 hover:grayscale-0 dark:block"
-          />
+        <figure className="relative mx-auto w-full max-w-md border border-rule bg-paper p-2 md:ml-auto md:max-w-none md:p-3">
           {[
-            "left-2 top-2 border-l border-t",
-            "right-2 top-2 border-r border-t",
-            "bottom-2 left-2 border-b border-l",
-            "bottom-2 right-2 border-b border-r",
+            "-left-px -top-px border-l-2 border-t-2",
+            "-right-px -top-px border-r-2 border-t-2",
+            "-bottom-px -left-px border-b-2 border-l-2",
+            "-bottom-px -right-px border-b-2 border-r-2",
           ].map((c) => (
             <span
               key={c}
               aria-hidden
-              className={`absolute h-4 w-4 border-copper ${c}`}
+              className={`absolute h-3 w-3 border-copper ${c}`}
             />
           ))}
+          <div className="relative aspect-[4/3] max-h-[380px] w-full overflow-hidden bg-surface sm:max-h-[440px] md:aspect-[4/5] md:max-h-none">
+            <Image
+              src={PROF_PIC_LIGHT}
+              alt={`${SITE.name} — portrait`}
+              fill
+              priority
+              quality={90}
+              sizes="(max-width: 768px) 90vw, 40vw"
+              className="object-cover object-top dark:hidden"
+            />
+            <Image
+              src={PROF_PIC_DARK}
+              alt={`${SITE.name} — portrait`}
+              fill
+              priority
+              quality={90}
+              sizes="(max-width: 768px) 90vw, 40vw"
+              className="hidden object-cover object-top dark:block"
+            />
+          </div>
+          <figcaption className="flex items-center justify-between pt-2 font-mono text-[0.65rem] uppercase text-muted md:pt-3">
+            <span>
+              <span className="text-copper">Fig.01</span> — Portrait
+            </span>
+            <span>23.55°S 46.63°W</span>
+          </figcaption>
         </figure>
       </div>
     </section>
