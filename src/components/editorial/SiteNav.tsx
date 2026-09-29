@@ -13,7 +13,7 @@ export function SiteNav() {
 
   return (
     <header
-      className="relative z-50 border-b border-rule/80"
+      className="sticky top-0 z-50 border-b border-rule bg-paper"
       role="banner"
       data-site-nav-inner
     >
@@ -21,10 +21,10 @@ export function SiteNav() {
         <Link
           href="/"
           data-site-nav-logo
-          className="font-display text-xl tracking-tight text-ink transition-colors hover:text-copper md:text-2xl"
+          className="font-mono text-sm font-medium tracking-tight text-ink transition-colors hover:text-copper"
           aria-label={`${SITE.name} — home`}
         >
-          {SITE.initials}
+          {SITE.initials}<span className="text-copper">_</span>
         </Link>
 
         <nav

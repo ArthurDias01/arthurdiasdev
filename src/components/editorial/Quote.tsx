@@ -13,7 +13,7 @@ export function Quote() {
         >
           “
         </span>
-        <p className="font-display text-[clamp(1.6rem,3.5vw,2.4rem)] font-normal italic leading-snug text-ink text-balance">
+        <p className="font-display text-[clamp(1.6rem,3.5vw,2.4rem)] font-medium leading-snug text-ink text-balance">
           {QUOTE.text}
         </p>
         <footer className="mt-10 text-[0.7rem] uppercase tracking-label text-muted">

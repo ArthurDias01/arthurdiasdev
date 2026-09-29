@@ -10,11 +10,11 @@ export function SectionLabel({
   return (
     <p
       className={cn(
-        "mb-8 text-[0.7rem] font-medium uppercase tracking-label text-muted",
+        "mb-8 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-muted",
         className,
       )}
     >
-      {children}
+      <span className="text-copper">//</span> {children}
     </p>
   );
 }

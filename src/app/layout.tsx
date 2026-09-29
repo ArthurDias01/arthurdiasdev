@@ -7,20 +7,13 @@ import { cn } from "@/src/utils/cn";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "dotenv/config";
+import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond } from "next/font/google";
 import type { ReactNode } from "react";
 import type { ProfilePage, WithContext } from "schema-dts";
 import ProfPic from "../../public/myProfile.jpg";
 import "./globals.css";
-
-const serif = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-serif",
-  display: "swap",
-});
 
 const siteName = SITE.name;
 const title = `${siteName} — Engineer, product builder, entrepreneur`;
@@ -80,8 +73,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F9F8F6" },
-    { media: "(prefers-color-scheme: dark)", color: "#141210" },
+    { media: "(prefers-color-scheme: light)", color: "#F4F4F1" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0B0B" },
   ],
 };
 
@@ -112,7 +105,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={cn("scroll-smooth", GeistSans.variable, serif.variable)}
+      className={cn("scroll-smooth", GeistSans.variable, GeistMono.variable)}
       suppressHydrationWarning
     >
       <head>

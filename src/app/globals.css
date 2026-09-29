@@ -3,17 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --font-display: var(--font-serif), "Cormorant Garamond", Georgia, serif;
-  --font-body: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-body:
+    var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
   --lifeline-font: var(--font-body);
 
-  --paper: #f9f8f6;
-  --ink: #181818;
-  --copper: #b7652b;
-  --copper-soft: #c46b33;
-  --rule: #e8e3db;
-  --muted: #6b6560;
-  --surface: #f3f0ea;
+  --paper: #f4f4f1;
+  --ink: #0b0b0b;
+  --copper: #d9480f;
+  --copper-soft: #e8590c;
+  --rule: #dcdcd6;
+  --muted: #62625d;
+  --surface: #e9e9e4;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -21,7 +23,7 @@
   --accent-foreground: #fffaf5;
   --border: var(--rule);
   --muted-foreground: var(--muted);
-  --card: #fffcf8;
+  --card: #fafaf8;
   --card-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--paper);
@@ -34,13 +36,13 @@
 }
 
 .dark {
-  --paper: #141210;
-  --ink: #f4f0e8;
-  --copper: #d4844a;
-  --copper-soft: #e09458;
-  --rule: #2c2822;
-  --muted: #a39b90;
-  --surface: #1c1915;
+  --paper: #0b0b0b;
+  --ink: #ededea;
+  --copper: #ff6b2c;
+  --copper-soft: #ff8547;
+  --rule: #242424;
+  --muted: #9a9a94;
+  --surface: #151515;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -48,7 +50,7 @@
   --accent-foreground: #1a120c;
   --border: var(--rule);
   --muted-foreground: var(--muted);
-  --card: #1a1713;
+  --card: #121212;
   --card-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--paper);
@@ -68,6 +70,19 @@
 
   body {
     @apply bg-paper text-ink antialiased;
+    /* Faint layout grid — the page shows its own construction */
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--rule) 55%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--rule) 55%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 96px 96px;
     font-family: var(--font-body);
     font-feature-settings:
       "ss01" 1,
@@ -83,6 +98,7 @@
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
+    letter-spacing: -0.035em;
   }
 
   .font-body {

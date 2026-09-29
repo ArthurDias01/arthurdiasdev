@@ -27,7 +27,7 @@ module.exports = {
           "system-ui",
           "sans-serif",
         ],
-        serif: ["var(--font-serif)", "Cormorant Garamond", "Georgia", "serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       colors: {
         paper: "var(--paper)",

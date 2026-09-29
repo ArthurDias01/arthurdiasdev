@@ -20,12 +20,13 @@ export function Hero() {
       <div className="flex flex-col justify-center md:col-span-6 lg:col-span-7">
         <h1
           id="hero-name"
-          className="animate-editorial font-display text-[clamp(3.25rem,8vw,5.75rem)] font-medium leading-[0.95] tracking-tight text-ink"
+          className="animate-editorial font-display text-[clamp(3.5rem,9vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.055em] text-ink"
         >
           {HERO.name}
+          <span className="text-copper">.</span>
         </h1>
 
-        <p className="animate-editorial animate-editorial-delay-1 mt-8 max-w-xl font-display text-2xl leading-snug text-ink md:text-[1.75rem]">
+        <p className="animate-editorial animate-editorial-delay-1 mt-8 max-w-xl font-display text-2xl font-medium leading-snug text-ink md:text-[1.75rem]">
           {HERO.lead}
         </p>
 
@@ -38,8 +39,8 @@ export function Hero() {
         </p>
 
         <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-          <p className="text-[0.7rem] uppercase tracking-label text-muted">
-            {SITE.location}
+          <p className="font-mono text-[0.7rem] uppercase text-muted">
+            23.55°S 46.63°W — {SITE.location}
           </p>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             {social.map((item) => (
@@ -49,7 +50,7 @@ export function Hero() {
                   {...(item.href.startsWith("http")
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="link-underline text-sm text-copper"
+                  className="link-underline font-mono text-xs uppercase text-copper"
                 >
                   {item.label}
                 </a>
@@ -68,7 +69,7 @@ export function Hero() {
             priority
             quality={90}
             sizes="(max-width: 768px) 90vw, 40vw"
-            className="object-cover object-top dark:hidden"
+            className="object-cover object-top grayscale transition duration-700 hover:grayscale-0 dark:hidden"
           />
           <Image
             src={PROF_PIC_DARK}
@@ -77,8 +78,20 @@ export function Hero() {
             priority
             quality={90}
             sizes="(max-width: 768px) 90vw, 40vw"
-            className="hidden object-cover object-top dark:block"
+            className="hidden object-cover object-top grayscale transition duration-700 hover:grayscale-0 dark:block"
           />
+          {[
+            "left-2 top-2 border-l border-t",
+            "right-2 top-2 border-r border-t",
+            "bottom-2 left-2 border-b border-l",
+            "bottom-2 right-2 border-b border-r",
+          ].map((c) => (
+            <span
+              key={c}
+              aria-hidden
+              className={`absolute h-4 w-4 border-copper ${c}`}
+            />
+          ))}
         </figure>
       </div>
     </section>
