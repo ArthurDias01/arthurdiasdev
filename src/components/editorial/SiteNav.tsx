@@ -21,10 +21,16 @@ export function SiteNav() {
         <Link
           href="/"
           data-site-nav-logo
-          className="font-mono text-sm font-medium tracking-tight text-ink transition-colors hover:text-copper"
+          className="group flex items-center gap-3 text-ink"
           aria-label={`${SITE.name} — home`}
         >
-          {SITE.initials}<span className="text-copper">_</span>
+          <span className="grid h-9 w-9 place-items-center bg-ink font-mono text-sm font-semibold tracking-tight text-paper transition-colors group-hover:bg-copper">
+            {SITE.initials}
+          </span>
+          <span className="font-mono text-sm font-medium lowercase tracking-tight">
+            {SITE.name.replace(" ", ".")}
+            <span className="cursor-blink text-copper">_</span>
+          </span>
         </Link>
 
         <nav
